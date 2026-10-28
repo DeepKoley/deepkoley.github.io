@@ -103,40 +103,8 @@ if (typeof Typed !== 'undefined') {
   initSectionHeaderTyped('#typed-skills-header', 'Specialized Tech Stack');
   initSectionHeaderTyped('#typed-projects-header', 'Selected Case Studies');
   initSectionHeaderTyped('#typed-blog-header', 'Engineering Logs & Technical Notes');
-  initSectionHeaderTyped('#typed-contact-header', 'Get In Touch & Say Hello');
   initSectionHeaderTyped('#typed-projects-page-header', 'Full-Stack Engineering & Case Studies');
   initSectionHeaderTyped('#typed-blog-page-header', 'Technical Writing & Architecture Notes');
-
-  // Text Boxes with Typed.js Placeholders — Typed once cleanly without erasing
-  initTyped('#contact-message', {
-    strings: ['Tell me about your project, timeline, and goals...'],
-    typeSpeed: 30,
-    backSpeed: 0,
-    loop: false,
-    showCursor: false,
-    attr: 'placeholder',
-    bindInputFocusEvents: true,
-  });
-
-  initTyped('#contact-name', {
-    strings: ['Your Name (e.g. Alex Rivera)'],
-    typeSpeed: 35,
-    backSpeed: 0,
-    loop: false,
-    showCursor: false,
-    attr: 'placeholder',
-    bindInputFocusEvents: true,
-  });
-
-  initTyped('#contact-email', {
-    strings: ['Your Email (e.g. alex@company.com)'],
-    typeSpeed: 35,
-    backSpeed: 0,
-    loop: false,
-    showCursor: false,
-    attr: 'placeholder',
-    bindInputFocusEvents: true,
-  });
 }
 
 // ── Custom Alert & Toast Notification System (daisyUI alert component) ─
@@ -246,42 +214,3 @@ function fallbackCopy(text) {
     window.showCustomAlert('Link copied to clipboard!', 'success');
   }
 }
-
-// ── Contact Form Submission Handler (daisyUI modal & alert) ───────────
-window.handleContactSubmit = function (e) {
-  e.preventDefault();
-  const form = document.getElementById('contact-form');
-  const nameInput = document.getElementById('contact-name');
-  const emailInput = document.getElementById('contact-email');
-  const msgInput = document.getElementById('contact-message');
-  const modal = document.getElementById('contact_modal');
-
-  const name = nameInput ? nameInput.value.trim() : '';
-  const email = emailInput ? emailInput.value.trim() : '';
-  const msg = msgInput ? msgInput.value.trim() : '';
-
-  if (!name || !email || !msg) {
-    window.showCustomAlert(
-      'Please fill in your name, email, and message before sending.',
-      'warning'
-    );
-    return;
-  }
-
-  // Update modal message with name personalization
-  const feedback = document.getElementById('contact-modal-feedback');
-  if (feedback && name) {
-    feedback.textContent = `Thank you for reaching out, ${name}! Your note has been received and I'll get back to you within 24 hours.`;
-  }
-
-  // Open confirmation modal
-  if (modal && typeof modal.showModal === 'function') {
-    modal.showModal();
-  }
-
-  // Show custom alert toast as well
-  window.showCustomAlert('Message delivered successfully!', 'success');
-
-  // Reset form
-  if (form) form.reset();
-};
