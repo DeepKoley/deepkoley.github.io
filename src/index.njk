@@ -50,7 +50,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
     <span
       class="text-xs uppercase tracking-widest text-base-content/60 font-mono font-medium"
     >
-      Core Programming &amp; Frameworks
+      {{ home.marqueeTitle | default('Core Programming & Frameworks') }}
     </span>
   </div>
   <div class="marquee-container">
@@ -59,9 +59,9 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
       <div class="flex items-center gap-3 shrink-0">
         {% for item in home.marquee %}
           <span
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-base-200/90 border border-base-300 font-mono text-xs sm:text-sm text-base-content/90 shadow-xs hover:border-white/20 transition-colors"
+            class="px-4 py-2 rounded-xl bg-base-200/90 border border-base-300 font-mono text-xs sm:text-sm text-base-content/90 shadow-xs hover:border-white/20 transition-colors"
           >
-            <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>{{ item }}
+            {{ item }}
           </span>
         {% endfor %}
       </div>
@@ -70,9 +70,9 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
       <div class="flex items-center gap-3 shrink-0" aria-hidden="true">
         {% for item in home.marquee %}
           <span
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-base-200/90 border border-base-300 font-mono text-xs sm:text-sm text-base-content/90 shadow-xs hover:border-white/20 transition-colors"
+            class="px-4 py-2 rounded-xl bg-base-200/90 border border-base-300 font-mono text-xs sm:text-sm text-base-content/90 shadow-xs hover:border-white/20 transition-colors"
           >
-            <span class="w-1.5 h-1.5 rounded-full bg-primary/70"></span>{{ item }}
+            {{ item }}
           </span>
         {% endfor %}
       </div>
@@ -158,7 +158,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
               <img
                 src="{{ project.data.image }}"
                 alt="{{ project.data.title }}"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                class="w-full h-full object-cover"
                 loading="lazy"
               />
               {% if project.data.status %}
@@ -256,7 +256,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
               <img
                 src="{{ post.data.image }}"
                 alt="{{ post.data.title }}"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                class="w-full h-full object-cover"
                 loading="lazy"
               />
             </a>

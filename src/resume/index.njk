@@ -1,9 +1,11 @@
 ---
 layout: base.njk
 title: "Resume — Deep Koley"
-description: "Curriculum Vitae and professional experience of Deep Koley, Senior Full-Stack Developer specializing in scalable web systems and modern architectures."
+description: "Curriculum Vitae and professional experience of Deep Koley, Full-Stack Developer specializing in scalable web systems and modern architectures."
 eleventyExcludeFromCollections: true
 ---
+
+{% set hasResumeData = (resume.experience and resume.experience.length > 0) or (resume.competencies and resume.competencies.length > 0) or (resume.education and resume.education.length > 0) or (resume.summary and resume.summary | trim | length > 0) %}
 
 <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-16">
   <!-- Breadcrumb & Top Actions -->
@@ -14,16 +16,18 @@ eleventyExcludeFromCollections: true
         <li class="text-base-content">Resume</li>
       </ul>
     </div>
-    <div class="flex items-center gap-3">
-      <button onclick="window.print()" class="btn btn-outline btn-sm font-mono gap-2">
-        <i data-feather="printer" class="w-3.5 h-3.5"></i>
-        Print / PDF
-      </button>
-      <a href="/cv.pdf" download class="btn btn-primary btn-sm font-mono gap-2">
-        <i data-feather="download" class="w-3.5 h-3.5"></i>
-        Download CV
-      </a>
-    </div>
+    {% if hasResumeData %}
+      <div class="flex items-center gap-3">
+        <button onclick="window.print()" class="btn btn-outline btn-sm font-mono gap-2">
+          <i data-feather="printer" class="w-3.5 h-3.5"></i>
+          Print / PDF
+        </button>
+        <a href="/cv.pdf" download class="btn btn-primary btn-sm font-mono gap-2">
+          <i data-feather="download" class="w-3.5 h-3.5"></i>
+          Download CV
+        </a>
+      </div>
+    {% endif %}
   </div>
 
   <!-- Page Header -->
@@ -40,178 +44,171 @@ eleventyExcludeFromCollections: true
     </p>
   </header>
 
-  <!-- Resume Sheet (Card Container) -->
-  <div class="card bg-base-200 card-border shadow-2xl p-6 sm:p-10 lg:p-12 space-y-12">
-    <!-- Header Block inside Resume -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between pb-8 border-b border-base-300 gap-6">
-      <div>
-        <h2 class="text-3xl sm:text-4xl font-headline tracking-tight">
-          {{ site.name }}
-        </h2>
-        <p class="text-primary font-mono text-base font-semibold mt-1">
-          {{ resume.title or site.title }}
-        </p>
+  {% if hasResumeData %}
+    <!-- Resume Sheet (Card Container) -->
+    <div class="card bg-base-200 card-border shadow-2xl p-6 sm:p-10 lg:p-12 space-y-12">
+      <!-- Header Block inside Resume -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between pb-8 border-b border-base-300 gap-6">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-headline tracking-tight">
+            {{ site.name }}
+          </h2>
+          <p class="text-primary font-mono text-base font-semibold mt-1">
+            {{ resume.title or site.title }}
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs font-mono">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 text-base-content/80">
+            <i data-feather="map-pin" class="w-3.5 h-3.5 text-base-content/60"></i>
+            {{ site.location }}
+          </span>
+          <a
+            href="mailto:{{ site.email }}"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
+          >
+            <i data-feather="mail" class="w-3.5 h-3.5 text-base-content/60 group-hover:text-primary transition-colors"></i>
+            {{ site.email }}
+          </a>
+          <a
+            href="{{ site.github }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
+          >
+            <i data-feather="github" class="w-3.5 h-3.5 text-base-content/60 group-hover:text-primary transition-colors"></i>
+            github.com
+          </a>
+          <a
+            href="{{ site.linkedin }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
+          >
+            <i data-feather="linkedin" class="w-3.5 h-3.5 text-base-content/60 group-hover:text-primary transition-colors"></i>
+            linkedin.com
+          </a>
+        </div>
       </div>
-      <div class="flex flex-wrap gap-2 text-xs font-mono">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 text-base-content/80">
-          <i data-feather="map-pin" class="w-3.5 h-3.5 text-base-content/60"></i>
-          {{ site.location }}
-        </span>
-        <a
-          href="mailto:{{ site.email }}"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
-        >
-          <i data-feather="mail" class="w-3.5 h-3.5 text-base-content/60 group-hover:text-primary transition-colors"></i>
-          {{ site.email }}
+
+      <!-- Executive Summary -->
+      {% if resume.summary and resume.summary | trim | length > 0 %}
+        <section>
+          <h3 class="text-xs uppercase tracking-widest text-base-content/50 font-mono font-semibold mb-3">
+            Executive Summary
+          </h3>
+          <p class="text-base text-base-content/80 leading-relaxed max-w-4xl">
+            {{ resume.summary }}
+          </p>
+        </section>
+      {% endif %}
+
+      <!-- Professional Experience -->
+      {% if resume.experience and resume.experience.length > 0 %}
+        <section class="space-y-6">
+          <h3 class="text-xs uppercase tracking-widest text-base-content/50 font-mono font-semibold mb-6">
+            Experience
+          </h3>
+          <div class="space-y-8">
+            {% for job in resume.experience %}
+              <div class="relative pl-6 border-l-2 {% if job.isCurrent %}border-primary/30{% else %}border-base-300{% endif %} space-y-3">
+                <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-base-100 border-2 {% if job.isCurrent %}border-primary{% else %}border-base-300{% endif %}">
+                </div>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <h4 class="text-xl font-headline text-base-content">
+                    {{ job.role }} <span class="text-base-content/50 font-normal">@ {{ job.company }}</span>
+                  </h4>
+                  <span
+                    class="text-xs font-mono {% if job.isCurrent %}text-primary font-semibold bg-primary/10{% else %}text-base-content/60 bg-base-300/50{% endif %} px-2.5 py-0.5 rounded-md self-start sm:self-auto"
+                  >{{ job.period }}</span>
+                </div>
+                <p class="text-sm text-base-content/70">
+                  {{ job.location }} • {{ job.subtitle }}
+                </p>
+                <ul class="list-disc list-outside pl-4 space-y-2 text-sm text-base-content/80 leading-relaxed">
+                  {% for item in job.highlights %}
+                    <li>{{ item }}</li>
+                  {% endfor %}
+                </ul>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  {% for skill in job.skills %}
+                    <span class="badge badge-neutral text-xs font-mono border border-base-300/60">{{ skill }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+
+      <!-- Technical Skills Matrix -->
+      {% if resume.competencies and resume.competencies.length > 0 %}
+        <section class="space-y-6">
+          <h3 class="text-xs uppercase tracking-widest text-base-content/50 font-mono font-semibold mb-6">
+            Skills &amp; Competencies
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {% for comp in resume.competencies %}
+              <div class="p-5 rounded-2xl bg-base-100 border border-base-300">
+                <h4 class="font-headline text-lg mb-2 text-base-content">
+                  {{ comp.title }}
+                </h4>
+                <p class="text-xs font-mono text-{{ comp.color | default('primary') }} mb-3">{{ comp.subtitle }}</p>
+                <div class="flex flex-wrap gap-1.5">
+                  {% for skill in comp.skills %}
+                    <span class="badge badge-neutral text-xs font-mono border border-base-300/60">{{ skill }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+
+      <!-- Education -->
+      {% if resume.education and resume.education.length > 0 %}
+        <section class="border-t border-base-300 pt-8 space-y-6">
+          <h3 class="text-xs uppercase tracking-widest text-base-content/50 font-mono font-semibold mb-6">
+            Education
+          </h3>
+          <div class="space-y-4">
+            {% for edu in resume.education %}
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-4 last:mb-0">
+                <div>
+                  <h4 class="text-lg font-headline text-base-content">
+                    {{ edu.degree }}
+                  </h4>
+                  <p class="text-sm text-base-content/70">
+                    {{ edu.institution }}
+                  </p>
+                </div>
+                <span class="text-xs font-mono text-base-content/60 self-start sm:self-auto">{{ edu.period }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+    </div>
+
+  {% else %}
+    <!-- Placeholder When Resume Data Is Empty -->
+    <div class="card bg-base-200 card-border p-12 sm:p-16 text-center border-dashed border-base-300/80 shadow-xl">
+      <div class="w-16 h-16 rounded-2xl bg-base-300/60 border border-base-300 flex items-center justify-center mx-auto mb-4 text-primary">
+        <i data-feather="file-text" class="w-8 h-8"></i>
+      </div>
+      <h2 class="font-headline text-3xl sm:text-4xl mb-3 text-base-content">
+        Resume Will Be Added Soon
+      </h2>
+      <p class="text-base text-base-content/70 max-w-md mx-auto mb-8 leading-relaxed">
+        Curriculum vitae, verified work experience, technical competencies, and education records will be published here soon.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="/" class="btn btn-primary btn-sm font-mono inline-flex items-center gap-2">
+          <i data-feather="arrow-left" class="w-4 h-4"></i> Back to Home
         </a>
-        <a
-          href="{{ site.github }}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
-        >
-          <i data-feather="github" class="w-3.5 h-3.5 text-base-content/60 group-hover:text-primary transition-colors"></i>
-          github.com
-        </a>
-        <a
-          href="{{ site.linkedin }}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
-        >
-          <i data-feather="linkedin" class="w-3.5 h-3.5 text-base-content/60 group-hover:text-primary transition-colors"></i>
-          linkedin.com
+        <a href="/projects/" class="btn btn-outline btn-sm font-mono inline-flex items-center gap-2">
+          Explore Projects <i data-feather="arrow-right" class="w-4 h-4"></i>
         </a>
       </div>
     </div>
-
-    <!-- Executive Summary -->
-    {% if resume.summary %}
-      <section>
-        <h3 class="text-xs uppercase tracking-widest text-base-content/50 font-mono font-semibold mb-3">
-          Executive Summary
-        </h3>
-        <p class="text-base text-base-content/80 leading-relaxed max-w-4xl">
-          {{ resume.summary }}
-        </p>
-      </section>
-    {% endif %}
-
-    <!-- Professional Experience -->
-    <section class="space-y-6">
-      <h3 class="text-xs uppercase tracking-widest text-base-content/50 font-mono font-semibold mb-6">
-        Experience
-      </h3>
-
-      {% if resume.experience and resume.experience.length > 0 %}
-        <div class="space-y-8">
-          {% for job in resume.experience %}
-            <div class="relative pl-6 border-l-2 {% if job.isCurrent %}border-primary/30{% else %}border-base-300{% endif %} space-y-3">
-              <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-base-100 border-2 {% if job.isCurrent %}border-primary{% else %}border-base-300{% endif %}">
-              </div>
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                <h4 class="text-xl font-headline text-base-content">
-                  {{ job.role }} <span class="text-base-content/50 font-normal">@ {{ job.company }}</span>
-                </h4>
-                <span
-                  class="text-xs font-mono {% if job.isCurrent %}text-primary font-semibold bg-primary/10{% else %}text-base-content/60 bg-base-300/50{% endif %} px-2.5 py-0.5 rounded-md self-start sm:self-auto"
-                >{{ job.period }}</span>
-              </div>
-              <p class="text-sm text-base-content/70">
-                {{ job.location }} • {{ job.subtitle }}
-              </p>
-              <ul class="list-disc list-outside pl-4 space-y-2 text-sm text-base-content/80 leading-relaxed">
-                {% for item in job.highlights %}
-                  <li>{{ item }}</li>
-                {% endfor %}
-              </ul>
-              <div class="flex flex-wrap gap-1.5 pt-1">
-                {% for skill in job.skills %}
-                  <span class="badge badge-neutral text-xs font-mono border border-base-300/60">{{ skill }}</span>
-                {% endfor %}
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="p-8 rounded-2xl bg-base-100/60 border border-dashed border-base-300/80 text-center">
-          <div class="w-12 h-12 rounded-xl bg-base-300/60 border border-base-300 flex items-center justify-center mx-auto mb-3 text-secondary">
-            <i data-feather="briefcase" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-headline text-xl mb-1 text-base-content">No Experience Records Added Yet</h4>
-          <p class="text-xs font-mono text-base-content/60 max-w-sm mx-auto">
-            Add career history, company roles, and achievements via Pages CMS admin (<code class="text-cyan-400">src/_data/resume.json</code>).
-          </p>
-        </div>
-      {% endif %}
-    </section>
-
-    <!-- Technical Skills Matrix -->
-    <section class="space-y-6">
-      <h3 class="text-xs uppercase tracking-widest text-base-content/50 font-mono font-semibold mb-6">
-        Skills &amp; Competencies
-      </h3>
-      {% if resume.competencies and resume.competencies.length > 0 %}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {% for comp in resume.competencies %}
-            <div class="p-5 rounded-2xl bg-base-100 border border-base-300">
-              <h4 class="font-headline text-lg mb-2 text-base-content">
-                {{ comp.title }}
-              </h4>
-              <p class="text-xs font-mono text-{{ comp.color | default('primary') }} mb-3">{{ comp.subtitle }}</p>
-              <div class="flex flex-wrap gap-1.5">
-                {% for skill in comp.skills %}
-                  <span class="badge badge-neutral text-xs font-mono border border-base-300/60">{{ skill }}</span>
-                {% endfor %}
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="p-8 rounded-2xl bg-base-100/60 border border-dashed border-base-300/80 text-center">
-          <div class="w-12 h-12 rounded-xl bg-base-300/60 border border-base-300 flex items-center justify-center mx-auto mb-3 text-secondary">
-            <i data-feather="cpu" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-headline text-xl mb-1 text-base-content">No Competency Groups Added Yet</h4>
-          <p class="text-xs font-mono text-base-content/60 max-w-sm mx-auto">
-            Group your core technologies and competencies via Pages CMS admin (<code class="text-cyan-400">src/_data/resume.json</code>).
-          </p>
-        </div>
-      {% endif %}
-    </section>
-
-    <!-- Education -->
-    <section class="border-t border-base-300 pt-8 space-y-6">
-      <h3 class="text-xs uppercase tracking-widest text-base-content/50 font-mono font-semibold mb-6">
-        Education
-      </h3>
-      {% if resume.education and resume.education.length > 0 %}
-        <div class="space-y-4">
-          {% for edu in resume.education %}
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-4 last:mb-0">
-              <div>
-                <h4 class="text-lg font-headline text-base-content">
-                  {{ edu.degree }}
-                </h4>
-                <p class="text-sm text-base-content/70">
-                  {{ edu.institution }}
-                </p>
-              </div>
-              <span class="text-xs font-mono text-base-content/60 self-start sm:self-auto">{{ edu.period }}</span>
-            </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="p-8 rounded-2xl bg-base-100/60 border border-dashed border-base-300/80 text-center">
-          <div class="w-12 h-12 rounded-xl bg-base-300/60 border border-base-300 flex items-center justify-center mx-auto mb-3 text-secondary">
-            <i data-feather="award" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-headline text-xl mb-1 text-base-content">No Education Records Added Yet</h4>
-          <p class="text-xs font-mono text-base-content/60 max-w-sm mx-auto">
-            Add academic degrees, certifications, or coursework via Pages CMS admin (<code class="text-cyan-400">src/_data/resume.json</code>).
-          </p>
-        </div>
-      {% endif %}
-    </section>
-  </div>
+  {% endif %}
 </div>

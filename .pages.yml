@@ -163,10 +163,12 @@ content:
         label: Avatar Image URL
         type: string
       - name: marqueeTitle
-        label: Marquee Section Title
+        label: Marquee Section Title (e.g. Core Programming & Frameworks)
         type: string
+        default: Core Programming & Frameworks
       - name: marquee
-        label: Marquee Tech List
+        label: Core Programming & Frameworks (Marquee Items)
+        description: Add, edit, remove, or reorder technologies that scroll in the infinite marquee.
         type: string
         list: true
       - name: skillsSectionBadge
