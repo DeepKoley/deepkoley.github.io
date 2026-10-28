@@ -35,10 +35,10 @@ export default function (eleventyConfig) {
     'node_modules/typed.js/dist/typed.umd.js': 'js/typed.umd.js',
   });
   eleventyConfig.addPassthroughCopy({
-    'node_modules/glightbox/dist/js/glightbox.min.js': 'js/glightbox.min.js',
+    'node_modules/simplelightbox/dist/simple-lightbox.min.js': 'js/simple-lightbox.min.js',
   });
   eleventyConfig.addPassthroughCopy({
-    'node_modules/glightbox/dist/css/glightbox.min.css': 'css/glightbox.min.css',
+    'node_modules/simplelightbox/dist/simple-lightbox.min.css': 'css/simple-lightbox.min.css',
   });
   eleventyConfig.addPassthroughCopy({ 'cv.pdf': 'cv.pdf' });
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });

@@ -6,7 +6,7 @@ permalink: "gallery/index.html"
 eleventyExcludeFromCollections: true
 ---
 
-<link rel="stylesheet" href="/css/glightbox.min.css" />
+<link rel="stylesheet" href="/css/simple-lightbox.min.css" />
 
 <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-16">
   <!-- Breadcrumb -->
@@ -78,11 +78,8 @@ eleventyExcludeFromCollections: true
             <!-- Pure Unobstructed Photograph -->
             <a
               href="{{ photo.image }}"
-              class="glightbox block relative cursor-zoom-in"
-              data-type="image"
-              data-gallery="portfolio-gallery"
-              data-title="{{ photo.title }}"
-              data-description="{% if photo.caption %}{{ photo.caption }}<br><br>{% endif %}<span class='text-xs opacity-75'>📍 {{ photo.location | default('Undisclosed') }} &nbsp;•&nbsp; 📷 {{ photo.camera | default('Mirrorless') }} &nbsp;•&nbsp; 🗓 {{ photo.date }}</span>"
+              class="simple-lightbox block relative cursor-zoom-in"
+              data-caption="<div class='font-bold text-sm text-white mb-0.5 tracking-wide'>{{ photo.title | replace('\"', '&quot;') }}</div>{% if photo.caption %}<div class='text-xs text-base-content/80 mb-1.5 leading-snug'>{{ photo.caption | replace('\"', '&quot;') }}</div>{% endif %}<div class='text-[11px] font-mono text-base-content/60 flex flex-wrap items-center justify-center gap-2'>{% if photo.location %}<span>📍 {{ photo.location }}</span>{% endif %}{% if photo.camera %}<span>📷 {{ photo.camera }}</span>{% endif %}{% if photo.date %}<span>🗓 {{ photo.date }}</span>{% endif %}</div>"
             >
               <img
                 src="{{ photo.image }}"
@@ -159,8 +156,8 @@ eleventyExcludeFromCollections: true
   {% endif %}
 </div>
 
-<!-- GLightbox Script & Gallery Controller -->
-<script src="/js/glightbox.min.js"></script>
+<!-- SimpleLightbox Script & Gallery Controller -->
+<script src="/js/simple-lightbox.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize Feather Icons for newly rendered elements
@@ -168,26 +165,39 @@ eleventyExcludeFromCollections: true
       feather.replace();
     }
 
-    // 2. Initialize GLightbox with custom effects
+    // 2. Initialize SimpleLightbox with responsive viewport fit
     let lightbox = null;
     const initLightbox = () => {
-      if (typeof GLightbox === 'function') {
+      if (typeof SimpleLightbox === 'function') {
         if (lightbox && typeof lightbox.destroy === 'function') {
           lightbox.destroy();
         }
-        lightbox = GLightbox({
-          selector: '.gallery-item:not(.is-hidden) .glightbox',
-          type: 'image',
-          descPosition: 'bottom',
-          touchNavigation: true,
+        lightbox = new SimpleLightbox('.gallery-item:not(.is-hidden) a.simple-lightbox', {
+          sourceAttr: 'href',
+          overlay: true,
+          overlayOpacity: 0.96,
+          spinner: true,
+          nav: true,
+          captions: true,
+          captionSelector: 'self',
+          captionType: 'data',
+          captionsData: 'caption',
+          captionPosition: 'bottom',
+          captionHTML: true,
+          close: true,
+          swipeClose: true,
+          showCounter: true,
+          fileExt: false,
+          widthRatio: 0.85,
+          heightRatio: 0.82,
+          scaleImageToRatio: false,
+          animationSlide: true,
+          animationSpeed: 200,
+          fadeSpeed: 200,
+          enableKeyboard: true,
           loop: true,
-          zoomable: true,
-          draggable: true,
-          openEffect: 'zoom',
-          closeEffect: 'zoom',
-          slideEffect: 'slide',
-          moreText: 'See more',
-          moreLength: 80,
+          docClose: true,
+          scrollZoom: false,
         });
       }
     };

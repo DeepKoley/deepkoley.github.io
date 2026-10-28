@@ -519,99 +519,65 @@ footer a:hover svg {
   color: #ffffff;
 }
 
-/* ── GLightbox Dark Obsidian Customization ───────────────────────────── */
-.glightbox-container .goverlay {
+/* ── SimpleLightbox Dark Obsidian Customization ──────────────────────── */
+.sl-overlay {
   background: rgba(5, 6, 9, 0.96) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
 }
 
-/* Image Presentation: Huge, Crisp, Centered */
-.glightbox-container .gslide-media {
-  max-height: 84vh !important;
-  max-width: 92vw !important;
+.sl-wrapper .sl-image {
+  border-radius: 0.875rem !important;
+  overflow: hidden !important;
   box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.95) !important;
-  border-radius: 0.875rem !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
 }
 
-.glightbox-container .gslide-image img {
-  max-height: 82vh !important;
-  max-width: 90vw !important;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain !important;
+.sl-wrapper .sl-image img {
   border-radius: 0.875rem !important;
 }
 
-/* Description / Caption: Clean Floating Bottom Glass Card */
-.glightbox-clean .gslide-description,
-.glightbox-container .gslide-description {
-  background: rgba(14, 16, 23, 0.9) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 1rem !important;
-  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
-  padding: 1rem 1.5rem !important;
-  max-width: min(760px, 92vw) !important;
-  margin: 0.75rem auto 0 auto !important;
-  text-align: center !important;
-}
-
-.gslide-title {
+/* Caption bar: cleanly attached to bottom of the photo */
+.sl-wrapper .sl-image .sl-caption {
+  background: rgba(14, 16, 23, 0.92) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
   color: #f1f3f9 !important;
-  font-family: 'Tanker', sans-serif !important;
-  letter-spacing: -0.01em !important;
-  font-size: 1.25rem !important;
-  margin-bottom: 0.25rem !important;
-}
-
-.gslide-desc {
-  color: #94a3b8 !important;
   font-family: 'Geist Mono', monospace !important;
   font-size: 0.825rem !important;
   line-height: 1.5 !important;
+  padding: 12px 20px !important;
+  text-align: center !important;
 }
 
-/* Navigation Controls: Circular Glass Buttons */
-.gprev,
-.gnext {
-  width: 52px !important;
-  height: 52px !important;
-  background-color: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  border-radius: 9999px !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+.sl-wrapper .sl-close,
+.sl-wrapper .sl-counter {
+  color: #f1f3f9 !important;
+  font-family: 'Geist Mono', monospace !important;
+  opacity: 0.85 !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
 }
 
-.gclose {
-  width: 44px !important;
-  height: 44px !important;
-  background-color: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  border-radius: 9999px !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+.sl-wrapper .sl-close:hover {
+  opacity: 1 !important;
+  color: #ffffff !important;
+  transform: scale(1.1) !important;
 }
 
-.gprev:hover,
-.gnext:hover,
-.gclose:hover {
-  background-color: rgba(255, 255, 255, 0.2) !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
-  transform: scale(1.08) !important;
+.sl-wrapper .sl-navigation button {
+  color: #f1f3f9 !important;
+  opacity: 0.85 !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
 }
 
-.gprev svg,
-.gnext svg,
-.gclose svg {
-  fill: #f1f3f9 !important;
+.sl-wrapper .sl-navigation button:hover {
+  opacity: 1 !important;
+  color: #10b981 !important;
+  transform: scale(1.15) !important;
+}
+
+.sl-spinner {
+  border-color: #10b981 !important;
 }
 
 /* ── Gallery Filtering Animation ─────────────────────────────────────── */
