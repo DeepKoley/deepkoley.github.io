@@ -3,6 +3,7 @@ layout: base.njk
 title: "Resume — Deep Koley"
 description: "Curriculum Vitae and professional experience of Deep Koley, Senior Full-Stack Developer specializing in scalable web systems and modern architectures."
 eleventyExcludeFromCollections: true
+
 ---
 
 <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-16">
@@ -15,7 +16,10 @@ eleventyExcludeFromCollections: true
       </ul>
     </div>
     <div class="flex items-center gap-3">
-      <button onclick="window.print()" class="btn btn-outline btn-sm font-mono gap-2">
+      <button
+        onclick="window.print()"
+        class="btn btn-outline btn-sm font-mono gap-2"
+      >
         <i data-feather="printer" class="w-3.5 h-3.5"></i>
         Print / PDF
       </button>
@@ -36,7 +40,8 @@ eleventyExcludeFromCollections: true
       Professional Resume
     </h1>
     <p class="text-lg text-base-content/70 leading-relaxed max-w-3xl">
-      A detailed record of full-stack engineering roles, technical proficiencies, architectural achievements, and education.
+      A detailed record of full-stack engineering roles, technical
+      proficiencies, architectural achievements, and education.
     </p>
   </header>
 
@@ -45,23 +50,42 @@ eleventyExcludeFromCollections: true
     <!-- Header Block inside Resume -->
     <div class="flex flex-col md:flex-row md:items-center justify-between pb-8 border-b border-base-300 gap-6">
       <div>
-        <h2 class="text-3xl sm:text-4xl font-headline tracking-tight">Deep Koley</h2>
-        <p class="text-primary font-mono text-base font-semibold mt-1">Senior Full-Stack Developer &amp; Architect</p>
+        <h2 class="text-3xl sm:text-4xl font-headline tracking-tight">
+          Deep Koley
+        </h2>
+        <p class="text-primary font-mono text-base font-semibold mt-1">
+          Senior Full-Stack Developer &amp; Architect
+        </p>
       </div>
       <div class="flex flex-wrap gap-2 text-xs font-mono">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 text-base-content/80">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 text-base-content/80"
+        >
           <i data-feather="map-pin" class="w-3.5 h-3.5 text-primary"></i>
           Kolkata, India
         </span>
-        <a href="mailto:hello@deepkoley.dev" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary">
+        <a
+          href="mailto:hello@deepkoley.dev"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary"
+        >
           <i data-feather="mail" class="w-3.5 h-3.5 text-primary"></i>
           hello@deepkoley.dev
         </a>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary">
+        <a
+          href="https://github.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary"
+        >
           <i data-feather="github" class="w-3.5 h-3.5 text-primary"></i>
           github.com
         </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary">
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary"
+        >
           <i data-feather="linkedin" class="w-3.5 h-3.5 text-primary"></i>
           linkedin.com
         </a>
@@ -70,28 +94,58 @@ eleventyExcludeFromCollections: true
 
     <!-- Executive Summary -->
     <section>
-      <h3 class="text-xs uppercase tracking-widest text-primary font-mono font-semibold mb-3">Executive Summary</h3>
+      <h3 class="text-xs uppercase tracking-widest text-primary font-mono font-semibold mb-3">
+        Executive Summary
+      </h3>
       <p class="text-base text-base-content/80 leading-relaxed max-w-4xl">
-        Versatile Full-Stack Software Engineer with 5+ years of experience leading the design, development, and deployment of scalable web systems, event-driven microservices, and reactive frontend architectures. Proven track record in reducing page load times by up to 60%, establishing robust design systems, and driving high-throughput transactional backends using TypeScript, React, Node.js, and PostgreSQL.
+        Versatile Full-Stack Software Engineer with 5+ years of experience
+        leading the design, development, and deployment of scalable web systems,
+        event-driven microservices, and reactive frontend architectures. Proven
+        track record in reducing page load times by up to 60%, establishing
+        robust design systems, and driving high-throughput transactional
+        backends using TypeScript, React, Node.js, and PostgreSQL.
       </p>
     </section>
 
     <!-- Professional Experience -->
     <section class="space-y-8">
-      <h3 class="text-xs uppercase tracking-widest text-primary font-mono font-semibold mb-6">Experience</h3>
+      <h3 class="text-xs uppercase tracking-widest text-primary font-mono font-semibold mb-6">
+        Experience
+      </h3>
 
       <!-- Job 1 -->
       <div class="relative pl-6 border-l-2 border-primary/30 space-y-3">
-        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-base-100 border-2 border-primary"></div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-          <h4 class="text-xl font-headline text-base-content">Lead Full-Stack Engineer <span class="text-base-content/50 font-normal">@ CloudVibe Systems</span></h4>
-          <span class="text-xs font-mono text-primary font-semibold px-2.5 py-0.5 rounded-md bg-primary/10 self-start sm:self-auto">2023 — Present</span>
+        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-base-100 border-2 border-primary">
         </div>
-        <p class="text-sm text-base-content/70">Kolkata, India (Hybrid) • High-Concurrency B2B SaaS Platform</p>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+          <h4 class="text-xl font-headline text-base-content">
+            Lead Full-Stack Engineer <span
+              class="text-base-content/50 font-normal"
+            >@ CloudVibe Systems</span>
+          </h4>
+          <span
+            class="text-xs font-mono text-primary font-semibold px-2.5 py-0.5 rounded-md bg-primary/10 self-start sm:self-auto"
+          >2023 — Present</span>
+        </div>
+        <p class="text-sm text-base-content/70">
+          Kolkata, India (Hybrid) • High-Concurrency B2B SaaS Platform
+        </p>
         <ul class="list-disc list-outside pl-4 space-y-2 text-sm text-base-content/80 leading-relaxed">
-          <li>Architected a multi-tenant analytics engine processing 4M+ daily telemetry events with sub-80ms p99 query latency via PostgreSQL partitioning and Redis clusters.</li>
-          <li>Engineered next-generation React &amp; Next.js dashboard utilizing server components and optimistic UI updates, improving user retention by 28%.</li>
-          <li>Standardized company-wide CI/CD pipelines with GitHub Actions and Docker, reducing deployment turnaround times from 35 minutes to under 6 minutes.</li>
+          <li>
+            Architected a multi-tenant analytics engine processing 4M+ daily
+            telemetry events with sub-80ms p99 query latency via PostgreSQL
+            partitioning and Redis clusters.
+          </li>
+          <li>
+            Engineered next-generation React &amp; Next.js dashboard utilizing
+            server components and optimistic UI updates, improving user
+            retention by 28%.
+          </li>
+          <li>
+            Standardized company-wide CI/CD pipelines with GitHub Actions and
+            Docker, reducing deployment turnaround times from 35 minutes to
+            under 6 minutes.
+          </li>
         </ul>
         <div class="flex flex-wrap gap-1.5 pt-1">
           <span class="badge badge-xs badge-neutral font-mono">Next.js</span>
@@ -106,20 +160,39 @@ eleventyExcludeFromCollections: true
 
       <!-- Job 2 -->
       <div class="relative pl-6 border-l-2 border-base-300 space-y-3">
-        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-base-100 border-2 border-base-300"></div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-          <h4 class="text-xl font-headline text-base-content">Senior Frontend Engineer <span class="text-base-content/50 font-normal">@ Synthetix Labs</span></h4>
-          <span class="text-xs font-mono text-base-content/60 px-2.5 py-0.5 rounded-md bg-base-300/50 self-start sm:self-auto">2021 — 2023</span>
+        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-base-100 border-2 border-base-300">
         </div>
-        <p class="text-sm text-base-content/70">Remote • Headless E-Commerce &amp; FinTech Solutions</p>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+          <h4 class="text-xl font-headline text-base-content">
+            Senior Frontend Engineer <span
+              class="text-base-content/50 font-normal"
+            >@ Synthetix Labs</span>
+          </h4>
+          <span
+            class="text-xs font-mono text-base-content/60 px-2.5 py-0.5 rounded-md bg-base-300/50 self-start sm:self-auto"
+          >2021 — 2023</span>
+        </div>
+        <p class="text-sm text-base-content/70">
+          Remote • Headless E-Commerce &amp; FinTech Solutions
+        </p>
         <ul class="list-disc list-outside pl-4 space-y-2 text-sm text-base-content/80 leading-relaxed">
-          <li>Built custom headless storefronts delivering a 98+ Google Lighthouse performance score and sub-1.2s Largest Contentful Paint (LCP).</li>
-          <li>Authored reusable design system component library adopted across 4 major product lines, cutting feature development cycle times by 40%.</li>
-          <li>Implemented end-to-end testing with Playwright and accessibility audits guaranteeing WCAG 2.1 AA compliance.</li>
+          <li>
+            Built custom headless storefronts delivering a 98+ Google Lighthouse
+            performance score and sub-1.2s Largest Contentful Paint (LCP).
+          </li>
+          <li>
+            Authored reusable design system component library adopted across 4
+            major product lines, cutting feature development cycle times by 40%.
+          </li>
+          <li>
+            Implemented end-to-end testing with Playwright and accessibility
+            audits guaranteeing WCAG 2.1 AA compliance.
+          </li>
         </ul>
         <div class="flex flex-wrap gap-1.5 pt-1">
           <span class="badge badge-xs badge-neutral font-mono">React</span>
-          <span class="badge badge-xs badge-neutral font-mono">Tailwind CSS</span>
+          <span class="badge badge-xs badge-neutral font-mono"
+          >Tailwind CSS</span>
           <span class="badge badge-xs badge-neutral font-mono">GraphQL</span>
           <span class="badge badge-xs badge-neutral font-mono">Playwright</span>
           <span class="badge badge-xs badge-neutral font-mono">Figma</span>
@@ -128,16 +201,34 @@ eleventyExcludeFromCollections: true
 
       <!-- Job 3 -->
       <div class="relative pl-6 border-l-2 border-base-300 space-y-3">
-        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-base-100 border-2 border-base-300"></div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-          <h4 class="text-xl font-headline text-base-content">Full-Stack Software Developer <span class="text-base-content/50 font-normal">@ HyperWave Technologies</span></h4>
-          <span class="text-xs font-mono text-base-content/60 px-2.5 py-0.5 rounded-md bg-base-300/50 self-start sm:self-auto">2019 — 2021</span>
+        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-base-100 border-2 border-base-300">
         </div>
-        <p class="text-sm text-base-content/70">Kolkata, India • Digital Transformation Agency</p>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+          <h4 class="text-xl font-headline text-base-content">
+            Full-Stack Software Developer <span
+              class="text-base-content/50 font-normal"
+            >@ HyperWave Technologies</span>
+          </h4>
+          <span
+            class="text-xs font-mono text-base-content/60 px-2.5 py-0.5 rounded-md bg-base-300/50 self-start sm:self-auto"
+          >2019 — 2021</span>
+        </div>
+        <p class="text-sm text-base-content/70">
+          Kolkata, India • Digital Transformation Agency
+        </p>
         <ul class="list-disc list-outside pl-4 space-y-2 text-sm text-base-content/80 leading-relaxed">
-          <li>Delivered 12+ full-stack web applications for enterprise clients using Node.js, Express, React, and MongoDB.</li>
-          <li>Refactored legacy REST APIs into structured microservices, reducing server error rates by 75%.</li>
-          <li>Mentored 4 junior developers in code review standards, modern JavaScript conventions, and automated testing.</li>
+          <li>
+            Delivered 12+ full-stack web applications for enterprise clients
+            using Node.js, Express, React, and MongoDB.
+          </li>
+          <li>
+            Refactored legacy REST APIs into structured microservices, reducing
+            server error rates by 75%.
+          </li>
+          <li>
+            Mentored 4 junior developers in code review standards, modern
+            JavaScript conventions, and automated testing.
+          </li>
         </ul>
         <div class="flex flex-wrap gap-1.5 pt-1">
           <span class="badge badge-xs badge-neutral font-mono">JavaScript</span>
@@ -150,43 +241,67 @@ eleventyExcludeFromCollections: true
 
     <!-- Technical Skills Matrix -->
     <section>
-      <h3 class="text-xs uppercase tracking-widest text-primary font-mono font-semibold mb-6">Skills &amp; Competencies</h3>
+      <h3 class="text-xs uppercase tracking-widest text-primary font-mono font-semibold mb-6">
+        Skills &amp; Competencies
+      </h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="p-5 rounded-2xl bg-base-100 border border-base-300">
-          <h4 class="font-headline text-lg mb-2 text-base-content">Languages</h4>
+          <h4 class="font-headline text-lg mb-2 text-base-content">
+            Languages
+          </h4>
           <p class="text-xs font-mono text-primary mb-3">Core Programming</p>
           <div class="flex flex-wrap gap-1.5">
-            <span class="badge badge-soft badge-primary text-xs">TypeScript</span>
-            <span class="badge badge-soft badge-primary text-xs">JavaScript (ES6+)</span>
+            <span class="badge badge-soft badge-primary text-xs"
+            >TypeScript</span>
+            <span class="badge badge-soft badge-primary text-xs"
+            >JavaScript (ES6+)</span>
             <span class="badge badge-soft badge-primary text-xs">Python</span>
             <span class="badge badge-soft badge-primary text-xs">SQL</span>
-            <span class="badge badge-soft badge-primary text-xs">HTML5 / CSS3</span>
+            <span class="badge badge-soft badge-primary text-xs"
+            >HTML5 / CSS3</span>
           </div>
         </div>
 
         <div class="p-5 rounded-2xl bg-base-100 border border-base-300">
-          <h4 class="font-headline text-lg mb-2 text-base-content">Frameworks &amp; Libraries</h4>
-          <p class="text-xs font-mono text-secondary mb-3">Frontend &amp; Backend</p>
+          <h4 class="font-headline text-lg mb-2 text-base-content">
+            Frameworks &amp; Libraries
+          </h4>
+          <p class="text-xs font-mono text-secondary mb-3">
+            Frontend &amp; Backend
+          </p>
           <div class="flex flex-wrap gap-1.5">
             <span class="badge badge-soft badge-secondary text-xs">React</span>
-            <span class="badge badge-soft badge-secondary text-xs">Next.js</span>
-            <span class="badge badge-soft badge-secondary text-xs">Node.js</span>
-            <span class="badge badge-soft badge-secondary text-xs">Express</span>
-            <span class="badge badge-soft badge-secondary text-xs">FastAPI</span>
-            <span class="badge badge-soft badge-secondary text-xs">Tailwind CSS</span>
-            <span class="badge badge-soft badge-secondary text-xs">daisyUI</span>
+            <span class="badge badge-soft badge-secondary text-xs"
+            >Next.js</span>
+            <span class="badge badge-soft badge-secondary text-xs"
+            >Node.js</span>
+            <span class="badge badge-soft badge-secondary text-xs"
+            >Express</span>
+            <span class="badge badge-soft badge-secondary text-xs"
+            >FastAPI</span>
+            <span class="badge badge-soft badge-secondary text-xs"
+            >Tailwind CSS</span>
+            <span class="badge badge-soft badge-secondary text-xs"
+            >daisyUI</span>
           </div>
         </div>
 
         <div class="p-5 rounded-2xl bg-base-100 border border-base-300">
-          <h4 class="font-headline text-lg mb-2 text-base-content">Cloud, DB &amp; Tools</h4>
-          <p class="text-xs font-mono text-accent mb-3">Infra &amp; Operations</p>
+          <h4 class="font-headline text-lg mb-2 text-base-content">
+            Cloud, DB &amp; Tools
+          </h4>
+          <p class="text-xs font-mono text-accent mb-3">
+            Infra &amp; Operations
+          </p>
           <div class="flex flex-wrap gap-1.5">
-            <span class="badge badge-soft badge-accent text-xs">PostgreSQL</span>
+            <span class="badge badge-soft badge-accent text-xs"
+            >PostgreSQL</span>
             <span class="badge badge-soft badge-accent text-xs">Redis</span>
             <span class="badge badge-soft badge-accent text-xs">Docker</span>
-            <span class="badge badge-soft badge-accent text-xs">AWS (S3, EC2)</span>
-            <span class="badge badge-soft badge-accent text-xs">Git / GitHub Actions</span>
+            <span class="badge badge-soft badge-accent text-xs"
+            >AWS (S3, EC2)</span>
+            <span class="badge badge-soft badge-accent text-xs"
+            >Git / GitHub Actions</span>
             <span class="badge badge-soft badge-accent text-xs">Firebase</span>
           </div>
         </div>
@@ -195,13 +310,21 @@ eleventyExcludeFromCollections: true
 
     <!-- Education -->
     <section class="border-t border-base-300 pt-8">
-      <h3 class="text-xs uppercase tracking-widest text-primary font-mono font-semibold mb-6">Education</h3>
+      <h3 class="text-xs uppercase tracking-widest text-primary font-mono font-semibold mb-6">
+        Education
+      </h3>
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
         <div>
-          <h4 class="text-lg font-headline text-base-content">Bachelor of Technology in Computer Science &amp; Engineering</h4>
-          <p class="text-sm text-base-content/70">Maulana Abul Kalam Azad University of Technology (MAKAUT)</p>
+          <h4 class="text-lg font-headline text-base-content">
+            Bachelor of Technology in Computer Science &amp; Engineering
+          </h4>
+          <p class="text-sm text-base-content/70">
+            Maulana Abul Kalam Azad University of Technology (MAKAUT)
+          </p>
         </div>
-        <span class="text-xs font-mono text-base-content/60 self-start sm:self-auto">2015 — 2019</span>
+        <span
+          class="text-xs font-mono text-base-content/60 self-start sm:self-auto"
+        >2015 — 2019</span>
       </div>
     </section>
   </div>

@@ -9,6 +9,7 @@ pagination:
   reverse: true
 permalink: "projects/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
 eleventyExcludeFromCollections: true
+
 ---
 
 <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-16">
@@ -118,9 +119,18 @@ eleventyExcludeFromCollections: true
 
   <!-- Pagination Controls -->
   {% if pagination.pages.length > 1 %}
-    <nav aria-label="Projects Pagination" class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-16 pt-8 border-t border-base-300">
+    <nav
+      aria-label="Projects Pagination"
+      class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-16 pt-8 border-t border-base-300"
+    >
       <div class="text-xs sm:text-sm font-mono text-base-content/60">
-        Page <span class="text-primary font-bold">{{ pagination.pageNumber + 1 }}</span> of <span class="text-base-content font-bold">{{ pagination.pages.length }}</span> • <span class="text-base-content/50">{{ collections.projects.length }} Projects Total</span>
+        Page <span class="text-primary font-bold">{{
+          pagination.pageNumber + 1
+        }}</span> of <span class="text-base-content font-bold">{{
+          pagination.pages.length
+        }}</span> • <span class="text-base-content/50">{{
+            collections.projects.length
+          }} Projects Total</span>
       </div>
 
       <div class="join shadow-xs border border-base-300 bg-base-200/50">
@@ -151,7 +161,9 @@ eleventyExcludeFromCollections: true
           <a
             href="{{ pageUrl }}"
             class="join-item btn btn-sm sm:btn-md font-mono {% if page.url == pageUrl %}btn-primary font-bold shadow-xs{% else %}btn-ghost{% endif %}"
-            {% if page.url == pageUrl %}aria-current="page"{% endif %}
+            {% if page.url == pageUrl %}
+              aria-current="page"
+            {% endif %}
           >
             {{ loop.index }}
           </a>
