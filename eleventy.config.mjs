@@ -35,6 +35,7 @@ export default function (eleventyConfig) {
     'node_modules/typed.js/dist/typed.umd.js': 'js/typed.umd.js',
   });
   eleventyConfig.addPassthroughCopy({ 'cv.pdf': 'cv.pdf' });
+  eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
 
   // Date filters
   eleventyConfig.addFilter('readableDate', (dateObj) => {
@@ -62,6 +63,7 @@ export default function (eleventyConfig) {
   // Watch for CSS/JS changes
   eleventyConfig.addWatchTarget('./src/css/');
   eleventyConfig.addWatchTarget('./src/js/');
+  eleventyConfig.addWatchTarget('./src/assets/');
 
   return {
     dir: {

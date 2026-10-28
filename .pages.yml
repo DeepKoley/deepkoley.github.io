@@ -1,0 +1,128 @@
+# Pages CMS configuration for Eleventy (11ty)
+# Documentation: https://pagescms.org/docs
+
+media:
+  input: src/assets/img
+  output: /assets/img
+
+content:
+  # Blog Posts
+  - name: posts
+    label: Blog Posts
+    type: collection
+    path: src/blog
+    filename: '{slug}.md'
+    view:
+      primary: title
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: description
+        label: Summary / Description
+        type: text
+        required: true
+      - name: readTime
+        label: Reading Time
+        type: string
+      - name: image
+        label: Featured Image
+        type: image
+      - name: imageCaption
+        label: Image Caption
+        type: string
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: body
+        label: Post Content
+        type: rich-text
+
+  # Projects Portfolio
+  - name: projects
+    label: Projects
+    type: collection
+    path: src/projects
+    filename: '{slug}.md'
+    view:
+      primary: title
+    fields:
+      - name: title
+        label: Project Name
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+        required: true
+      - name: category
+        label: Category
+        type: string
+      - name: year
+        label: Year
+        type: string
+      - name: status
+        label: Status
+        type: string
+      - name: role
+        label: Role
+        type: string
+      - name: timeline
+        label: Timeline
+        type: string
+      - name: demoUrl
+        label: Live Demo URL
+        type: string
+      - name: githubUrl
+        label: GitHub URL
+        type: string
+      - name: image
+        label: Preview Image
+        type: image
+      - name: imageCaption
+        label: Image Caption
+        type: string
+      - name: tags
+        label: Technologies / Tags
+        type: string
+        list: true
+      - name: body
+        label: Project Details / Case Study
+        type: rich-text
+
+  # Global Site Configuration
+  - name: site-settings
+    label: Site Settings
+    type: file
+    path: src/_data/site.json
+    fields:
+      - name: site
+        label: Site Information
+        type: object
+        fields:
+          - name: name
+            label: Author / Site Name
+            type: string
+            required: true
+          - name: url
+            label: Site URL
+            type: string
+            required: true
+          - name: description
+            label: Description
+            type: text
+            required: true
+
+# Actions accessible from Pages CMS UI
+actions:
+  - name: build-and-deploy
+    label: Build & Deploy Site
+    workflow: pages.yml
