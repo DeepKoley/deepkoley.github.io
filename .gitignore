@@ -1,0 +1,28 @@
+# Build output
+dist/
+_site/
+
+# Eleventy cache
+.cache/
+.eleventy-cache/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor & Agents
+.vscode/
+.idea/
+*.suo
+*.user
+.agents/
+skills-lock.json
+
+# Env
+.env
+.env.*
+!.env.example

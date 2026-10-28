@@ -1,0 +1,136 @@
+---
+layout: base.njk
+
+---
+
+<article class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-12">
+  <!-- Breadcrumb -->
+  <div class="breadcrumbs text-sm mb-6 text-base-content/60">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li class="text-base-content">{{ title }}</li>
+    </ul>
+  </div>
+
+  <!-- Header -->
+  <header class="mb-10">
+    <div class="flex flex-wrap items-center gap-2 mb-4">
+      {% if status %}
+        <span class="badge badge-success badge-soft font-mono text-xs">{{
+          status
+        }}</span>
+      {% endif %}
+      {% if category %}
+        <span class="badge badge-primary badge-outline font-mono text-xs">{{
+          category
+        }}</span>
+      {% endif %}
+      {% if year %}
+        <span class="text-xs text-base-content/60 font-mono">{{ year }}</span>
+      {% endif %}
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl mb-4 font-headline leading-tight">
+      {{ title }}
+    </h1>
+
+    {% if description %}
+      <p class="text-xl text-base-content/70 leading-relaxed max-w-3xl">
+        {{ description }}
+      </p>
+    {% endif %}
+
+    <!-- Meta Details & CTAs -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 p-6 mt-8 rounded-2xl bg-base-200/70 border border-base-300">
+      <div>
+        <span
+          class="text-xs uppercase tracking-wider text-base-content/50 font-mono block mb-1"
+        >Role</span>
+        <span class="font-medium text-sm">{{
+          role | default('Lead Full-Stack Developer')
+        }}</span>
+      </div>
+      <div>
+        <span
+          class="text-xs uppercase tracking-wider text-base-content/50 font-mono block mb-1"
+        >Timeline</span>
+        <span class="font-medium text-sm">{{
+          timeline | default('3 Months')
+        }}</span>
+      </div>
+      <div>
+        <span
+          class="text-xs uppercase tracking-wider text-base-content/50 font-mono block mb-1"
+        >Tech Stack</span>
+        <div class="flex flex-wrap gap-1 mt-1">
+          {% for tag in tags %}
+            {% if tag != "projects" %}
+              <span class="badge badge-xs badge-neutral">{{ tag }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-wrap gap-3 mt-6">
+      {% if demoUrl %}
+        <a
+          href="{{ demoUrl }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
+          <i data-feather="external-link" class="w-4 h-4"></i>
+          Live Demo
+        </a>
+      {% endif %}
+      {% if githubUrl %}
+        <a
+          href="{{ githubUrl }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline"
+        >
+          <i data-feather="github" class="w-4 h-4"></i>
+          View Source
+        </a>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Featured Image -->
+  {% if image %}
+    <div class="mb-12 rounded-2xl overflow-hidden shadow-xl border border-base-300 bg-base-200">
+      <img
+        src="{{ image }}"
+        alt="{{ title }}"
+        class="w-full h-auto max-h-125 object-cover"
+        loading="eager"
+      />
+      {% if imageCaption %}
+        <p class="text-xs text-center text-base-content/60 py-2 bg-base-200 border-t border-base-300">
+          {{ imageCaption }}
+        </p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <!-- Case Study Content -->
+  <div class="prose prose-lg dark:prose-invert max-w-none">
+    {{ content | safe }}
+  </div>
+
+  <!-- Bottom CTA & Navigation -->
+  <div class="mt-16 pt-8 border-t border-base-300 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <a href="/projects/" class="btn btn-ghost">
+      <i data-feather="arrow-left" class="w-4 h-4"></i>
+      Back to All Projects
+    </a>
+    <a href="/#contact" class="btn btn-primary">
+      Start a Project Together
+      <i data-feather="arrow-right" class="w-4 h-4"></i>
+    </a>
+  </div>
+</article>

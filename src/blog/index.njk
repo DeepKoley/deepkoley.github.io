@@ -1,0 +1,167 @@
+---
+layout: base.njk
+title: "Blog & Articles — Deep Koley"
+description: "Insights, deep-dives, and tutorials on modern web development, performance optimization, and software architecture by Deep Koley."
+pagination:
+  data: collections.posts
+  size: 3
+  alias: posts
+  reverse: true
+permalink: "blog/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
+eleventyExcludeFromCollections: true
+---
+
+<div class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-16">
+  <!-- Page Header -->
+  <header class="mb-16">
+    <div class="breadcrumbs text-sm mb-4 text-base-content/60">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li class="text-base-content">Blog</li>
+      </ul>
+    </div>
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-200 border border-base-300 font-mono text-xs mb-3 shadow-xs">
+      <i data-feather="book-open" class="w-3.5 h-3.5 text-secondary"></i>
+      <span id="typed-blog-page-header"></span>
+    </div>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-headline tracking-tight mb-4">
+      Articles & Engineering Notes
+    </h1>
+    <p class="text-lg text-base-content/70 leading-relaxed max-w-4xl">
+      A collection of deep dives into modern web platforms, component design
+      systems, and lessons learned building scalable software.
+    </p>
+  </header>
+
+  <!-- Blog Posts Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {% for post in posts %}
+      <article class="card bg-base-200 card-border overflow-hidden hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+        <div>
+          <!-- Post Image -->
+          <a
+            href="{{ post.url }}"
+            class="block overflow-hidden aspect-video bg-base-300 relative group"
+          >
+            <img
+              src="{{ post.data.image }}"
+              alt="{{ post.data.title }}"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </a>
+
+          <!-- Post Content -->
+          <div class="card-body p-6">
+            <div class="flex items-center gap-2 mb-2 text-xs font-mono text-base-content/60">
+              <time datetime="{{ post.date }}">{{
+                post.date | readableDate
+              }}</time>
+              {% if post.data.readTime %}
+                <span>• {{ post.data.readTime }}</span>
+              {% endif %}
+            </div>
+
+            <h2 class="card-title text-xl font-headline leading-snug hover:text-primary transition-colors">
+              <a href="{{ post.url }}">
+                {{ post.data.title }}
+              </a>
+            </h2>
+
+            <p class="text-base-content/70 text-sm leading-relaxed mt-2 mb-4">
+              {{ post.data.description }}
+            </p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1 mt-auto">
+              {% for tag in post.data.tags %}
+                {% if tag != "posts" %}
+                  <span
+                    class="badge badge-soft badge-primary badge-xs font-mono"
+                  >{{ tag }}</span>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Footer -->
+        <div class="px-6 pb-6 pt-0 border-t border-base-300/40 mt-4 flex items-center justify-between">
+          <a
+            href="{{ post.url }}"
+            class="link link-primary text-sm font-mono inline-flex items-center gap-1.5 pt-4"
+          >
+            Read Article
+            <i data-feather="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination Controls -->
+  {% if pagination.pages.length > 1 %}
+    <nav aria-label="Blog Pagination" class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-16 pt-8 border-t border-base-300">
+      <div class="text-xs sm:text-sm font-mono text-base-content/60">
+        Page <span class="text-primary font-bold">{{ pagination.pageNumber + 1 }}</span> of <span class="text-base-content font-bold">{{ pagination.pages.length }}</span> • <span class="text-base-content/50">{{ collections.posts.length }} Articles Total</span>
+      </div>
+
+      <div class="join shadow-xs border border-base-300 bg-base-200/50">
+        {# Prev Button #}
+        {% if pagination.href.previous %}
+          <a
+            href="{{ pagination.href.previous }}"
+            class="join-item btn btn-sm sm:btn-md font-mono"
+            aria-label="Previous Page"
+          >
+            <i data-feather="chevron-left" class="w-4 h-4"></i>
+            <span class="hidden sm:inline">Prev</span>
+          </a>
+        {% else %}
+          <button
+            class="join-item btn btn-disabled btn-sm sm:btn-md font-mono"
+            disabled
+            aria-label="Previous Page (Disabled)"
+          >
+            <i data-feather="chevron-left" class="w-4 h-4"></i>
+            <span class="hidden sm:inline">Prev</span>
+          </button>
+        {% endif %}
+
+        {# Page Number Buttons #}
+        {% for pageEntry in pagination.pages %}
+          {% set pageUrl = pagination.hrefs[loop.index0] %}
+          <a
+            href="{{ pageUrl }}"
+            class="join-item btn btn-sm sm:btn-md font-mono {% if page.url == pageUrl %}btn-primary font-bold shadow-xs{% else %}btn-ghost{% endif %}"
+            {% if page.url == pageUrl %}aria-current="page"{% endif %}
+          >
+            {{ loop.index }}
+          </a>
+        {% endfor %}
+
+        {# Next Button #}
+        {% if pagination.href.next %}
+          <a
+            href="{{ pagination.href.next }}"
+            class="join-item btn btn-sm sm:btn-md font-mono"
+            aria-label="Next Page"
+          >
+            <span class="hidden sm:inline">Next</span>
+            <i data-feather="chevron-right" class="w-4 h-4"></i>
+          </a>
+        {% else %}
+          <button
+            class="join-item btn btn-disabled btn-sm sm:btn-md font-mono"
+            disabled
+            aria-label="Next Page (Disabled)"
+          >
+            <span class="hidden sm:inline">Next</span>
+            <i data-feather="chevron-right" class="w-4 h-4"></i>
+          </button>
+        {% endif %}
+      </div>
+    </nav>
+  {% endif %}
+
+</div>

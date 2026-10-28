@@ -1,0 +1,224 @@
+---
+layout: base.njk
+
+---
+
+<article class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-12">
+  <!-- Breadcrumb -->
+  <div class="breadcrumbs text-sm mb-6 text-base-content/60">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li class="text-base-content">{{ title }}</li>
+    </ul>
+  </div>
+
+  <!-- Post Header -->
+  <header class="mb-10">
+    <div class="flex flex-wrap items-center gap-2 mb-4">
+      {% for tag in tags %}
+        {% if tag != "posts" %}
+          <span class="badge badge-primary badge-soft text-xs font-mono">{{
+            tag
+          }}</span>
+        {% endif %}
+      {% endfor %}
+      {% if readTime %}
+        <span class="text-xs text-base-content/60 font-mono"
+        >• {{ readTime }} read</span>
+      {% endif %}
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl mb-6 font-headline leading-tight">
+      {{ title }}
+    </h1>
+
+    {% if description %}
+      <p class="text-xl text-base-content/70 leading-relaxed mb-6 max-w-3xl">
+        {{ description }}
+      </p>
+    {% endif %}
+
+    <!-- Author & Date -->
+    <div class="flex items-center justify-between border-y border-base-300 py-4">
+      <div class="flex items-center gap-3">
+        <div class="avatar">
+          <div class="w-11 rounded-full ring-1 ring-primary/40">
+            <img
+              src="https://picsum.photos/seed/deepkoley/200/200"
+              alt="Deep Koley"
+            />
+          </div>
+        </div>
+        <div>
+          <span class="font-medium text-sm block">Deep Koley</span>
+          <time
+            datetime="{{ date }}"
+            class="text-xs text-base-content/60 font-mono"
+          >
+            {{ date | readableDate }}
+          </time>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          class="btn btn-ghost btn-sm btn-circle"
+          title="Share Article"
+          onclick="openShareModal()"
+          aria-haspopup="dialog"
+        >
+          <i data-feather="share-2" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Featured Image -->
+  {% if image %}
+    <div class="mb-12 rounded-2xl overflow-hidden shadow-xl border border-base-300 bg-base-200">
+      <img
+        src="{{ image }}"
+        alt="{{ title }}"
+        class="w-full h-auto max-h-125 object-cover"
+        loading="eager"
+      />
+      {% if imageCaption %}
+        <p class="text-xs text-center text-base-content/60 py-2 bg-base-200 border-t border-base-300">
+          {{ imageCaption }}
+        </p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <!-- Article Body -->
+  <div class="prose prose-lg dark:prose-invert max-w-none">
+    {{ content | safe }}
+  </div>
+
+  <!-- Author Bio Card -->
+  <div class="card bg-base-200 border border-base-300 mt-16 p-6 sm:p-8">
+    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+      <div class="avatar">
+        <div class="w-20 rounded-full ring-2 ring-primary ring-offset-2 ring-offset-base-200 shadow-md">
+          <img
+            src="https://picsum.photos/seed/deepkoley/300/300"
+            alt="Deep Koley"
+          />
+        </div>
+      </div>
+      <div class="text-center sm:text-left flex-1">
+        <h3 class="font-headline text-2xl mb-1">Written by Deep Koley</h3>
+        <p class="text-sm text-base-content/70 leading-relaxed mb-4">
+          Full-Stack Developer, UI/UX craftsman, and systems enthusiast.
+          Passionate about building fast, resilient applications using modern
+          web standards.
+        </p>
+        <div class="flex justify-center sm:justify-start gap-3">
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-xs btn-outline"
+          >
+            <i data-feather="github" class="w-3.5 h-3.5"></i> GitHub
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-xs btn-outline"
+          >
+            <i data-feather="twitter" class="w-3.5 h-3.5"></i> Twitter
+          </a>
+          <a href="/#contact" class="btn btn-xs btn-primary">
+            Get in touch
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Navigation -->
+  <div class="mt-12 flex justify-between items-center">
+    <a href="/blog/" class="btn btn-ghost">
+      <i data-feather="arrow-left" class="w-4 h-4"></i>
+      Back to All Posts
+    </a>
+    <a href="/projects/" class="btn btn-outline">
+      Explore Projects
+      <i data-feather="arrow-right" class="w-4 h-4"></i>
+    </a>
+  </div>
+
+  <!-- Share Modal Component (daisyUI modal dialog) -->
+  <dialog id="share_modal" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box border border-base-300 bg-base-200">
+      <div class="flex items-center justify-between pb-3 border-b border-base-300">
+        <h3 class="font-headline text-xl flex items-center gap-2">
+          <i data-feather="share-2" class="w-5 h-5 text-primary"></i>
+          Share Article
+        </h3>
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost" aria-label="Close modal">✕</button>
+        </form>
+      </div>
+
+      <p class="text-sm text-base-content/70 mt-4 mb-2 font-medium">
+        {{ title }}
+      </p>
+
+      <!-- Copy Link Input Group -->
+      <div class="join w-full mt-3 mb-6">
+        <input
+          id="share-article-url"
+          type="text"
+          readonly
+          value=""
+          class="input input-bordered join-item w-full text-xs font-mono bg-base-300/60"
+        />
+        <button
+          id="copy-share-btn"
+          type="button"
+          class="btn btn-primary join-item font-mono text-xs gap-1.5"
+          onclick="copyShareUrl()"
+        >
+          <i data-feather="copy" class="w-3.5 h-3.5"></i>
+          Copy
+        </button>
+      </div>
+
+      <!-- Quick Share Buttons -->
+      <div class="flex flex-wrap gap-2 pt-3 border-t border-base-300">
+        <a
+          id="share-x-btn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline btn-sm font-mono flex-1 text-xs gap-1.5"
+        >
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
+          </svg>
+          Post to X
+        </a>
+        <a
+          id="share-linkedin-btn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline btn-sm font-mono flex-1 text-xs gap-1.5"
+        >
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+</article>

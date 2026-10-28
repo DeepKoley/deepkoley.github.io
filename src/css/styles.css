@@ -1,0 +1,297 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+@plugin "daisyui";
+
+/* ── Dark Theme (Exclusive Portfolio Theme) ─────────────────────────── */
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  /* Base — deep forest green surfaces, #E6FFCC text */
+  --color-base-100: #071507;
+  --color-base-200: #0f240f;
+  --color-base-300: #1b381b;
+  --color-base-content: #e6ffcc;
+
+  /* Primary — #A3E635 lime */
+  --color-primary: #a3e635;
+  --color-primary-content: #001f00;
+
+  /* Secondary */
+  --color-secondary: #4ade80;
+  --color-secondary-content: #001f00;
+
+  /* Accent — #A3E635 lime */
+  --color-accent: #a3e635;
+  --color-accent-content: #001f00;
+
+  /* Neutral */
+  --color-neutral: #142a14;
+  --color-neutral-content: #e6ffcc;
+
+  /* Status */
+  --color-info: #38bdf8;
+  --color-info-content: #082f49;
+  --color-success: #4ade80;
+  --color-success-content: #052e16;
+  --color-warning: #facc15;
+  --color-warning-content: #422006;
+  --color-error: #f87171;
+  --color-error-content: #450a0a;
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+:root {
+  color-scheme: dark;
+  --color-base-100: #071507;
+  --color-base-200: #0f240f;
+  --color-base-300: #1b381b;
+  --color-base-content: #e6ffcc;
+  --color-primary: #a3e635;
+  --color-primary-content: #001f00;
+  --color-secondary: #4ade80;
+  --color-secondary-content: #001f00;
+  --color-accent: #a3e635;
+  --color-accent-content: #001f00;
+  --color-neutral: #142a14;
+  --color-neutral-content: #e6ffcc;
+}
+
+/* ── Global ──────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--color-base-100);
+  color: var(--color-base-content);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.font-nunito {
+  font-family: 'Nunito', sans-serif;
+}
+
+.font-bebas,
+.bebas-neue {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-headline,
+.card-title {
+  font-family: 'Tanker', sans-serif;
+  letter-spacing: -0.01em;
+  font-weight: 400 !important;
+}
+
+/* Geist Mono — UI chrome: buttons, navbar, nav menus, links */
+@utility btn {
+  font-family: 'Geist Mono', monospace;
+  letter-spacing: -0.02em;
+}
+
+.navbar,
+.navbar a,
+.menu a,
+.menu li>*,
+a,
+.link {
+  font-family: 'Geist Mono', monospace;
+}
+
+/* ── Code Highlighting (PrismJS Theme) ───────────────────────────────── */
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  tab-size: 2;
+  hyphens: none;
+}
+
+pre[class*="language-"] {
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  overflow: auto;
+  border-radius: 0.875rem;
+  border: 1px solid #1b381b;
+  background-color: #050e05;
+  color: #e6ffcc;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+:not(pre) > code[class*="language-"],
+:not(pre) > code {
+  font-family: 'Geist Mono', monospace;
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.375rem;
+  background-color: #0f240f;
+  border: 1px solid #1b381b;
+  color: #a3e635;
+  font-size: 0.875em;
+}
+
+/* Tokens for Code Highlighting */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #627d5e;
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: #8fae89;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #bef264;
+  font-weight: 500;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #86efac;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #a3e635;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #a3e635;
+  font-weight: 600;
+}
+
+.token.function,
+.token.class-name {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #facc15;
+}
+
+/* ── Typed.js Cursor Styling ─────────────────────────────────────────── */
+.typed-cursor {
+  opacity: 1;
+  animation: typedjsBlink 0.7s infinite;
+  color: var(--color-primary, #a3e635);
+  font-weight: 300;
+  margin-left: 2px;
+}
+
+@keyframes typedjsBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ── Portfolio Sections (Normal Flow) ───────────────────────────────── */
+.portfolio-section {
+  width: 100%;
+  position: relative;
+  border-top: 1px solid rgba(163, 230, 53, 0.12);
+}
+
+.portfolio-section-1 {
+  border-top: none;
+  background-color: #071507;
+}
+
+.portfolio-section-2 {
+  background-color: #0c1c0c;
+}
+
+.portfolio-section-3 {
+  background-color: #071507;
+}
+
+.portfolio-section-4 {
+  background-color: #0c1c0c;
+}
+
+.portfolio-section-5 {
+  background-color: #050e05;
+}
+
+/* ── Infinite Marquee Animation ──────────────────────────────────────── */
+@keyframes marqueeLoop {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: marqueeLoop 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
