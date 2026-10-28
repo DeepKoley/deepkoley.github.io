@@ -34,6 +34,12 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/typed.js/dist/typed.umd.js': 'js/typed.umd.js',
   });
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/glightbox/dist/js/glightbox.min.js': 'js/glightbox.min.js',
+  });
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/glightbox/dist/css/glightbox.min.css': 'css/glightbox.min.css',
+  });
   eleventyConfig.addPassthroughCopy({ 'cv.pdf': 'cv.pdf' });
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
 

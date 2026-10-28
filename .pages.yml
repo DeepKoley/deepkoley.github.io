@@ -349,6 +349,69 @@ content:
             label: Period (e.g. 2015 — 2019)
             type: string
 
+  # ─────────────────────────────────────────────────────────────────
+  # Photography & Gallery Settings
+  # ─────────────────────────────────────────────────────────────────
+  - name: gallery-settings
+    label: Gallery & Photography
+    type: file
+    path: src/_data/gallery.json
+    fields:
+      - name: pageBadge
+        label: Page Badge
+        type: string
+        default: visuals.raw
+      - name: pageTitle
+        label: Page Title
+        type: string
+        default: Visual Journal & Photography
+      - name: pageDescription
+        label: Description
+        type: text
+      - name: categories
+        label: Filter Categories
+        type: string
+        list: true
+      - name: photos
+        label: Photos Collection
+        type: object
+        list: true
+        fields:
+          - name: id
+            label: Unique ID / Slug
+            type: string
+          - name: title
+            label: Photo Title
+            type: string
+            required: true
+          - name: image
+            label: Photo Image (Upload or URL)
+            type: image
+            required: true
+          - name: caption
+            label: Caption / Description
+            type: text
+          - name: category
+            label: Category (e.g. Street, Architecture, Urban, Nature)
+            type: string
+          - name: location
+            label: Location (e.g. Tokyo, Japan)
+            type: string
+          - name: date
+            label: Date Taken (e.g. Oct 2026)
+            type: string
+          - name: camera
+            label: Camera & Lens (e.g. Sony A7IV • 35mm f/1.8)
+            type: string
+          - name: aspect
+            label: Aspect Ratio
+            type: select
+            options:
+              - { label: Portrait (3:4), value: portrait }
+              - { label: Landscape (4:3), value: landscape }
+              - { label: Square (1:1), value: square }
+              - { label: Wide (16:9), value: wide }
+
 # Actions accessible from Pages CMS UI
 actions:
   - name: build-and-deploy

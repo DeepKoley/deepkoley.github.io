@@ -519,6 +519,74 @@ footer a:hover svg {
   color: #ffffff;
 }
 
+/* ── GLightbox Dark Obsidian Customization ───────────────────────────── */
+.glightbox-container .goverlay {
+  background: rgba(9, 10, 15, 0.94) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+.gslide-description {
+  background: rgba(17, 19, 26, 0.9) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  padding: 1.25rem 1.5rem !important;
+}
+
+.gslide-title {
+  color: #f1f3f9 !important;
+  font-family: 'Tanker', sans-serif !important;
+  letter-spacing: -0.01em !important;
+  font-size: 1.35rem !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.gslide-desc {
+  color: #94a3b8 !important;
+  font-family: 'Geist Mono', monospace !important;
+  font-size: 0.85rem !important;
+  line-height: 1.6 !important;
+}
+
+.gprev,
+.gnext,
+.gclose {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 9999px !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.gprev:hover,
+.gnext:hover,
+.gclose:hover {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  transform: scale(1.08) !important;
+}
+
+.gprev svg,
+.gnext svg,
+.gclose svg {
+  fill: #f1f3f9 !important;
+}
+
+/* ── Gallery Filtering Animation ─────────────────────────────────────── */
+.gallery-item {
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.gallery-item.is-hidden {
+  display: none !important;
+}
+
 /* 7. Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

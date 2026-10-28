@@ -1,0 +1,75 @@
+{
+  "pageBadge": "visuals.raw",
+  "pageTitle": "Visual Journal & Photography",
+  "pageDescription": "A curated collection of street, architecture, urban spaces, and nature captured through the lens. Click any frame to inspect high-resolution details in the lightbox.",
+  "categories": ["All", "Street", "Architecture", "Urban", "Nature"],
+  "photos": [
+    {
+      "id": "neon-reflections",
+      "title": "Neon Reflections",
+      "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1400&q=85",
+      "caption": "Rain-slicked alleyways catching neon reflections after a sudden storm in Shinjuku.",
+      "category": "Street",
+      "location": "Tokyo, Japan",
+      "date": "Oct 2026",
+      "camera": "Sony A7IV • 35mm f/1.8",
+      "aspect": "portrait"
+    },
+    {
+      "id": "brutalist-geometry",
+      "title": "Brutalist Geometry",
+      "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=85",
+      "caption": "Interlocking concrete planes and morning light casting high-contrast shadows.",
+      "category": "Architecture",
+      "location": "Berlin, Germany",
+      "date": "Aug 2026",
+      "camera": "Fujifilm X-T5 • 23mm f/2",
+      "aspect": "landscape"
+    },
+    {
+      "id": "fog-and-pines",
+      "title": "Mist Over High Ridge",
+      "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=85",
+      "caption": "Low-hanging cloud bank rolling across the alpine ridge at dawn.",
+      "category": "Nature",
+      "location": "Swiss Alps",
+      "date": "Jul 2026",
+      "camera": "Sony A7IV • 70-200mm f/4",
+      "aspect": "landscape"
+    },
+    {
+      "id": "subway-rhythm",
+      "title": "Transit Motion",
+      "image": "https://images.unsplash.com/photo-1477959858617-67f30bc75b82?auto=format&fit=crop&w=1400&q=85",
+      "caption": "Long exposure capturing commuter blur against the static platform architecture.",
+      "category": "Urban",
+      "location": "New York City, USA",
+      "date": "May 2026",
+      "camera": "Ricoh GR IIIx • 40mm f/2.8",
+      "aspect": "portrait"
+    },
+    {
+      "id": "minimal-facade",
+      "title": "Shadow & Glass",
+      "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=85",
+      "caption": "Golden hour reflection on curtain wall glass, breaking angular shadows.",
+      "category": "Architecture",
+      "location": "Seoul, South Korea",
+      "date": "Mar 2026",
+      "camera": "Sony A7IV • 50mm f/1.4",
+      "aspect": "landscape"
+    },
+    {
+      "id": "solitary-walker",
+      "title": "Quiet Intersection",
+      "image": "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1400&q=85",
+      "caption": "A lone pedestrian crossing under street lamps at 2 AM in the rain.",
+      "category": "Street",
+      "location": "London, UK",
+      "date": "Jan 2026",
+      "camera": "Leica Q2 • 28mm f/1.7",
+      "aspect": "portrait"
+    }
+  ]
+}
+
