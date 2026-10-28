@@ -3,9 +3,12 @@ layout: base.njk
 title: "Resume — Deep Koley"
 description: "Curriculum Vitae and professional experience of Deep Koley, Full-Stack Developer specializing in scalable web systems and modern architectures."
 eleventyExcludeFromCollections: true
+
 ---
 
-{% set hasResumeData = (resume.experience and resume.experience.length > 0) or (resume.competencies and resume.competencies.length > 0) or (resume.education and resume.education.length > 0) or (resume.summary and resume.summary | trim | length > 0) %}
+{%
+  set hasResumeData = (resume.experience and resume.experience.length > 0) or (resume.competencies and resume.competencies.length > 0) or (resume.education and resume.education.length > 0) or (resume.summary and resume.summary | trim | length > 0)
+%}
 
 <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-16">
   <!-- Breadcrumb & Top Actions -->
@@ -18,11 +21,18 @@ eleventyExcludeFromCollections: true
     </div>
     {% if hasResumeData %}
       <div class="flex items-center gap-3">
-        <button onclick="window.print()" class="btn btn-outline btn-sm font-mono gap-2">
+        <button
+          onclick="window.print()"
+          class="btn btn-outline btn-sm font-mono gap-2"
+        >
           <i class="ph ph-printer text-base"></i>
           Print / PDF
         </button>
-        <a href="/cv.pdf" download class="btn btn-primary btn-sm font-mono gap-2">
+        <a
+          href="/cv.pdf"
+          download
+          class="btn btn-primary btn-sm font-mono gap-2"
+        >
           <i class="ph ph-download-simple text-base"></i>
           Download CV
         </a>
@@ -40,7 +50,8 @@ eleventyExcludeFromCollections: true
       Professional Resume
     </h1>
     <p class="text-lg text-base-content/70 leading-relaxed max-w-3xl">
-      A detailed record of full-stack engineering roles, technical proficiencies, architectural achievements, and education.
+      A detailed record of full-stack engineering roles, technical
+      proficiencies, architectural achievements, and education.
     </p>
   </header>
 
@@ -58,7 +69,9 @@ eleventyExcludeFromCollections: true
           </p>
         </div>
         <div class="flex flex-wrap gap-2 text-xs font-mono">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 text-base-content/80">
+          <span
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 text-base-content/80"
+          >
             <i class="ph ph-map-pin text-sm text-base-content/60"></i>
             {{ site.location }}
           </span>
@@ -66,7 +79,9 @@ eleventyExcludeFromCollections: true
             href="mailto:{{ site.email }}"
             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
           >
-            <i class="ph ph-envelope text-sm text-base-content/60 group-hover:text-primary transition-colors"></i>
+            <i
+              class="ph ph-envelope text-sm text-base-content/60 group-hover:text-primary transition-colors"
+            ></i>
             {{ site.email }}
           </a>
           <a
@@ -75,7 +90,9 @@ eleventyExcludeFromCollections: true
             rel="noopener noreferrer"
             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
           >
-            <i class="ph ph-github-logo text-sm text-base-content/60 group-hover:text-primary transition-colors"></i>
+            <i
+              class="ph ph-github-logo text-sm text-base-content/60 group-hover:text-primary transition-colors"
+            ></i>
             github.com
           </a>
           <a
@@ -84,7 +101,9 @@ eleventyExcludeFromCollections: true
             rel="noopener noreferrer"
             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
           >
-            <i class="ph ph-linkedin-logo text-sm text-base-content/60 group-hover:text-primary transition-colors"></i>
+            <i
+              class="ph ph-linkedin-logo text-sm text-base-content/60 group-hover:text-primary transition-colors"
+            ></i>
             linkedin.com
           </a>
         </div>
@@ -115,7 +134,9 @@ eleventyExcludeFromCollections: true
                 </div>
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <h4 class="text-xl font-headline text-base-content">
-                    {{ job.role }} <span class="text-base-content/50 font-normal">@ {{ job.company }}</span>
+                    {{ job.role }} <span
+                      class="text-base-content/50 font-normal"
+                    >@ {{ job.company }}</span>
                   </h4>
                   <span
                     class="text-xs font-mono {% if job.isCurrent %}text-primary font-semibold bg-primary/10{% else %}text-base-content/60 bg-base-300/50{% endif %} px-2.5 py-0.5 rounded-md self-start sm:self-auto"
@@ -131,7 +152,9 @@ eleventyExcludeFromCollections: true
                 </ul>
                 <div class="flex flex-wrap gap-1.5 pt-1">
                   {% for skill in job.skills %}
-                    <span class="badge badge-neutral text-xs font-mono border border-base-300/60">{{ skill }}</span>
+                    <span
+                      class="badge badge-neutral text-xs font-mono border border-base-300/60"
+                    >{{ skill }}</span>
                   {% endfor %}
                 </div>
               </div>
@@ -152,10 +175,14 @@ eleventyExcludeFromCollections: true
                 <h4 class="font-headline text-lg mb-2 text-base-content">
                   {{ comp.title }}
                 </h4>
-                <p class="text-xs font-mono text-{{ comp.color | default('primary') }} mb-3">{{ comp.subtitle }}</p>
+                <p class="text-xs font-mono text-{{ comp.color | default('primary') }} mb-3">
+                  {{ comp.subtitle }}
+                </p>
                 <div class="flex flex-wrap gap-1.5">
                   {% for skill in comp.skills %}
-                    <span class="badge badge-neutral text-xs font-mono border border-base-300/60">{{ skill }}</span>
+                    <span
+                      class="badge badge-neutral text-xs font-mono border border-base-300/60"
+                    >{{ skill }}</span>
                   {% endfor %}
                 </div>
               </div>
@@ -181,14 +208,15 @@ eleventyExcludeFromCollections: true
                     {{ edu.institution }}
                   </p>
                 </div>
-                <span class="text-xs font-mono text-base-content/60 self-start sm:self-auto">{{ edu.period }}</span>
+                <span
+                  class="text-xs font-mono text-base-content/60 self-start sm:self-auto"
+                >{{ edu.period }}</span>
               </div>
             {% endfor %}
           </div>
         </section>
       {% endif %}
     </div>
-
   {% else %}
     <!-- Placeholder When Resume Data Is Empty -->
     <div class="card bg-base-200 card-border p-12 sm:p-16 text-center border-dashed border-base-300/80 shadow-xl">
@@ -199,13 +227,20 @@ eleventyExcludeFromCollections: true
         Resume Will Be Added Soon
       </h2>
       <p class="text-base text-base-content/70 max-w-md mx-auto mb-8 leading-relaxed">
-        Curriculum vitae, verified work experience, technical competencies, and education records will be published here soon.
+        Curriculum vitae, verified work experience, technical competencies, and
+        education records will be published here soon.
       </p>
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="/" class="btn btn-primary btn-sm font-mono inline-flex items-center gap-2">
+        <a
+          href="/"
+          class="btn btn-primary btn-sm font-mono inline-flex items-center gap-2"
+        >
           <i class="ph ph-arrow-left text-base"></i> Back to Home
         </a>
-        <a href="/projects/" class="btn btn-outline btn-sm font-mono inline-flex items-center gap-2">
+        <a
+          href="/projects/"
+          class="btn btn-outline btn-sm font-mono inline-flex items-center gap-2"
+        >
           Explore Projects <i class="ph ph-arrow-right text-base"></i>
         </a>
       </div>
