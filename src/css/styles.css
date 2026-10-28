@@ -529,51 +529,115 @@ footer a:hover svg {
 .sl-wrapper .sl-image {
   border-radius: 0.875rem !important;
   overflow: hidden !important;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.95) !important;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
 }
 
 .sl-wrapper .sl-image img {
   border-radius: 0.875rem !important;
+  display: block !important;
 }
 
-/* Caption bar: cleanly attached to bottom of the photo */
+/* Caption bar: cleanly attached to bottom of the photo inside container */
 .sl-wrapper .sl-image .sl-caption {
-  background: rgba(14, 16, 23, 0.92) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: linear-gradient(to top, rgba(10, 12, 18, 0.95) 0%, rgba(10, 12, 18, 0.85) 70%, rgba(10, 12, 18, 0.6) 100%) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: #f1f3f9 !important;
   font-family: 'Geist Mono', monospace !important;
   font-size: 0.825rem !important;
   line-height: 1.5 !important;
-  padding: 12px 20px !important;
+  padding: 12px 20px 14px 20px !important;
   text-align: center !important;
 }
 
-.sl-wrapper .sl-close,
-.sl-wrapper .sl-counter {
+/* Sleek Circular Glass Close Button */
+.sl-wrapper .sl-close {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: fixed !important;
+  top: 24px !important;
+  right: 24px !important;
+  width: 44px !important;
+  height: 44px !important;
+  margin: 0 !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
   color: #f1f3f9 !important;
-  font-family: 'Geist Mono', monospace !important;
-  opacity: 0.85 !important;
-  transition: opacity 0.2s ease, transform 0.2s ease !important;
+  font-size: 1.75rem !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  z-index: 10060 !important;
 }
 
 .sl-wrapper .sl-close:hover {
-  opacity: 1 !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
   color: #ffffff !important;
-  transform: scale(1.1) !important;
+  transform: scale(1.08) !important;
 }
 
+/* Modern Pill Counter */
+.sl-wrapper .sl-counter {
+  display: inline-flex !important;
+  align-items: center !important;
+  position: fixed !important;
+  top: 24px !important;
+  left: 24px !important;
+  padding: 6px 14px !important;
+  border-radius: 9999px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-family: 'Geist Mono', monospace !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.05em !important;
+  z-index: 10060 !important;
+}
+
+/* Sleek Circular Glass Navigation Buttons */
 .sl-wrapper .sl-navigation button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: fixed !important;
+  top: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  margin-top: -24px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
   color: #f1f3f9 !important;
-  opacity: 0.85 !important;
-  transition: opacity 0.2s ease, transform 0.2s ease !important;
+  font-size: 2rem !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  z-index: 10060 !important;
+}
+
+.sl-wrapper .sl-navigation button.sl-prev {
+  left: 20px !important;
+}
+
+.sl-wrapper .sl-navigation button.sl-next {
+  right: 20px !important;
 }
 
 .sl-wrapper .sl-navigation button:hover {
-  opacity: 1 !important;
+  background: rgba(16, 185, 129, 0.2) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
   color: #10b981 !important;
-  transform: scale(1.15) !important;
+  transform: scale(1.1) !important;
 }
 
 .sl-spinner {

@@ -29,6 +29,9 @@ export default function (eleventyConfig) {
   // Passthrough copy for JS and other assets
   eleventyConfig.addPassthroughCopy({ 'src/js': 'js' });
   eleventyConfig.addPassthroughCopy({
+    'node_modules/@phosphor-icons/web/src': 'css/phosphor',
+  });
+  eleventyConfig.addPassthroughCopy({
     'node_modules/feather-icons/dist/feather.min.js': 'js/feather.min.js',
   });
   eleventyConfig.addPassthroughCopy({
@@ -49,6 +52,88 @@ export default function (eleventyConfig) {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
+    });
+  });
+
+  // Group gallery photos by Year and Month for timeline navigation & month-wise grouping
+  eleventyConfig.addFilter('galleryByYear', (photos) => {
+    if (!Array.isArray(photos)) return [];
+    const monthMap = {
+      jan: 'Jan', feb: 'Feb', mar: 'Mar', apr: 'Apr', may: 'May', jun: 'Jun',
+      jul: 'Jul', aug: 'Aug', sep: 'Sep', oct: 'Oct', nov: 'Nov', dec: 'Dec',
+      january: 'Jan', february: 'Feb', march: 'Mar', april: 'Apr', june: 'Jun',
+      july: 'Jul', august: 'Aug', september: 'Sep', october: 'Oct', november: 'Nov', december: 'Dec',
+    };
+    const fullMonthMap = {
+      Jan: 'January', Feb: 'February', Mar: 'March', Apr: 'April', May: 'May', Jun: 'June',
+      Jul: 'July', Aug: 'August', Sep: 'September', Oct: 'October', Nov: 'November', Dec: 'December',
+    };
+
+    const seenMonths = new Set();
+    const enriched = photos.map((photo) => {
+      let year = '2026';
+      let month = 'Jan';
+      if (photo.date) {
+        const parts = String(photo.date).trim().split(/[\s,/-]+/);
+        for (const part of parts) {
+          if (/^\d{4}$/.test(part)) {
+            year = part;
+          } else {
+            const lower = part.toLowerCase();
+            if (monthMap[lower]) {
+              month = monthMap[lower];
+            }
+          }
+        }
+      }
+      const slug = `${year}-${month.toLowerCase()}`;
+      const isFirstInMonth = !seenMonths.has(slug);
+      if (isFirstInMonth) {
+        seenMonths.add(slug);
+      }
+      return {
+        ...photo,
+        _year: year,
+        _month: month,
+        _fullMonth: fullMonthMap[month] || month,
+        _monthSlug: slug,
+        _isMonthFirst: isFirstInMonth,
+      };
+    });
+
+    const yearsObj = {};
+    enriched.forEach((p) => {
+      if (!yearsObj[p._year]) {
+        yearsObj[p._year] = { year: p._year, months: {}, photos: [] };
+      }
+      yearsObj[p._year].photos.push(p);
+      if (!yearsObj[p._year].months[p._month]) {
+        yearsObj[p._year].months[p._month] = [];
+      }
+      yearsObj[p._year].months[p._month].push(p);
+    });
+
+    const monthOrder = ['Dec', 'Nov', 'Oct', 'Sep', 'Aug', 'Jul', 'Jun', 'May', 'Apr', 'Mar', 'Feb', 'Jan'];
+    const sortedYears = Object.keys(yearsObj).sort((a, b) => Number(b) - Number(a));
+
+    return sortedYears.map((yr) => {
+      const yrData = yearsObj[yr];
+      const activeMonths = Object.keys(yrData.months).sort(
+        (a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b)
+      );
+      return {
+        year: yr,
+        totalCount: yrData.photos.length,
+        months: activeMonths.map((m) => ({
+          month: m,
+          fullMonth: fullMonthMap[m] || m,
+          slug: `${yr}-${m.toLowerCase()}`,
+          firstPhotoId: yrData.months[m][0]?.id || '',
+          count: yrData.months[m].length,
+          photos: yrData.months[m],
+        })),
+        photos: yrData.photos,
+      };
     });
   });
 

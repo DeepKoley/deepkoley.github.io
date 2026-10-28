@@ -8,6 +8,61 @@ eleventyExcludeFromCollections: true
 
 <link rel="stylesheet" href="/css/simple-lightbox.min.css" />
 
+{% set timelineYears = gallery.photos | galleryByYear %}
+
+<!-- Floating Timeline Rail (Desktop & Large Screens) -->
+{% if timelineYears and timelineYears.length > 0 %}
+  <aside
+    id="gallery-timeline-rail"
+    class="hidden lg:flex fixed right-3 xl:right-6 top-1/2 -translate-y-1/2 z-30 flex-col items-center select-none"
+    aria-label="Chronological Timeline Navigation"
+  >
+    <div class="relative py-4 px-2.5 rounded-2xl bg-base-200/90 backdrop-blur-xl border border-base-300/80 shadow-2xl flex flex-col items-center gap-3.5 min-w-[54px]">
+      <!-- Vertical Connecting Track Line -->
+      <div
+        class="absolute top-12 bottom-5 w-0.5 bg-base-300/60 rounded-full left-1/2 -translate-x-1/2 pointer-events-none"
+      ></div>
+
+      <!-- Year & Month Milestones -->
+      <div class="relative z-10 flex flex-col items-center gap-3.5">
+        {% for yearGroup in timelineYears %}
+          <!-- Year Marker Button -->
+          <button
+            type="button"
+            data-scroll-to="year-{{ yearGroup.year }}"
+            class="timeline-year-btn font-mono text-[11px] font-bold px-2 py-0.5 rounded-md bg-base-300/90 hover:bg-primary hover:text-primary-content text-base-content/90 transition-all cursor-pointer shadow-xs"
+            title="Jump to {{ yearGroup.year }}"
+          >
+            {{ yearGroup.year }}
+          </button>
+
+          <!-- Months Column -->
+          <div class="flex flex-col items-center gap-3 py-1">
+            {% for m in yearGroup.months %}
+              <button
+                type="button"
+                data-scroll-to="month-{{ m.slug }}"
+                data-month-slug="{{ m.slug }}"
+                class="timeline-month-btn group relative flex items-center justify-center cursor-pointer p-1 rounded-md transition-colors"
+                title="{{ m.month }} {{ yearGroup.year }} ({{ m.count }} {{ 'frame' if m.count == 1 else 'frames' }})"
+              >
+                <!-- Single Tick Indicator Dot (Only active month glows) -->
+                <span class="timeline-dot w-2 h-2 rounded-full bg-base-content/30 group-hover:bg-primary group-hover:scale-125 transition-all"></span>
+
+                <!-- Month Popout Tooltip -->
+                <span class="absolute right-full mr-3.5 px-2.5 py-1 rounded-lg bg-base-300/95 border border-base-100 text-[11px] font-mono text-white whitespace-nowrap shadow-xl opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity flex items-center gap-1.5">
+                  <span class="font-bold text-primary">{{ m.month }} {{ yearGroup.year }}</span>
+                  <span class="text-base-content/60">• {{ m.count }} {{ 'frame' if m.count == 1 else 'frames' }}</span>
+                </span>
+              </button>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </aside>
+{% endif %}
+
 <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-16">
   <!-- Breadcrumb -->
   <div class="breadcrumbs text-sm mb-6 text-base-content/60">
@@ -18,9 +73,9 @@ eleventyExcludeFromCollections: true
   </div>
 
   <!-- Page Header -->
-  <header class="mb-12">
+  <header class="mb-10">
     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-200 border border-base-300 font-mono text-xs mb-3 shadow-xs">
-      <i data-feather="camera" class="w-3.5 h-3.5 text-secondary"></i>
+      <i class="ph ph-camera text-sm text-secondary"></i>
       <span id="typed-gallery-header">{{ gallery.pageBadge | default('visuals.raw') }}</span>
     </div>
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -32,116 +87,145 @@ eleventyExcludeFromCollections: true
           {{ gallery.pageDescription | default('A curated collection of streetscapes, architecture, and fleeting moments through the lens. Click any frame to inspect high-resolution details in the lightbox.') }}
         </p>
       </div>
-      <div class="shrink-0 font-mono text-xs text-base-content/60 self-start md:self-end">
-        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-base-200/80 border border-base-300">
-          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-          <span id="gallery-count-badge">{{ gallery.photos.length | default(0) }} frames</span>
-        </span>
-      </div>
     </div>
   </header>
 
-  <!-- Category Filter Bar -->
-  <div class="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-base-300/60 font-mono text-xs">
-    <span class="text-base-content/50 uppercase tracking-wider mr-2 hidden sm:inline-flex items-center gap-1.5">
-      <i data-feather="sliders" class="w-3.5 h-3.5"></i> Filter:
-    </span>
-    <button
-      type="button"
-      data-filter="all"
-      class="gallery-filter-btn px-4 py-2 rounded-xl border border-primary bg-primary text-primary-content font-medium transition-all shadow-xs"
+  <!-- Mobile Sticky Timeline Navigation Bar (< lg screens) -->
+  {% if timelineYears and timelineYears.length > 0 %}
+    <nav
+      id="gallery-timeline-mobile"
+      class="lg:hidden sticky top-16 z-20 -mx-4 px-4 py-2.5 bg-base-100/95 backdrop-blur-md border-y border-base-300/60 mb-10 overflow-x-auto no-scrollbar flex items-center gap-2 font-mono text-xs"
+      aria-label="Timeline Quick Jump"
     >
-      All Frames
-    </button>
-    {% for cat in gallery.categories %}
-      {% if cat != "All" %}
+      <span class="text-base-content/50 uppercase tracking-wider text-[10px] flex items-center gap-1.5 shrink-0 mr-1">
+        <i class="ph ph-calendar text-xs text-primary"></i> Timeline:
+      </span>
+      {% for yearGroup in timelineYears %}
         <button
           type="button"
-          data-filter="{{ cat | lower }}"
-          class="gallery-filter-btn px-4 py-2 rounded-xl border border-base-300 bg-base-200/80 text-base-content/80 hover:text-white hover:border-white/20 transition-all shadow-xs"
+          data-scroll-to="year-{{ yearGroup.year }}"
+          class="timeline-mobile-btn shrink-0 px-3 py-1.5 rounded-lg bg-base-200 border border-base-300 text-base-content/90 font-bold hover:border-primary transition-all"
         >
-          {{ cat }}
+          {{ yearGroup.year }}
         </button>
-      {% endif %}
-    {% endfor %}
-  </div>
+        {% for m in yearGroup.months %}
+          <button
+            type="button"
+            data-scroll-to="month-{{ m.slug }}"
+            data-month-slug="{{ m.slug }}"
+            class="timeline-mobile-btn shrink-0 px-2.5 py-1.5 rounded-lg bg-base-200/60 border border-base-300/60 text-base-content/70 hover:text-white hover:border-primary/50 transition-all flex items-center gap-1.5"
+          >
+            <span class="timeline-dot w-1.5 h-1.5 rounded-full bg-base-content/40"></span>
+            {{ m.month }}
+          </button>
+        {% endfor %}
+      {% endfor %}
+    </nav>
+  {% endif %}
 
-  <!-- Masonry Photo Grid -->
-  {% if gallery.photos and gallery.photos.length > 0 %}
-    <div id="gallery-grid" class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-      {% for photo in gallery.photos %}
-        <div
-          class="gallery-item break-inside-avoid"
-          data-category="{{ photo.category | lower }}"
-        >
-          <div class="card bg-base-200 card-border overflow-hidden">
-            <!-- Pure Unobstructed Photograph -->
-            <a
-              href="{{ photo.image }}"
-              class="simple-lightbox block relative cursor-zoom-in"
-              data-caption="<div class='font-bold text-sm text-white mb-0.5 tracking-wide'>{{ photo.title | replace('\"', '&quot;') }}</div>{% if photo.caption %}<div class='text-xs text-base-content/80 mb-1.5 leading-snug'>{{ photo.caption | replace('\"', '&quot;') }}</div>{% endif %}<div class='text-[11px] font-mono text-base-content/60 flex flex-wrap items-center justify-center gap-2'>{% if photo.location %}<span>📍 {{ photo.location }}</span>{% endif %}{% if photo.camera %}<span>📷 {{ photo.camera }}</span>{% endif %}{% if photo.date %}<span>🗓 {{ photo.date }}</span>{% endif %}</div>"
-            >
-              <img
-                src="{{ photo.image }}"
-                alt="{{ photo.title }}"
-                class="w-full h-auto object-cover block"
-                loading="lazy"
-              />
-            </a>
+  <!-- Chronological Gallery by Year and Month -->
+  {% if timelineYears and timelineYears.length > 0 %}
+    {% for yearGroup in timelineYears %}
+      <section id="year-{{ yearGroup.year }}" class="gallery-year-section mb-20 scroll-mt-24">
+        <!-- Year Header Divider -->
+        <div class="flex items-center gap-4 mb-10 pb-3 border-b border-base-300/80">
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 rounded-full bg-primary animate-pulse"></div>
+            <h2 class="font-headline text-3xl sm:text-4xl text-base-content tracking-tight">
+              {{ yearGroup.year }}
+            </h2>
+          </div>
+          <div class="h-px flex-1 bg-gradient-to-r from-base-300 to-transparent"></div>
+          <span class="text-xs font-mono text-base-content/50">
+            {{ yearGroup.totalCount }} {{ 'frame' if yearGroup.totalCount == 1 else 'frames' }}
+          </span>
+        </div>
 
-            <!-- Card Bottom Details (Cleanly structured below the photo) -->
-            <div class="p-4 space-y-2 bg-base-200/90 border-t border-base-300/40">
-              <div class="flex items-center justify-between gap-2">
-                <h3 class="font-headline text-lg text-base-content leading-tight">
-                  {{ photo.title }}
-                </h3>
-                {% if photo.category %}
-                  <span class="badge badge-neutral badge-xs font-mono border border-base-300/60 shrink-0">
-                    {{ photo.category }}
-                  </span>
-                {% endif %}
-              </div>
-              {% if photo.caption %}
-                <p class="text-xs text-base-content/70 leading-relaxed line-clamp-2">
-                  {{ photo.caption }}
-                </p>
-              {% endif %}
-              <div class="flex items-center justify-between text-[11px] font-mono text-base-content/50 pt-1.5 border-t border-base-300/30">
-                <span class="flex items-center gap-1">
-                  <i data-feather="map-pin" class="w-3 h-3 text-primary/80"></i>
-                  {{ photo.location | default(photo.date) }}
+        <!-- Month Groups within Year -->
+        <div class="space-y-12">
+          {% for monthGroup in yearGroup.months %}
+            <div id="month-{{ monthGroup.slug }}" class="gallery-month-section scroll-mt-28">
+              <!-- Month Subheader Divider -->
+              <div class="flex items-center justify-between gap-4 mb-6 pb-2.5 border-b border-base-300/40">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-2 h-2 rounded-full bg-primary/70"></span>
+                  <h3 class="font-headline text-xl sm:text-2xl text-base-content tracking-tight">
+                    {{ monthGroup.fullMonth }} <span class="text-base-content/40 text-lg sm:text-xl font-normal">{{ yearGroup.year }}</span>
+                  </h3>
+                </div>
+                <span class="text-xs font-mono text-base-content/50">
+                  {{ monthGroup.photos.length }} {{ 'frame' if monthGroup.photos.length == 1 else 'frames' }}
                 </span>
-                {% if photo.camera %}
-                  <span class="truncate max-w-[170px] text-right" title="{{ photo.camera }}">
-                    {{ photo.camera }}
-                  </span>
-                {% endif %}
+              </div>
+
+              <!-- Masonry Photo Grid for this Month -->
+              <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+                {% for photo in monthGroup.photos %}
+                  <div
+                    id="photo-{{ photo.id }}"
+                    data-year="{{ photo._year }}"
+                    data-month-slug="{{ monthGroup.slug }}"
+                    class="gallery-item break-inside-avoid scroll-mt-28 transition-all duration-300"
+                  >
+                    <div class="card bg-base-200 card-border overflow-hidden transition-all duration-300">
+                      <!-- Pure Unobstructed Photograph -->
+                      <a
+                        href="{{ photo.image }}"
+                        class="simple-lightbox block relative cursor-zoom-in"
+                        data-caption="<div class='font-bold text-sm text-white mb-0.5 tracking-wide'>{{ photo.title | replace('\"', '&quot;') }}</div>{% if photo.caption %}<div class='text-xs text-base-content/80 mb-1.5 leading-snug'>{{ photo.caption | replace('\"', '&quot;') }}</div>{% endif %}<div class='text-[11px] font-mono text-base-content/60 flex flex-wrap items-center justify-center gap-3'>{% if photo.location %}<span class='inline-flex items-center gap-1'><i class='ph ph-map-pin text-primary'></i> {{ photo.location }}</span>{% endif %}{% if photo.camera %}<span class='inline-flex items-center gap-1'><i class='ph ph-camera text-primary'></i> {{ photo.camera }}</span>{% endif %}{% if photo.date %}<span class='inline-flex items-center gap-1'><i class='ph ph-calendar-blank text-primary'></i> {{ photo.date }}</span>{% endif %}</div>"
+                      >
+                        <img
+                          src="{{ photo.image }}"
+                          alt="{{ photo.title }}"
+                          class="w-full h-auto object-cover block"
+                          loading="lazy"
+                        />
+                      </a>
+
+                      <!-- Card Bottom Details -->
+                      <div class="p-4 space-y-2 bg-base-200/90 border-t border-base-300/40">
+                        <div class="flex items-center justify-between gap-2">
+                          <h3 class="font-headline text-lg text-base-content leading-tight">
+                            {{ photo.title }}
+                          </h3>
+                          <!-- Chronological Date Badge -->
+                          <span class="badge badge-neutral badge-xs font-mono border border-base-300/60 shrink-0 text-primary">
+                            {{ photo.date }}
+                          </span>
+                        </div>
+                        {% if photo.caption %}
+                          <p class="text-xs text-base-content/70 leading-relaxed line-clamp-2">
+                            {{ photo.caption }}
+                          </p>
+                        {% endif %}
+                        <div class="flex items-center justify-between text-[11px] font-mono text-base-content/50 pt-1.5 border-t border-base-300/30">
+                          <span class="inline-flex items-center gap-1">
+                            <i class="ph ph-map-pin text-xs text-primary/80"></i>
+                            {{ photo.location | default(photo.date) }}
+                          </span>
+                          {% if photo.camera %}
+                            <span class="inline-flex items-center gap-1 truncate max-w-[170px] text-right" title="{{ photo.camera }}">
+                              <i class="ph ph-camera text-xs text-base-content/50"></i>
+                              {{ photo.camera }}
+                            </span>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
               </div>
             </div>
-          </div>
+          {% endfor %}
         </div>
-      {% endfor %}
-    </div>
-
-    <!-- Empty Filter Notice (Dynamic via JS) -->
-    <div id="gallery-empty-filter" class="hidden card bg-base-200 card-border p-12 text-center border-dashed border-base-300/80">
-      <div class="w-14 h-14 rounded-2xl bg-base-300/60 border border-base-300 flex items-center justify-center mx-auto mb-4 text-secondary">
-        <i data-feather="image" class="w-6 h-6"></i>
-      </div>
-      <h3 class="font-headline text-2xl mb-1 text-base-content">No Frames in this Category</h3>
-      <p class="text-sm font-mono text-base-content/60 max-w-sm mx-auto mb-4">
-        Try selecting a different filter category or reset to view all photos.
-      </p>
-      <button type="button" onclick="document.querySelector('[data-filter=\"all\"]').click()" class="btn btn-primary btn-sm font-mono">
-        Show All Frames
-      </button>
-    </div>
+      </section>
+    {% endfor %}
 
   {% else %}
     <!-- Global Empty State if No Photos Exist Yet -->
     <div class="card bg-base-200 card-border p-12 sm:p-16 text-center border-dashed border-base-300/80">
       <div class="w-16 h-16 rounded-2xl bg-base-300/60 border border-base-300 flex items-center justify-center mx-auto mb-4 text-primary">
-        <i data-feather="camera" class="w-8 h-8"></i>
+        <i class="ph ph-camera text-4xl"></i>
       </div>
       <h3 class="font-headline text-2xl sm:text-3xl mb-2 text-base-content">No Photos Uploaded Yet</h3>
       <p class="text-sm sm:text-base text-base-content/70 max-w-md mx-auto mb-6">
@@ -149,118 +233,150 @@ eleventyExcludeFromCollections: true
       </p>
       <div>
         <a href="/" class="btn btn-primary btn-sm font-mono inline-flex items-center gap-2">
-          <i data-feather="arrow-left" class="w-4 h-4"></i> Back to Home
+          <i class="ph ph-arrow-left text-base"></i> Back to Home
         </a>
       </div>
     </div>
   {% endif %}
 </div>
 
-<!-- SimpleLightbox Script & Gallery Controller -->
+<!-- SimpleLightbox Script & Timeline Controller -->
 <script src="/js/simple-lightbox.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Feather Icons for newly rendered elements
-    if (typeof feather !== 'undefined') {
-      feather.replace();
+    // 1. Initialize SimpleLightbox with Phosphor Icons & Viewport Fit
+    if (typeof SimpleLightbox === 'function') {
+      new SimpleLightbox('.gallery-item a.simple-lightbox', {
+        sourceAttr: 'href',
+        overlay: true,
+        overlayOpacity: 0.96,
+        spinner: true,
+        nav: true,
+        navText: ['<i class=\"ph ph-caret-left text-2xl\"></i>', '<i class=\"ph ph-caret-right text-2xl\"></i>'],
+        close: true,
+        closeText: '<i class=\"ph ph-x text-2xl\"></i>',
+        captions: true,
+        captionSelector: 'self',
+        captionType: 'data',
+        captionsData: 'caption',
+        captionPosition: 'bottom',
+        captionHTML: true,
+        swipeClose: true,
+        showCounter: true,
+        fileExt: false,
+        widthRatio: 0.85,
+        heightRatio: 0.82,
+        scaleImageToRatio: false,
+        animationSlide: true,
+        animationSpeed: 200,
+        fadeSpeed: 200,
+        enableKeyboard: true,
+        loop: true,
+        docClose: true,
+        scrollZoom: false,
+      });
     }
 
-    // 2. Initialize SimpleLightbox with responsive viewport fit
-    let lightbox = null;
-    const initLightbox = () => {
-      if (typeof SimpleLightbox === 'function') {
-        if (lightbox && typeof lightbox.destroy === 'function') {
-          lightbox.destroy();
-        }
-        lightbox = new SimpleLightbox('.gallery-item:not(.is-hidden) a.simple-lightbox', {
-          sourceAttr: 'href',
-          overlay: true,
-          overlayOpacity: 0.96,
-          spinner: true,
-          nav: true,
-          captions: true,
-          captionSelector: 'self',
-          captionType: 'data',
-          captionsData: 'caption',
-          captionPosition: 'bottom',
-          captionHTML: true,
-          close: true,
-          swipeClose: true,
-          showCounter: true,
-          fileExt: false,
-          widthRatio: 0.85,
-          heightRatio: 0.82,
-          scaleImageToRatio: false,
-          animationSlide: true,
-          animationSpeed: 200,
-          fadeSpeed: 200,
-          enableKeyboard: true,
-          loop: true,
-          docClose: true,
-          scrollZoom: false,
-        });
-      }
-    };
+    // 2. Smooth Jump with Card Focus Pulse
+    const jumpButtons = document.querySelectorAll('[data-scroll-to]');
+    jumpButtons.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = btn.getAttribute('data-scroll-to');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    initLightbox();
-
-    // 3. Category Filter Tabs Controller
-    const filterBtns = document.querySelectorAll('.gallery-filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const emptyNotice = document.getElementById('gallery-empty-filter');
-    const countBadge = document.getElementById('gallery-count-badge');
-
-    filterBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter');
-
-        // Update button active states
-        filterBtns.forEach((b) => {
-          b.classList.remove('border-primary', 'bg-primary', 'text-primary-content', 'font-medium');
-          b.classList.add('border-base-300', 'bg-base-200/80', 'text-base-content/80');
-        });
-        btn.classList.remove('border-base-300', 'bg-base-200/80', 'text-base-content/80');
-        btn.classList.add('border-primary', 'bg-primary', 'text-primary-content', 'font-medium');
-
-        // Filter items
-        let visibleCount = 0;
-        galleryItems.forEach((item) => {
-          const itemCat = item.getAttribute('data-category');
-          if (filter === 'all' || itemCat === filter) {
-            item.classList.remove('is-hidden');
-            item.style.opacity = '1';
-            item.style.transform = 'scale(1)';
-            visibleCount++;
-          } else {
-            item.classList.add('is-hidden');
-            item.style.opacity = '0';
-            item.style.transform = 'scale(0.96)';
+          // Pulse focus on the targeted card or first card in targeted month section
+          const card = targetEl.classList.contains('gallery-item')
+            ? targetEl.querySelector('.card')
+            : targetEl.querySelector('.card');
+          if (card) {
+            card.classList.add('ring-2', 'ring-primary', 'shadow-xl', 'shadow-primary/20');
+            setTimeout(() => {
+              card.classList.remove('ring-2', 'ring-primary', 'shadow-xl', 'shadow-primary/20');
+            }, 1400);
           }
-        });
-
-        // Toggle empty notice
-        if (emptyNotice) {
-          if (visibleCount === 0) {
-            emptyNotice.classList.remove('hidden');
-          } else {
-            emptyNotice.classList.add('hidden');
-          }
-        }
-
-        // Update count badge
-        if (countBadge) {
-          countBadge.textContent = `${visibleCount} ${visibleCount === 1 ? 'frame' : 'frames'}`;
-        }
-
-        // Re-initialize lightbox with filtered subset
-        initLightbox();
-
-        // Refresh icons if needed
-        if (typeof feather !== 'undefined') {
-          feather.replace();
         }
       });
     });
+
+    // 3. Scroll Tracking: Highlight single active month
+    const monthBtns = document.querySelectorAll('.timeline-month-btn');
+    const mobileMonthBtns = document.querySelectorAll('.timeline-mobile-btn[data-month-slug]');
+    const monthSections = document.querySelectorAll('.gallery-month-section');
+
+    let ticking = false;
+    const updateTimelineOnScroll = () => {
+      const triggerOffset = 220;
+      let activeSection = null;
+
+      monthSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= triggerOffset) {
+          activeSection = section;
+        }
+      });
+
+      if (!activeSection && monthSections.length > 0) {
+        activeSection = monthSections[0];
+      }
+
+      if (activeSection) {
+        const activeSlug = activeSection.id.replace('month-', '');
+
+        // Update Desktop Timeline: ONLY ONE active green dot in the timeline
+        monthBtns.forEach((btn) => {
+          const slug = btn.getAttribute('data-month-slug');
+          const dot = btn.querySelector('.timeline-dot');
+          if (slug === activeSlug) {
+            btn.classList.add('is-active');
+            if (dot) {
+              dot.classList.remove('bg-base-content/30');
+              dot.classList.add('bg-primary', 'scale-125', 'shadow-[0_0_10px_#10b981]');
+            }
+          } else {
+            btn.classList.remove('is-active');
+            if (dot) {
+              dot.classList.remove('bg-primary', 'scale-125', 'shadow-[0_0_10px_#10b981]');
+              dot.classList.add('bg-base-content/30');
+            }
+          }
+        });
+
+        // Update Mobile Timeline Active Button
+        mobileMonthBtns.forEach((btn) => {
+          const slug = btn.getAttribute('data-month-slug');
+          const dot = btn.querySelector('.timeline-dot');
+          if (slug === activeSlug) {
+            btn.classList.add('border-primary', 'bg-primary/20', 'text-white', 'font-medium');
+            btn.classList.remove('border-base-300/60', 'bg-base-200/60', 'text-base-content/70');
+            if (dot) {
+              dot.classList.remove('bg-base-content/40');
+              dot.classList.add('bg-primary');
+            }
+          } else {
+            btn.classList.remove('border-primary', 'bg-primary/20', 'text-white', 'font-medium');
+            btn.classList.add('border-base-300/60', 'bg-base-200/60', 'text-base-content/70');
+            if (dot) {
+              dot.classList.remove('bg-primary');
+              dot.classList.add('bg-base-content/40');
+            }
+          }
+        });
+      }
+
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateTimelineOnScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Initial positioning
+    updateTimelineOnScroll();
   });
 </script>
-
