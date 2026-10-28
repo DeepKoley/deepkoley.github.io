@@ -1,7 +1,14 @@
 {
-  "site": {
-    "name": "Deep Koley",
-    "url": "https://deepkoley.dev",
-    "description": "Full-Stack Developer & Designer"
-  }
+  "name": "Deep Koley",
+  "firstName": "Deep",
+  "lastName": "Koley",
+  "title": "Senior Full-Stack Developer & Architect",
+  "url": "https://deepkoley.dev",
+  "description": "Full-Stack Developer & Designer specializing in scalable web systems, modern UI architectures, and performance engineering.",
+  "email": "hello@deepkoley.dev",
+  "location": "Kolkata, India",
+  "status": "Available for freelance & contracts",
+  "github": "https://github.com",
+  "linkedin": "https://linkedin.com",
+  "twitter": "https://twitter.com"
 }

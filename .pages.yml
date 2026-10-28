@@ -6,7 +6,9 @@ media:
   output: /assets/img
 
 content:
-  # Blog Posts
+  # ─────────────────────────────────────────────────────────────────
+  # Blog Posts Collection
+  # ─────────────────────────────────────────────────────────────────
   - name: posts
     label: Blog Posts
     type: collection
@@ -30,14 +32,11 @@ content:
         type: text
         required: true
       - name: readTime
-        label: Reading Time
+        label: Reading Time (e.g. 5 min read)
         type: string
       - name: image
-        label: Featured Image
+        label: Cover Image
         type: image
-      - name: imageCaption
-        label: Image Caption
-        type: string
       - name: tags
         label: Tags
         type: string
@@ -46,7 +45,9 @@ content:
         label: Post Content
         type: rich-text
 
-  # Projects Portfolio
+  # ─────────────────────────────────────────────────────────────────
+  # Projects Portfolio Collection
+  # ─────────────────────────────────────────────────────────────────
   - name: projects
     label: Projects
     type: collection
@@ -64,13 +65,13 @@ content:
         type: text
         required: true
       - name: category
-        label: Category
+        label: Category (e.g. Full-Stack, AI / Agentic)
         type: string
       - name: year
-        label: Year
+        label: Year (e.g. 2026)
         type: string
       - name: status
-        label: Status
+        label: Status (e.g. Live Production, Open Source)
         type: string
       - name: role
         label: Role
@@ -87,39 +88,266 @@ content:
       - name: image
         label: Preview Image
         type: image
-      - name: imageCaption
-        label: Image Caption
-        type: string
       - name: tags
         label: Technologies / Tags
         type: string
         list: true
       - name: body
-        label: Project Details / Case Study
+        label: Case Study / Content
         type: rich-text
 
-  # Global Site Configuration
+  # ─────────────────────────────────────────────────────────────────
+  # Global Site & Author Settings
+  # ─────────────────────────────────────────────────────────────────
   - name: site-settings
-    label: Site Settings
+    label: Global Site & Author Info
     type: file
     path: src/_data/site.json
     fields:
-      - name: site
-        label: Site Information
+      - name: name
+        label: Full Name
+        type: string
+        required: true
+      - name: firstName
+        label: First Name
+        type: string
+      - name: lastName
+        label: Last Name
+        type: string
+      - name: title
+        label: Professional Title
+        type: string
+        required: true
+      - name: url
+        label: Website URL
+        type: string
+        required: true
+      - name: description
+        label: Site Meta Description
+        type: text
+        required: true
+      - name: email
+        label: Contact Email
+        type: string
+      - name: location
+        label: Location
+        type: string
+      - name: status
+        label: Availability Status
+        type: string
+      - name: github
+        label: GitHub URL
+        type: string
+      - name: linkedin
+        label: LinkedIn URL
+        type: string
+      - name: twitter
+        label: Twitter / X URL
+        type: string
+
+  # ─────────────────────────────────────────────────────────────────
+  # Homepage Settings
+  # ─────────────────────────────────────────────────────────────────
+  - name: home-settings
+    label: Homepage Content
+    type: file
+    path: src/_data/home.json
+    fields:
+      - name: heroGreeting
+        label: Hero Greeting (e.g. Hi, I'm)
+        type: string
+      - name: heroTagline
+        label: Hero Tagline
+        type: text
+      - name: heroAvatar
+        label: Avatar Image URL
+        type: string
+      - name: marqueeTitle
+        label: Marquee Section Title
+        type: string
+      - name: marquee
+        label: Marquee Tech List
+        type: string
+        list: true
+      - name: skillsSectionBadge
+        label: Skills Section Badge
+        type: string
+      - name: skillsSectionTitle
+        label: Skills Section Title
+        type: string
+      - name: skillsSectionDescription
+        label: Skills Section Description
+        type: text
+      - name: skillCategories
+        label: Skill Categories
         type: object
+        list: true
         fields:
-          - name: name
-            label: Author / Site Name
+          - name: title
+            label: Category Title
             type: string
-            required: true
-          - name: url
-            label: Site URL
+          - name: icon
+            label: Feather Icon Name (e.g. layout, server, database)
             type: string
-            required: true
+          - name: badgeColor
+            label: Badge Color (primary, secondary, accent)
+            type: string
           - name: description
-            label: Description
+            label: Category Description
             type: text
-            required: true
+          - name: skills
+            label: Skill Badges
+            type: string
+            list: true
+
+  # ─────────────────────────────────────────────────────────────────
+  # About Page Content
+  # ─────────────────────────────────────────────────────────────────
+  - name: about-settings
+    label: About Page Content
+    type: file
+    path: src/_data/about.json
+    fields:
+      - name: pageBadge
+        label: Header Badge (e.g. about.me)
+        type: string
+      - name: pageTitle
+        label: Page Title
+        type: string
+      - name: pageDescription
+        label: Page Description
+        type: text
+      - name: experienceYears
+        label: Experience Badge (e.g. 5+ Years)
+        type: string
+      - name: coreFocus
+        label: Core Focus Label
+        type: string
+      - name: storyParagraphs
+        label: Story Paragraphs
+        type: text
+        list: true
+      - name: principles
+        label: Guiding Principles
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Principle Title
+            type: string
+          - name: description
+            label: Principle Description
+            type: text
+      - name: currentFocus
+        label: Current Focus List
+        type: object
+        list: true
+        fields:
+          - name: status
+            label: Status Color (success, info, primary)
+            type: string
+          - name: text
+            label: Focus Item Text
+            type: string
+      - name: toolkit
+        label: Technical Toolkit
+        type: object
+        list: true
+        fields:
+          - name: category
+            label: Category Name
+            type: string
+          - name: icon
+            label: Feather Icon Name
+            type: string
+          - name: badgeColor
+            label: Badge Color (primary, secondary, accent)
+            type: string
+          - name: description
+            label: Category Description
+            type: text
+          - name: skills
+            label: Skills
+            type: string
+            list: true
+
+  # ─────────────────────────────────────────────────────────────────
+  # Resume Content
+  # ─────────────────────────────────────────────────────────────────
+  - name: resume-settings
+    label: Resume Content
+    type: file
+    path: src/_data/resume.json
+    fields:
+      - name: title
+        label: Resume Professional Title
+        type: string
+      - name: summary
+        label: Executive Summary
+        type: text
+      - name: experience
+        label: Work Experience
+        type: object
+        list: true
+        fields:
+          - name: role
+            label: Job Role
+            type: string
+          - name: company
+            label: Company Name
+            type: string
+          - name: period
+            label: Employment Period (e.g. 2023 — Present)
+            type: string
+          - name: location
+            label: Location
+            type: string
+          - name: subtitle
+            label: Company Subtitle / Domain
+            type: string
+          - name: isCurrent
+            label: Is Current Role?
+            type: boolean
+          - name: highlights
+            label: Key Achievements
+            type: string
+            list: true
+          - name: skills
+            label: Technologies Used
+            type: string
+            list: true
+      - name: competencies
+        label: Competency Groups
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Group Title
+            type: string
+          - name: subtitle
+            label: Subtitle
+            type: string
+          - name: color
+            label: Accent Color (primary, secondary, accent)
+            type: string
+          - name: skills
+            label: Skills
+            type: string
+            list: true
+      - name: education
+        label: Education
+        type: object
+        list: true
+        fields:
+          - name: degree
+            label: Degree
+            type: string
+          - name: institution
+            label: School / University
+            type: string
+          - name: period
+            label: Period (e.g. 2015 — 2019)
+            type: string
 
 # Actions accessible from Pages CMS UI
 actions:

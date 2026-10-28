@@ -3,7 +3,6 @@ layout: base.njk
 title: "About — Deep Koley"
 description: "Learn more about Deep Koley, engineering philosophy, background, and approach to crafting modern software."
 eleventyExcludeFromCollections: true
-
 ---
 
 <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-16">
@@ -19,14 +18,13 @@ eleventyExcludeFromCollections: true
   <header class="mb-14">
     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-200 border border-base-300 font-mono text-xs mb-3 shadow-xs">
       <i data-feather="user" class="w-3.5 h-3.5 text-primary"></i>
-      <span>about.me</span>
+      <span>{{ about.pageBadge | default('about.me') }}</span>
     </div>
     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-headline tracking-tight mb-4 leading-tight">
-      Engineering Resilient Systems &amp; Expressive Interfaces
+      {{ about.pageTitle | default('Engineering Resilient Systems & Expressive Interfaces') }}
     </h1>
     <p class="text-lg text-base-content/70 leading-relaxed max-w-3xl">
-      A comprehensive look into my journey, core technical convictions, and the
-      craft behind building modern digital experiences.
+      {{ about.pageDescription | default('A comprehensive look into my journey, core technical convictions, and the craft behind building modern digital experiences.') }}
     </p>
   </header>
 
@@ -37,42 +35,39 @@ eleventyExcludeFromCollections: true
       <div class="card bg-base-200 card-border shadow-xl overflow-hidden">
         <div class="p-6 text-center border-b border-base-300 flex flex-col items-center">
           <div class="avatar mb-4">
-            <div class="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-4 shadow-xl">
+            <div class="w-32 rounded-full ring-2 ring-primary/40 ring-offset-base-100 ring-offset-4 shadow-xl">
               <img
-                src="https://picsum.photos/seed/deepkoley/400/400"
-                alt="Deep Koley"
+                src="{{ home.heroAvatar | default('https://picsum.photos/seed/deepkoley/400/400') }}"
+                alt="{{ site.name }}"
               />
             </div>
           </div>
-          <h2 class="text-2xl font-headline">Deep Koley</h2>
+          <h2 class="text-2xl font-headline">{{ site.name }}</h2>
           <p class="text-sm font-mono text-primary font-medium mt-1">
-            Full-Stack Developer
+            {{ site.title }}
           </p>
           <div class="flex items-center gap-2 mt-3 px-3 py-1 rounded-full bg-base-300/60 font-mono text-xs">
             <span class="status status-success status-xs"></span>
-            <span class="text-base-content/80"
-            >Available for Contract &amp; Full-Time</span>
+            <span class="text-base-content/80">{{ site.status }}</span>
           </div>
         </div>
 
         <div class="p-6 space-y-3 font-mono text-xs">
           <div class="flex items-center justify-between py-1 border-b border-base-300/50">
             <span class="text-base-content/60">Location</span>
-            <span class="font-medium text-base-content">Kolkata, India</span>
+            <span class="font-medium text-base-content">{{ site.location }}</span>
           </div>
           <div class="flex items-center justify-between py-1 border-b border-base-300/50">
             <span class="text-base-content/60">Experience</span>
-            <span class="font-medium text-base-content">5+ Years</span>
+            <span class="font-medium text-base-content">{{ about.experienceYears | default('5+ Years') }}</span>
           </div>
           <div class="flex items-center justify-between py-1 border-b border-base-300/50">
             <span class="text-base-content/60">Core Focus</span>
-            <span class="font-medium text-base-content text-right"
-            >Web Architectures &amp; UI</span>
+            <span class="font-medium text-base-content text-right">{{ about.coreFocus | default('Web Architectures & UI') }}</span>
           </div>
           <div class="flex items-center justify-between py-1">
             <span class="text-base-content/60">Email</span>
-            <a href="mailto:hello@deepkoley.dev" class="link link-primary"
-            >hello@deepkoley.dev</a>
+            <a href="mailto:{{ site.email }}" class="link link-primary">{{ site.email }}</a>
           </div>
         </div>
 
@@ -91,30 +86,12 @@ eleventyExcludeFromCollections: true
           Guiding Principles
         </h3>
         <ul class="space-y-3 text-sm text-base-content/75">
-          <li class="flex items-start gap-2">
-            <i
-              data-feather="check-circle"
-              class="w-4 h-4 text-primary shrink-0 mt-0.5"
-            ></i>
-            <span><strong>Performance First:</strong> Fast load times and 60fps
-              animations are fundamental to user respect.</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <i
-              data-feather="check-circle"
-              class="w-4 h-4 text-primary shrink-0 mt-0.5"
-            ></i>
-            <span><strong>Systemic Cleanliness:</strong> Code should be easy to
-              delete, refactor, and reason about without surprises.</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <i
-              data-feather="check-circle"
-              class="w-4 h-4 text-primary shrink-0 mt-0.5"
-            ></i>
-            <span><strong>End-to-End Craft:</strong> From database indexes to
-              button hover micro-interactions, every detail matters.</span>
-          </li>
+          {% for p in about.principles %}
+            <li class="flex items-start gap-2">
+              <i data-feather="check-circle" class="w-4 h-4 text-primary shrink-0 mt-0.5"></i>
+              <span><strong>{{ p.title }}:</strong> {{ p.description }}</span>
+            </li>
+          {% endfor %}
         </ul>
       </div>
     </div>
@@ -127,25 +104,9 @@ eleventyExcludeFromCollections: true
           Background &amp; Story
         </h2>
         <div class="space-y-4 text-base text-base-content/80 leading-relaxed">
-          <p>
-            I am a full-stack engineer and designer with a deep fascination for
-            building high-speed, intuitive web experiences. Over the past
-            several years, I have worked across the entire technology
-            stack—from low-latency backend APIs and relational database
-            architectures to modern reactive frontend applications and component
-            design systems.
-          </p>
-          <p>
-            My approach pairs strict software engineering discipline with fine
-            design intuition. I believe that extraordinary software isn't just
-            reliable and maintainable behind the scenes; it must also
-            communicate clearly, feel tactile, and respect the user's attention.
-          </p>
-          <p>
-            When I'm not writing production code or profiling web performance, I
-            explore autonomous agent workflows, open-source utilities, and write
-            technical articles sharing insights with the developer community.
-          </p>
+          {% for para in about.storyParagraphs %}
+            <p>{{ para }}</p>
+          {% endfor %}
         </div>
       </section>
 
@@ -155,96 +116,22 @@ eleventyExcludeFromCollections: true
           Technical Toolkit
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-4 rounded-xl bg-base-100 border border-base-300">
-            <div class="flex items-center gap-2 mb-2 text-primary font-mono text-xs uppercase tracking-wider font-semibold">
-              <i data-feather="layout" class="w-4 h-4"></i>
-              Frontend &amp; UI
+          {% for tool in about.toolkit %}
+            <div class="p-4 rounded-xl bg-base-100 border border-base-300">
+              <div class="flex items-center gap-2 mb-2 text-{{ tool.badgeColor | default('primary') }} font-mono text-xs uppercase tracking-wider font-semibold">
+                <i data-feather="{{ tool.icon | default('layout') }}" class="w-4 h-4"></i>
+                {{ tool.category }}
+              </div>
+              <p class="text-sm text-base-content/70 mb-3">
+                {{ tool.description }}
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                {% for skill in tool.skills %}
+                  <span class="badge badge-neutral font-mono text-xs border border-base-300/60">{{ skill }}</span>
+                {% endfor %}
+              </div>
             </div>
-            <p class="text-sm text-base-content/70 mb-3">
-              Crafting fluid, accessible user interfaces with semantic HTML, CSS
-              architectures, and reactive frameworks.
-            </p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="badge badge-sm badge-soft badge-primary">React</span>
-              <span class="badge badge-sm badge-soft badge-primary"
-              >Next.js</span>
-              <span class="badge badge-sm badge-soft badge-primary"
-              >TypeScript</span>
-              <span class="badge badge-sm badge-soft badge-primary"
-              >Tailwind CSS</span>
-              <span class="badge badge-sm badge-soft badge-primary"
-              >daisyUI</span>
-              <span class="badge badge-sm badge-soft badge-primary"
-              >Eleventy (11ty)</span>
-            </div>
-          </div>
-
-          <div class="p-4 rounded-xl bg-base-100 border border-base-300">
-            <div class="flex items-center gap-2 mb-2 text-secondary font-mono text-xs uppercase tracking-wider font-semibold">
-              <i data-feather="server" class="w-4 h-4"></i>
-              Backend &amp; APIs
-            </div>
-            <p class="text-sm text-base-content/70 mb-3">
-              Architecting secure RESTful &amp; GraphQL endpoints, distributed
-              workers, and real-time socket connections.
-            </p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="badge badge-sm badge-soft badge-secondary"
-              >Node.js</span>
-              <span class="badge badge-sm badge-soft badge-secondary"
-              >Express</span>
-              <span class="badge badge-sm badge-soft badge-secondary"
-              >Python</span>
-              <span class="badge badge-sm badge-soft badge-secondary"
-              >FastAPI</span>
-              <span class="badge badge-sm badge-soft badge-secondary"
-              >WebSockets</span>
-              <span class="badge badge-sm badge-soft badge-secondary"
-              >REST / GraphQL</span>
-            </div>
-          </div>
-
-          <div class="p-4 rounded-xl bg-base-100 border border-base-300">
-            <div class="flex items-center gap-2 mb-2 text-accent font-mono text-xs uppercase tracking-wider font-semibold">
-              <i data-feather="database" class="w-4 h-4"></i>
-              Databases &amp; Caching
-            </div>
-            <p class="text-sm text-base-content/70 mb-3">
-              Relational schemas, NoSQL document stores, query optimization, and
-              fast memory caching.
-            </p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="badge badge-sm badge-soft badge-accent"
-              >PostgreSQL</span>
-              <span class="badge badge-sm badge-soft badge-accent">Redis</span>
-              <span class="badge badge-sm badge-soft badge-accent"
-              >MongoDB</span>
-              <span class="badge badge-sm badge-soft badge-accent">Prisma</span>
-              <span class="badge badge-sm badge-soft badge-accent"
-              >Firebase</span>
-            </div>
-          </div>
-
-          <div class="p-4 rounded-xl bg-base-100 border border-base-300">
-            <div class="flex items-center gap-2 mb-2 text-primary font-mono text-xs uppercase tracking-wider font-semibold">
-              <i data-feather="cloud" class="w-4 h-4"></i>
-              DevOps &amp; Tooling
-            </div>
-            <p class="text-sm text-base-content/70 mb-3">
-              Reproducible deployments, CI/CD pipelines, containerization, and
-              automated code review workflows.
-            </p>
-            <div class="flex flex-wrap gap-1.5">
-              <span class="badge badge-sm badge-soft badge-primary"
-              >Docker</span>
-              <span class="badge badge-sm badge-soft badge-primary"
-              >GitHub Actions</span>
-              <span class="badge badge-sm badge-soft badge-primary">AWS</span>
-              <span class="badge badge-sm badge-soft badge-primary"
-              >Vercel</span>
-              <span class="badge badge-sm badge-soft badge-primary">Linux</span>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </section>
 
@@ -254,18 +141,12 @@ eleventyExcludeFromCollections: true
           Current Focus
         </h2>
         <ul class="space-y-3 font-mono text-sm text-base-content/80">
-          <li class="flex items-center gap-2">
-            <span class="status status-success status-xs"></span>
-            Building autonomous developer tooling and agentic workflows.
-          </li>
-          <li class="flex items-center gap-2">
-            <span class="status status-info status-xs"></span>
-            Writing deep dives on state management and CSS token architectures.
-          </li>
-          <li class="flex items-center gap-2">
-            <span class="status status-primary status-xs"></span>
-            Open to contract opportunities and high-impact full-stack roles.
-          </li>
+          {% for item in about.currentFocus %}
+            <li class="flex items-center gap-2">
+              <span class="status status-{{ item.status | default('success') }} status-xs"></span>
+              {{ item.text }}
+            </li>
+          {% endfor %}
         </ul>
       </section>
     </div>

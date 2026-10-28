@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="{{ description | default('Deep Koley — Full-Stack Developer & Designer') }}"
+      content="{{ description | default(site.description) }}"
     />
     <title>
-      {{ title | default('Deep Koley') }}{% if pagination.pageNumber > 0 %}
+      {{ title | default(site.name ~ ' — ' ~ site.title) }}{% if pagination.pageNumber > 0 %}
         — Page {{ pagination.pageNumber + 1 }}{% endif %}
     </title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -70,7 +70,7 @@
             </ul>
           </div>
           <a href="/" class="btn btn-ghost text-xl font-bold tracking-tight">
-            Deep <span class="text-primary">Koley</span>
+            {{ site.firstName }} <span class="text-primary">{{ site.lastName }}</span>
           </a>
         </div>
         <div class="navbar-end hidden lg:flex">
@@ -104,7 +104,7 @@
           <div class="grid grid-flow-col gap-4">
             <!-- GitHub -->
             <a
-              href="https://github.com"
+              href="{{ site.github }}"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -116,7 +116,7 @@
             </a>
             <!-- LinkedIn -->
             <a
-              href="https://linkedin.com"
+              href="{{ site.linkedin }}"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -128,7 +128,7 @@
             </a>
             <!-- Twitter/X -->
             <a
-              href="https://twitter.com"
+              href="{{ site.twitter }}"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Twitter"
@@ -141,8 +141,8 @@
           </div>
         </nav>
         <aside class="text-center">
-          <p class="text-xs text-base-content/60">
-            © 2026 Deep Koley. Built with Eleventy &amp; daisyUI.
+          <p class="text-xs text-base-content/60 font-mono">
+            &copy; {{ site.name }}. Built with Eleventy &amp; daisyUI.
           </p>
         </aside>
       </div>

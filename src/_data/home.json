@@ -1,0 +1,50 @@
+{
+  "heroGreeting": "Hi, I'm",
+  "heroTagline": "A passionate Full-Stack Developer specializing in modern web technologies, scalable cloud architectures, and clean design systems.",
+  "heroAvatar": "https://picsum.photos/seed/deepkoley/400/400",
+  "marqueeTitle": "Core Programming & Frameworks",
+  "marquee": [
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "Tailwind CSS",
+    "daisyUI",
+    "Docker",
+    "Redis",
+    "GraphQL",
+    "MongoDB",
+    "Eleventy",
+    "AWS",
+    "JavaScript ES6+"
+  ],
+  "skillsSectionBadge": "Specialized Tech Stack",
+  "skillsSectionTitle": "Skills & Technologies",
+  "skillsSectionDescription": "A curated set of tools I use to build modern, scalable applications.",
+  "skillCategories": [
+    {
+      "title": "Frontend",
+      "icon": "layout",
+      "badgeColor": "primary",
+      "description": "Building interactive, accessible interfaces.",
+      "skills": ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS", "daisyUI", "Next.js"]
+    },
+    {
+      "title": "Backend",
+      "icon": "server",
+      "badgeColor": "secondary",
+      "description": "Designing reliable APIs and server-side logic.",
+      "skills": ["Node.js", "Python", "Express", "FastAPI", "REST APIs", "GraphQL", "WebSockets"]
+    },
+    {
+      "title": "Database & Cloud",
+      "icon": "database",
+      "badgeColor": "accent",
+      "description": "Managing data and deploying at scale.",
+      "skills": ["PostgreSQL", "MongoDB", "Redis", "Firebase", "Docker", "AWS", "GitHub Actions"]
+    }
+  ]
+}

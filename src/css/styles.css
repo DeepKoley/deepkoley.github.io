@@ -6,40 +6,40 @@
   --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* ── Dark Theme (Exclusive Portfolio Theme) ─────────────────────────── */
+/* ── Dark Theme (Exclusive Modern Obsidian Theme) ────────────────────── */
 @plugin "daisyui/theme" {
   name: "dark";
   default: true;
   prefersdark: true;
   color-scheme: dark;
 
-  /* Base — deep forest green surfaces, #E6FFCC text */
-  --color-base-100: #071507;
-  --color-base-200: #0f240f;
-  --color-base-300: #1b381b;
-  --color-base-content: #e6ffcc;
+  /* Base — Deep obsidian surfaces, crisp neutral text (zero green tint) */
+  --color-base-100: #0a0b10;
+  --color-base-200: #12141c;
+  --color-base-300: #1e2230;
+  --color-base-content: #f3f4f8;
 
-  /* Primary — #A3E635 lime */
-  --color-primary: #a3e635;
-  --color-primary-content: #001f00;
+  /* Primary — Crisp emerald highlight */
+  --color-primary: #10b981;
+  --color-primary-content: #ffffff;
 
-  /* Secondary */
-  --color-secondary: #4ade80;
-  --color-secondary-content: #001f00;
+  /* Secondary — Tech sky blue */
+  --color-secondary: #38bdf8;
+  --color-secondary-content: #082f49;
 
-  /* Accent — #A3E635 lime */
-  --color-accent: #a3e635;
-  --color-accent-content: #001f00;
+  /* Accent — Modern indigo */
+  --color-accent: #818cf8;
+  --color-accent-content: #1e1b4b;
 
   /* Neutral */
-  --color-neutral: #142a14;
-  --color-neutral-content: #e6ffcc;
+  --color-neutral: #171924;
+  --color-neutral-content: #e2e5ef;
 
   /* Status */
   --color-info: #38bdf8;
   --color-info-content: #082f49;
-  --color-success: #4ade80;
-  --color-success-content: #052e16;
+  --color-success: #10b981;
+  --color-success-content: #022014;
   --color-warning: #facc15;
   --color-warning-content: #422006;
   --color-error: #f87171;
@@ -57,18 +57,18 @@
 
 :root {
   color-scheme: dark;
-  --color-base-100: #071507;
-  --color-base-200: #0f240f;
-  --color-base-300: #1b381b;
-  --color-base-content: #e6ffcc;
-  --color-primary: #a3e635;
-  --color-primary-content: #001f00;
-  --color-secondary: #4ade80;
-  --color-secondary-content: #001f00;
-  --color-accent: #a3e635;
-  --color-accent-content: #001f00;
-  --color-neutral: #142a14;
-  --color-neutral-content: #e6ffcc;
+  --color-base-100: #0a0b10;
+  --color-base-200: #12141c;
+  --color-base-300: #1e2230;
+  --color-base-content: #f3f4f8;
+  --color-primary: #10b981;
+  --color-primary-content: #ffffff;
+  --color-secondary: #38bdf8;
+  --color-secondary-content: #082f49;
+  --color-accent: #818cf8;
+  --color-accent-content: #1e1b4b;
+  --color-neutral: #171924;
+  --color-neutral-content: #e2e5ef;
 }
 
 /* ── Global ──────────────────────────────────────────────────────────── */
@@ -150,10 +150,10 @@ pre[class*="language-"] {
   margin: 1.5rem 0;
   overflow: auto;
   border-radius: 0.875rem;
-  border: 1px solid #1b381b;
-  background-color: #050e05;
-  color: #e6ffcc;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  border: 1px solid #1e2230;
+  background-color: #0d0f15;
+  color: #f3f4f8;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 :not(pre)>code[class*="language-"],
@@ -161,9 +161,9 @@ pre[class*="language-"] {
   font-family: 'Geist Mono', monospace;
   padding: 0.2rem 0.45rem;
   border-radius: 0.375rem;
-  background-color: #0f240f;
-  border: 1px solid #1b381b;
-  color: #a3e635;
+  background-color: #141622;
+  border: 1px solid #242738;
+  color: #38bdf8;
   font-size: 0.875em;
 }
 
@@ -172,12 +172,12 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #627d5e;
+  color: #64748b;
   font-style: italic;
 }
 
 .token.punctuation {
-  color: #8fae89;
+  color: #94a3b8;
 }
 
 .token.property,
@@ -186,7 +186,7 @@ pre[class*="language-"] {
 .token.number,
 .token.constant,
 .token.symbol {
-  color: #bef264;
+  color: #38bdf8;
   font-weight: 500;
 }
 
@@ -196,7 +196,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #86efac;
+  color: #34d399;
 }
 
 .token.operator,
@@ -204,19 +204,19 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #a3e635;
+  color: #a78bfa;
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: #a3e635;
+  color: #f472b6;
   font-weight: 600;
 }
 
 .token.function,
 .token.class-name {
-  color: #4ade80;
+  color: #60a5fa;
   font-weight: 600;
 }
 
@@ -230,7 +230,7 @@ pre[class*="language-"] {
 .typed-cursor {
   opacity: 1;
   animation: typedjsBlink 0.7s infinite;
-  color: var(--color-primary, #a3e635);
+  color: var(--color-primary, #10b981);
   font-weight: 300;
   margin-left: 2px;
 }
@@ -245,28 +245,28 @@ pre[class*="language-"] {
 .portfolio-section {
   width: 100%;
   position: relative;
-  border-top: 1px solid rgba(163, 230, 53, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .portfolio-section-1 {
   border-top: none;
-  background-color: #071507;
+  background-color: transparent;
 }
 
 .portfolio-section-2 {
-  background-color: #0c1c0c;
+  background-color: rgba(18, 20, 28, 0.5);
 }
 
 .portfolio-section-3 {
-  background-color: #071507;
+  background-color: transparent;
 }
 
 .portfolio-section-4 {
-  background-color: #0c1c0c;
+  background-color: rgba(18, 20, 28, 0.5);
 }
 
 .portfolio-section-5 {
-  background-color: #050e05;
+  background-color: transparent;
 }
 
 /* ── Infinite Marquee Animation ──────────────────────────────────────── */
@@ -305,4 +305,225 @@ pre[class*="language-"] {
 
 .marquee-track:hover {
   animation-play-state: paused;
+}
+
+/* ── Modern Tactile Hover & Micro-Interaction System ────────────────── */
+
+/* 1. Buttons — Tactile Lift & Snappy Feedback */
+.btn {
+  border-radius: 0.625rem;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease;
+  will-change: transform;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0px) scale(0.97);
+  transition-duration: 0.1s;
+}
+
+.btn-primary {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 14px -2px rgba(16, 185, 129, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #059669;
+  border-color: #059669;
+  color: #ffffff;
+  box-shadow: 0 8px 24px -4px rgba(16, 185, 129, 0.45),
+              0 0 0 1px rgba(16, 185, 129, 0.6);
+}
+
+.btn-outline {
+  border-color: rgba(255, 255, 255, 0.16);
+  background-color: rgba(255, 255, 255, 0.02);
+  color: #f3f4f8;
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6);
+}
+
+.btn-ghost:hover {
+  transform: translateY(-1px);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Arrow icon slide on button/link hover */
+.btn:hover i[data-feather="arrow-right"],
+.btn:hover svg.feather-arrow-right,
+.link:hover i[data-feather="arrow-right"],
+.link:hover svg.feather-arrow-right {
+  transform: translateX(4px);
+}
+
+.btn i[data-feather="arrow-right"],
+.btn svg.feather-arrow-right,
+.link i[data-feather="arrow-right"],
+.link svg.feather-arrow-right {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+}
+
+/* 2. Interactive Cards — Sleek Obsidian Glassmorphic Architecture */
+.card {
+  position: relative;
+  border-radius: 1.125rem;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+.card.card-border,
+.card.border {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.005) 100%), #11131a;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
+              0 4px 24px -2px rgba(0, 0, 0, 0.5);
+}
+
+.card.bg-base-100 {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.002) 100%), #0a0b10;
+}
+
+.card.bg-base-200 {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.008) 100%), #11131a;
+}
+
+/* Card Top Specular Light Highlight */
+.card.card-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.22) 50%, transparent 100%);
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.card.card-border:hover::before {
+  opacity: 1;
+}
+
+/* Card Hover State — Crisp Specular Elevation & Deep Shadow (Zero Lime Green) */
+.card.card-border:hover,
+.card.border:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.22),
+              0 24px 48px -12px rgba(0, 0, 0, 0.85),
+              0 0 30px -5px rgba(255, 255, 255, 0.03);
+}
+
+/* 3. Technology Chips & Badges */
+.marquee-track span {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              background-color 0.2s ease;
+  will-change: transform;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(18, 20, 28, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.marquee-track span:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.6),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  background-color: #1a1d28;
+}
+
+.badge {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.badge:hover {
+  transform: translateY(-1px) scale(1.03);
+}
+
+/* 4. Navbar Menu Links — Underline Glow */
+.navbar .menu a {
+  position: relative;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.navbar .menu a:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.navbar .menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 9999px;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar .menu a:hover::after {
+  width: 60%;
+  left: 20%;
+}
+
+/* 5. Avatar — Soft Ambient Glow on Hover */
+.avatar .rounded-full {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.avatar:hover .rounded-full {
+  transform: scale(1.03);
+  box-shadow: 0 0 40px -5px rgba(16, 185, 129, 0.25),
+              0 25px 45px rgba(0, 0, 0, 0.7);
+}
+
+/* 6. Footer Social Icons — Pop & Glow */
+footer a svg {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.3s ease,
+              color 0.2s ease;
+}
+
+footer a:hover svg {
+  transform: translateY(-3px) scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4));
+  color: #ffffff;
+}
+
+/* 7. Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

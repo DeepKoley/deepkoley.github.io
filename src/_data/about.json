@@ -1,0 +1,70 @@
+{
+  "pageBadge": "about.me",
+  "pageTitle": "Engineering Resilient Systems & Expressive Interfaces",
+  "pageDescription": "A comprehensive look into my journey, core technical convictions, and the craft behind building modern digital experiences.",
+  "experienceYears": "5+ Years",
+  "coreFocus": "Web Architectures & UI",
+  "principles": [
+    {
+      "title": "Performance First",
+      "description": "Fast load times and 60fps animations are fundamental to user respect."
+    },
+    {
+      "title": "Systemic Cleanliness",
+      "description": "Code should be easy to delete, refactor, and reason about without surprises."
+    },
+    {
+      "title": "End-to-End Craft",
+      "description": "From database indexes to button hover micro-interactions, every detail matters."
+    }
+  ],
+  "storyParagraphs": [
+    "I am a full-stack engineer and designer with a deep fascination for building high-speed, intuitive web experiences. Over the past several years, I have worked across the entire technology stack—from low-latency backend APIs and relational database architectures to modern reactive frontend applications and component design systems.",
+    "My approach pairs strict software engineering discipline with fine design intuition. I believe that extraordinary software isn't just reliable and maintainable behind the scenes; it must also communicate clearly, feel tactile, and respect the user's attention.",
+    "When I'm not writing production code or profiling web performance, I explore autonomous agent workflows, open-source utilities, and write technical articles sharing insights with the developer community."
+  ],
+  "toolkit": [
+    {
+      "category": "Frontend & UI",
+      "icon": "layout",
+      "badgeColor": "primary",
+      "description": "Crafting fluid, accessible user interfaces with semantic HTML, CSS architectures, and reactive frameworks.",
+      "skills": ["React", "Next.js", "TypeScript", "Tailwind CSS", "daisyUI", "Eleventy (11ty)"]
+    },
+    {
+      "category": "Backend & APIs",
+      "icon": "server",
+      "badgeColor": "secondary",
+      "description": "Architecting secure RESTful & GraphQL endpoints, distributed workers, and real-time socket connections.",
+      "skills": ["Node.js", "Express", "Python", "FastAPI", "WebSockets", "REST / GraphQL"]
+    },
+    {
+      "category": "Databases & Caching",
+      "icon": "database",
+      "badgeColor": "accent",
+      "description": "Relational schemas, NoSQL document stores, query optimization, and fast memory caching.",
+      "skills": ["PostgreSQL", "Redis", "MongoDB", "Prisma", "Firebase"]
+    },
+    {
+      "category": "DevOps & Tooling",
+      "icon": "cloud",
+      "badgeColor": "primary",
+      "description": "Reproducible deployments, CI/CD pipelines, containerization, and automated code review workflows.",
+      "skills": ["Docker", "GitHub Actions", "AWS", "Vercel", "Linux"]
+    }
+  ],
+  "currentFocus": [
+    {
+      "status": "success",
+      "text": "Building autonomous developer tooling and agentic workflows."
+    },
+    {
+      "status": "info",
+      "text": "Writing deep dives on state management and CSS token architectures."
+    },
+    {
+      "status": "primary",
+      "text": "Open to contract opportunities and high-impact full-stack roles."
+    }
+  ]
+}

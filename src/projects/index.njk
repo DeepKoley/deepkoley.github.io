@@ -2,14 +2,8 @@
 layout: base.njk
 title: "Projects — Deep Koley"
 description: "Explore selected full-stack web applications, open source tools, and digital experiences engineered by Deep Koley."
-pagination:
-  data: collections.projects
-  size: 2
-  alias: projects
-  reverse: true
-permalink: "projects/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
+permalink: "projects/index.html"
 eleventyExcludeFromCollections: true
-
 ---
 
 <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-16">
@@ -36,34 +30,36 @@ eleventyExcludeFromCollections: true
 
   <!-- Projects Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    {% for project in projects %}
-      <article class="card bg-base-200 card-border overflow-hidden hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+    {% for project in collections.projects | reverse %}
+      <article class="card bg-base-200 card-border overflow-hidden flex flex-col justify-between group">
         <div>
           <!-- Project Image -->
-          <a
-            href="{{ project.url }}"
-            class="block overflow-hidden aspect-video bg-base-300 relative group"
-          >
-            <img
-              src="{{ project.data.image }}"
-              alt="{{ project.data.title }}"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              loading="lazy"
-            />
-            {% if project.data.status %}
-              <span
-                class="absolute top-4 right-4 badge badge-success badge-soft font-mono text-xs shadow-md"
-              >
-                {{ project.data.status }}
-              </span>
-            {% endif %}
-          </a>
+          {% if project.data.image %}
+            <a
+              href="{{ project.url }}"
+              class="block overflow-hidden aspect-video bg-base-300 relative"
+            >
+              <img
+                src="{{ project.data.image }}"
+                alt="{{ project.data.title }}"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              {% if project.data.status %}
+                <span
+                  class="absolute top-4 right-4 badge badge-sm font-mono bg-base-100/80 backdrop-blur-md border border-white/10 text-emerald-400 shadow-md"
+                >
+                  {{ project.data.status }}
+                </span>
+              {% endif %}
+            </a>
+          {% endif %}
 
           <!-- Project Body -->
           <div class="card-body p-6 sm:p-8">
             <div class="flex items-center gap-2 mb-2">
               <span
-                class="text-xs font-mono text-primary uppercase tracking-wider font-semibold"
+                class="text-xs font-mono text-secondary uppercase tracking-wider font-semibold"
               >
                 {{ project.data.category | default('Full-Stack') }}
               </span>
@@ -72,7 +68,7 @@ eleventyExcludeFromCollections: true
                 }}</span>
             </div>
 
-            <h2 class="card-title text-2xl font-headline hover:text-primary transition-colors">
+            <h2 class="card-title text-2xl font-headline group-hover:text-primary transition-colors">
               <a href="{{ project.url }}">
                 {{ project.data.title }}
               </a>
@@ -86,7 +82,7 @@ eleventyExcludeFromCollections: true
             <div class="flex flex-wrap gap-1.5 mb-4">
               {% for tag in project.data.tags %}
                 {% if tag != "projects" %}
-                  <span class="badge badge-neutral badge-xs font-mono">{{
+                  <span class="badge badge-neutral badge-xs font-mono border border-base-300/60">{{
                     tag
                   }}</span>
                 {% endif %}
@@ -114,82 +110,21 @@ eleventyExcludeFromCollections: true
           {% endif %}
         </div>
       </article>
+    {% else %}
+      <div class="col-span-full card bg-base-200 card-border p-12 sm:p-16 text-center border-dashed border-base-300/80">
+        <div class="w-16 h-16 rounded-2xl bg-base-300/60 border border-base-300 flex items-center justify-center mx-auto mb-4 text-secondary">
+          <i data-feather="layers" class="w-8 h-8"></i>
+        </div>
+        <h3 class="font-headline text-2xl sm:text-3xl mb-2 text-base-content">No Projects Added Yet</h3>
+        <p class="text-sm sm:text-base text-base-content/70 max-w-md mx-auto mb-6">
+          Case studies, open-source repositories, and web apps will appear here once added to <code class="font-mono text-cyan-400 text-xs bg-base-300/60 px-1.5 py-0.5 rounded">src/projects/*.md</code>.
+        </p>
+        <div>
+          <a href="/" class="btn btn-primary btn-sm font-mono inline-flex items-center gap-2">
+            <i data-feather="arrow-left" class="w-4 h-4"></i> Back to Home
+          </a>
+        </div>
+      </div>
     {% endfor %}
   </div>
-
-  <!-- Pagination Controls -->
-  {% if pagination.pages.length > 1 %}
-    <nav
-      aria-label="Projects Pagination"
-      class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-16 pt-8 border-t border-base-300"
-    >
-      <div class="text-xs sm:text-sm font-mono text-base-content/60">
-        Page <span class="text-primary font-bold">{{
-          pagination.pageNumber + 1
-        }}</span> of <span class="text-base-content font-bold">{{
-          pagination.pages.length
-        }}</span> • <span class="text-base-content/50">{{
-            collections.projects.length
-          }} Projects Total</span>
-      </div>
-
-      <div class="join shadow-xs border border-base-300 bg-base-200/50">
-        {# Prev Button #}
-        {% if pagination.href.previous %}
-          <a
-            href="{{ pagination.href.previous }}"
-            class="join-item btn btn-sm sm:btn-md font-mono"
-            aria-label="Previous Page"
-          >
-            <i data-feather="chevron-left" class="w-4 h-4"></i>
-            <span class="hidden sm:inline">Prev</span>
-          </a>
-        {% else %}
-          <button
-            class="join-item btn btn-disabled btn-sm sm:btn-md font-mono"
-            disabled
-            aria-label="Previous Page (Disabled)"
-          >
-            <i data-feather="chevron-left" class="w-4 h-4"></i>
-            <span class="hidden sm:inline">Prev</span>
-          </button>
-        {% endif %}
-
-        {# Page Number Buttons #}
-        {% for pageEntry in pagination.pages %}
-          {% set pageUrl = pagination.hrefs[loop.index0] %}
-          <a
-            href="{{ pageUrl }}"
-            class="join-item btn btn-sm sm:btn-md font-mono {% if page.url == pageUrl %}btn-primary font-bold shadow-xs{% else %}btn-ghost{% endif %}"
-            {% if page.url == pageUrl %}
-              aria-current="page"
-            {% endif %}
-          >
-            {{ loop.index }}
-          </a>
-        {% endfor %}
-
-        {# Next Button #}
-        {% if pagination.href.next %}
-          <a
-            href="{{ pagination.href.next }}"
-            class="join-item btn btn-sm sm:btn-md font-mono"
-            aria-label="Next Page"
-          >
-            <span class="hidden sm:inline">Next</span>
-            <i data-feather="chevron-right" class="w-4 h-4"></i>
-          </a>
-        {% else %}
-          <button
-            class="join-item btn btn-disabled btn-sm sm:btn-md font-mono"
-            disabled
-            aria-label="Next Page (Disabled)"
-          >
-            <span class="hidden sm:inline">Next</span>
-            <i data-feather="chevron-right" class="w-4 h-4"></i>
-          </button>
-        {% endif %}
-      </div>
-    </nav>
-  {% endif %}
 </div>
