@@ -29,28 +29,54 @@
       "icon": "layout",
       "badgeColor": "primary",
       "description": "Crafting fluid, accessible user interfaces with semantic HTML, CSS architectures, and reactive frameworks.",
-      "skills": ["React", "Next.js", "TypeScript", "Tailwind CSS", "daisyUI", "Eleventy (11ty)"]
+      "skills": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "daisyUI",
+        "Eleventy (11ty)"
+      ]
     },
     {
       "category": "Backend & APIs",
       "icon": "server",
       "badgeColor": "secondary",
       "description": "Architecting secure RESTful & GraphQL endpoints, distributed workers, and real-time socket connections.",
-      "skills": ["Node.js", "Express", "Python", "FastAPI", "WebSockets", "REST / GraphQL"]
+      "skills": [
+        "Node.js",
+        "Express",
+        "Python",
+        "FastAPI",
+        "WebSockets",
+        "REST / GraphQL"
+      ]
     },
     {
       "category": "Databases & Caching",
       "icon": "database",
       "badgeColor": "accent",
       "description": "Relational schemas, NoSQL document stores, query optimization, and fast memory caching.",
-      "skills": ["PostgreSQL", "Redis", "MongoDB", "Prisma", "Firebase"]
+      "skills": [
+        "PostgreSQL",
+        "Redis",
+        "MongoDB",
+        "Prisma",
+        "Firebase"
+      ]
     },
     {
       "category": "DevOps & Tooling",
       "icon": "cloud",
       "badgeColor": "primary",
       "description": "Reproducible deployments, CI/CD pipelines, containerization, and automated code review workflows.",
-      "skills": ["Docker", "GitHub Actions", "AWS", "Vercel", "Linux"]
+      "skills": [
+        "Docker",
+        "GitHub Actions",
+        "AWS",
+        "Vercel",
+        "Linux"
+      ]
     }
   ],
   "currentFocus": [

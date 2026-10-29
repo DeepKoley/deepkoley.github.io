@@ -173,3 +173,92 @@ function fallbackCopy(text) {
     window.showCustomAlert('Link copied to clipboard!', 'success');
   }
 }
+
+// ── Endorsements Carousel Controller ──────────────────────────────────
+(function initEndorsementsCarousel() {
+  const track = document.getElementById('endorsements-track');
+  const prevBtn = document.getElementById('endorsements-prev-btn');
+  const nextBtn = document.getElementById('endorsements-next-btn');
+  const dotsContainer = document.getElementById('endorsements-dots');
+  const currentNum = document.getElementById('endorsements-current-num');
+  if (!track) return;
+
+  const slides = Array.from(track.querySelectorAll('.endorsements-slide'));
+  const dots = dotsContainer
+    ? Array.from(dotsContainer.querySelectorAll('.endorsements-dot'))
+    : [];
+  if (slides.length === 0) return;
+
+  let activeIndex = 0;
+
+  function updateUI(index) {
+    activeIndex = Math.max(0, Math.min(index, slides.length - 1));
+    if (currentNum) {
+      currentNum.textContent = String(activeIndex + 1).padStart(2, '0');
+    }
+    dots.forEach((dot, i) => {
+      if (i === activeIndex) {
+        dot.className =
+          'endorsements-dot w-8 h-2.5 rounded-full transition-all duration-300 bg-primary cursor-pointer';
+      } else {
+        dot.className =
+          'endorsements-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-base-content/20 hover:bg-base-content/40 cursor-pointer';
+      }
+    });
+  }
+
+  function scrollToSlide(index) {
+    if (index < 0 || index >= slides.length) return;
+    const targetSlide = slides[index];
+    if (targetSlide) {
+      track.scrollTo({
+        left: targetSlide.offsetLeft - track.offsetLeft,
+        behavior: 'smooth',
+      });
+      updateUI(index);
+    }
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      const target = activeIndex === 0 ? slides.length - 1 : activeIndex - 1;
+      scrollToSlide(target);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const target = activeIndex === slides.length - 1 ? 0 : activeIndex + 1;
+      scrollToSlide(target);
+    });
+  }
+
+  dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => scrollToSlide(idx));
+  });
+
+  // Track swipe / touch / manual scroll
+  let scrollTimeout;
+  track.addEventListener(
+    'scroll',
+    () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const scrollLeft = track.scrollLeft;
+        let closestIndex = 0;
+        let closestDist = Infinity;
+
+        slides.forEach((slide, i) => {
+          const dist = Math.abs(slide.offsetLeft - track.offsetLeft - scrollLeft);
+          if (dist < closestDist) {
+            closestDist = dist;
+            closestIndex = i;
+          }
+        });
+
+        updateUI(closestIndex);
+      }, 50);
+    },
+    { passive: true }
+  );
+})();

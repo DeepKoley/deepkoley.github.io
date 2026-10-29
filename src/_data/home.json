@@ -39,21 +39,45 @@
       "icon": "layout",
       "badgeColor": "primary",
       "description": "Building interactive, accessible interfaces.",
-      "skills": ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS", "daisyUI", "Next.js"]
+      "skills": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Tailwind CSS",
+        "daisyUI",
+        "Next.js"
+      ]
     },
     {
       "title": "Backend",
       "icon": "hard-drives",
       "badgeColor": "secondary",
       "description": "Designing reliable APIs and server-side logic.",
-      "skills": ["Node.js", "Python", "Express", "FastAPI", "REST APIs", "GraphQL", "WebSockets"]
+      "skills": [
+        "Node.js",
+        "Python",
+        "Express",
+        "FastAPI",
+        "REST APIs",
+        "GraphQL",
+        "WebSockets"
+      ]
     },
     {
       "title": "Database & Cloud",
       "icon": "database",
       "badgeColor": "accent",
       "description": "Managing data and deploying at scale.",
-      "skills": ["PostgreSQL", "MongoDB", "Redis", "Firebase", "Docker", "AWS", "GitHub Actions"]
+      "skills": [
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+        "Firebase",
+        "Docker",
+        "AWS",
+        "GitHub Actions"
+      ]
     }
   ],
   "nowSectionTitle": "What I'm Doing Now",

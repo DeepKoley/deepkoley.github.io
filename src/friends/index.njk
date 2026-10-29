@@ -4,6 +4,7 @@ title: "Friends & Blogroll — Deep Koley"
 description: "A curated directory celebrating friends, collaborators, and independent creators across the open web."
 permalink: "friends/index.html"
 eleventyExcludeFromCollections: true
+
 ---
 
 <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-16">
@@ -21,7 +22,9 @@ eleventyExcludeFromCollections: true
       {{ friends.pageTitle | default('Friends & Blogroll') }}
     </h1>
     <p class="text-lg text-base-content/70 leading-relaxed max-w-3xl">
-      {{ friends.pageDescription | default('A curated directory celebrating friends, collaborators, and independent creators across the open web.') }}
+      {{
+        friends.pageDescription | default('A curated directory celebrating friends, collaborators, and independent creators across the open web.')
+      }}
     </p>
   </header>
 
@@ -37,11 +40,12 @@ eleventyExcludeFromCollections: true
       <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-base-300 text-primary mx-auto mb-4">
         <i class="ph ph-users text-2xl"></i>
       </div>
-      <h3 class="text-lg font-headline font-bold mb-2">No friends listed yet</h3>
+      <h3 class="text-lg font-headline font-bold mb-2">
+        No friends listed yet
+      </h3>
       <p class="text-sm text-base-content/60 max-w-md mx-auto">
         Check back soon to explore creators in this directory.
       </p>
     </div>
   {% endif %}
 </div>
-

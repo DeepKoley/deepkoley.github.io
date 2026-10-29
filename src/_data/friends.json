@@ -9,7 +9,11 @@
       "bio": "Writing about distributed systems resilience, team topology, and cloud economics.",
       "url": "https://example.com/sarah",
       "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80",
-      "tags": ["Cloud", "Go", "Architecture"]
+      "tags": [
+        "Cloud",
+        "Go",
+        "Architecture"
+      ]
     },
     {
       "name": "Marcus Vance",
@@ -17,7 +21,11 @@
       "bio": "Exploring tactile digital interfaces, local-first computing, and generative design tools.",
       "url": "https://example.com/marcus",
       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80",
-      "tags": ["Design Systems", "Local-First", "UI/UX"]
+      "tags": [
+        "Design Systems",
+        "Local-First",
+        "UI/UX"
+      ]
     },
     {
       "name": "Elena Rostova",
@@ -25,7 +33,11 @@
       "bio": "Deep-diving into browser rendering engines, WebAssembly runtimes, and accessible web standards.",
       "url": "https://example.com/elena",
       "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&auto=format&fit=crop&q=80",
-      "tags": ["TypeScript", "WebAssembly", "Performance"]
+      "tags": [
+        "TypeScript",
+        "WebAssembly",
+        "Performance"
+      ]
     },
     {
       "name": "David Chen",
@@ -33,7 +45,11 @@
       "bio": "Auditing Linux kernel primitives, virtualization security, and eBPF tracing infrastructure.",
       "url": "https://example.com/david",
       "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80",
-      "tags": ["Linux", "eBPF", "Rust"]
+      "tags": [
+        "Linux",
+        "eBPF",
+        "Rust"
+      ]
     },
     {
       "name": "Maya Patel",
@@ -41,7 +57,11 @@
       "bio": "Crafting procedural shaders, WebGL interactive installations, and generative typography.",
       "url": "https://example.com/maya",
       "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=80",
-      "tags": ["Three.js", "Shaders", "Creative Tech"]
+      "tags": [
+        "Three.js",
+        "Shaders",
+        "Creative Tech"
+      ]
     },
     {
       "name": "Liam Thorne",
@@ -49,8 +69,11 @@
       "bio": "Maintaining developer tooling, CLI frameworks, and minimalist static site generators.",
       "url": "https://example.com/liam",
       "avatar": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=200&auto=format&fit=crop&q=80",
-      "tags": ["CLI", "Open Source", "DevTools"]
+      "tags": [
+        "CLI",
+        "Open Source",
+        "DevTools"
+      ]
     }
   ]
 }
-

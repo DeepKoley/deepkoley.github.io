@@ -9,7 +9,8 @@
             alt="{{ friend.name }}"
             loading="lazy"
             class="w-full h-full object-cover"
-            onerror="this.src='https://ui-avatars.com/api/?name={{ friend.name | urlencode }}&background=18181b&color=38bdf8';"
+            onerror="this.src =
+  'https://ui-avatars.com/api/?name={{ friend.name | urlencode }}&background=18181b&color=38bdf8'"
           />
         </div>
       </div>
@@ -34,7 +35,9 @@
     {% if friend.tags and friend.tags.length > 0 %}
       <div class="flex flex-wrap gap-1.5">
         {% for tag in friend.tags %}
-          <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-base-300/60 text-base-content/70 border border-base-300/40">
+          <span
+            class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-base-300/60 text-base-content/70 border border-base-300/40"
+          >
             {{ tag }}
           </span>
         {% endfor %}
@@ -48,11 +51,16 @@
       class="inline-flex items-center justify-between w-full px-3.5 py-2 rounded-xl bg-base-300/50 hover:bg-base-300 border border-base-300/60 hover:border-white/10 text-xs font-mono text-base-content/90 transition-all group"
     >
       <span class="inline-flex items-center gap-2 truncate">
-        <i class="ph ph-globe text-primary text-sm group-hover:rotate-12 transition-transform"></i>
-        <span class="truncate">{{ friend.url | replace("https://", "") | replace("http://", "") | replace("www.", "") }}</span>
+        <i
+          class="ph ph-globe text-primary text-sm group-hover:rotate-12 transition-transform"
+        ></i>
+        <span class="truncate">{{
+          friend.url | replace("https://", "") | replace("http://", "") | replace("www.", "")
+        }}</span>
       </span>
-      <i class="ph ph-arrow-up-right text-base-content/50 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-sm shrink-0"></i>
+      <i
+        class="ph ph-arrow-up-right text-base-content/50 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-sm shrink-0"
+      ></i>
     </a>
   </div>
 </article>
-

@@ -3,6 +3,7 @@ layout: base.njk
 title: "About — Deep Koley"
 description: "Learn more about Deep Koley, engineering philosophy, background, and approach to crafting modern software."
 eleventyExcludeFromCollections: true
+
 ---
 
 <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-16">
@@ -17,10 +18,14 @@ eleventyExcludeFromCollections: true
       <span>{{ about.pageBadge | default('about.me') }}</span>
     </div>
     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-headline tracking-tight mb-4 leading-tight">
-      {{ about.pageTitle | default('Engineering Resilient Systems & Expressive Interfaces') }}
+      {{
+        about.pageTitle | default('Engineering Resilient Systems & Expressive Interfaces')
+      }}
     </h1>
     <p class="text-lg text-base-content/70 leading-relaxed max-w-3xl">
-      {{ about.pageDescription | default('A comprehensive look into my journey, core technical convictions, and the craft behind building modern digital experiences.') }}
+      {{
+        about.pageDescription | default('A comprehensive look into my journey, core technical convictions, and the craft behind building modern digital experiences.')
+      }}
     </p>
   </header>
 
@@ -51,19 +56,27 @@ eleventyExcludeFromCollections: true
         <div class="p-6 space-y-3 font-mono text-xs">
           <div class="flex items-center justify-between py-1 border-b border-base-300/50">
             <span class="text-base-content/60">Location</span>
-            <span class="font-medium text-base-content">{{ site.location }}</span>
+            <span class="font-medium text-base-content">{{
+              site.location
+            }}</span>
           </div>
           <div class="flex items-center justify-between py-1 border-b border-base-300/50">
             <span class="text-base-content/60">Experience</span>
-            <span class="font-medium text-base-content">{{ about.experienceYears | default('5+ Years') }}</span>
+            <span class="font-medium text-base-content">{{
+              about.experienceYears | default('5+ Years')
+            }}</span>
           </div>
           <div class="flex items-center justify-between py-1 border-b border-base-300/50">
             <span class="text-base-content/60">Core Focus</span>
-            <span class="font-medium text-base-content text-right">{{ about.coreFocus | default('Web Architectures & UI') }}</span>
+            <span class="font-medium text-base-content text-right">{{
+              about.coreFocus | default('Web Architectures & UI')
+            }}</span>
           </div>
           <div class="flex items-center justify-between py-1">
             <span class="text-base-content/60">Email</span>
-            <a href="mailto:{{ site.email }}" class="link link-primary">{{ site.email }}</a>
+            <a href="mailto:{{ site.email }}" class="link link-primary">{{
+              site.email
+            }}</a>
           </div>
         </div>
 
@@ -84,7 +97,9 @@ eleventyExcludeFromCollections: true
         <ul class="space-y-3 text-sm text-base-content/75">
           {% for p in about.principles %}
             <li class="flex items-start gap-2">
-              <i class="ph ph-check-circle text-base text-primary shrink-0 mt-0.5"></i>
+              <i
+                class="ph ph-check-circle text-base text-primary shrink-0 mt-0.5"
+              ></i>
               <span><strong>{{ p.title }}:</strong> {{ p.description }}</span>
             </li>
           {% endfor %}
@@ -115,7 +130,9 @@ eleventyExcludeFromCollections: true
           {% for tool in about.toolkit %}
             <div class="p-4 rounded-xl bg-base-100 border border-base-300">
               <div class="flex items-center gap-2 mb-2 text-{{ tool.badgeColor | default('primary') }} font-mono text-xs uppercase tracking-wider font-semibold">
-                <i class="ph ph-{{ tool.icon | default('squares-four') }} text-base"></i>
+                <i
+                  class="ph ph-{{ tool.icon | default('squares-four') }} text-base"
+                ></i>
                 {{ tool.category }}
               </div>
               <p class="text-sm text-base-content/70 mb-3">
@@ -123,7 +140,9 @@ eleventyExcludeFromCollections: true
               </p>
               <div class="flex flex-wrap gap-1.5">
                 {% for skill in tool.skills %}
-                  <span class="badge badge-neutral font-mono text-xs border border-base-300/60">{{ skill }}</span>
+                  <span
+                    class="badge badge-neutral font-mono text-xs border border-base-300/60"
+                  >{{ skill }}</span>
                 {% endfor %}
               </div>
             </div>
@@ -139,7 +158,9 @@ eleventyExcludeFromCollections: true
         <ul class="space-y-3 font-mono text-sm text-base-content/80">
           {% for item in about.currentFocus %}
             <li class="flex items-center gap-2">
-              <span class="status status-{{ item.status | default('success') }} status-xs"></span>
+              <span
+                class="status status-{{ item.status | default('success') }} status-xs"
+              ></span>
               {{ item.text }}
             </li>
           {% endfor %}
