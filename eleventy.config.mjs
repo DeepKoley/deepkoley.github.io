@@ -31,9 +31,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/@phosphor-icons/web/src': 'css/phosphor',
   });
-  eleventyConfig.addPassthroughCopy({
-    'node_modules/feather-icons/dist/feather.min.js': 'js/feather.min.js',
-  });
+  eleventyConfig.addPassthroughCopy({ 'src/robots.txt': 'robots.txt' });
   eleventyConfig.addPassthroughCopy({
     'node_modules/typed.js/dist/typed.umd.js': 'js/typed.umd.js',
   });

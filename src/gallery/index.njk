@@ -65,12 +65,8 @@ eleventyExcludeFromCollections: true
 
 <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-16">
   <!-- Breadcrumb -->
-  <div class="breadcrumbs text-sm mb-6 text-base-content/60">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li class="text-base-content">Gallery</li>
-    </ul>
-  </div>
+  {% set currentPage = "Gallery" %}
+  {% include "components/breadcrumbs.njk" %}
 
   <!-- Page Header -->
   <header class="mb-10">

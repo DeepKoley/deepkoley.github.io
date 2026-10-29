@@ -1,0 +1,10 @@
+<nav class="breadcrumbs text-sm mb-6 text-base-content/60" aria-label="Breadcrumb">
+  <ul>
+    <li><a href="/">Home</a></li>
+    {% if parentPage and parentUrl %}
+      <li><a href="{{ parentUrl }}">{{ parentPage }}</a></li>
+    {% endif %}
+    <li class="text-base-content">{{ currentPage }}</li>
+  </ul>
+</nav>
+

@@ -5,13 +5,10 @@ layout: base.njk
 
 <article class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-12">
   <!-- Breadcrumb -->
-  <div class="breadcrumbs text-sm mb-6 text-base-content/60">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/projects/">Projects</a></li>
-      <li class="text-base-content">{{ title }}</li>
-    </ul>
-  </div>
+  {% set parentPage = "Projects" %}
+  {% set parentUrl = "/projects/" %}
+  {% set currentPage = title %}
+  {% include "components/breadcrumbs.njk" %}
 
   <!-- Header -->
   <header class="mb-10">

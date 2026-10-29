@@ -1,0 +1,58 @@
+<article class="card bg-base-200 card-border p-6 flex flex-col justify-between hover:border-white/10 transition-colors duration-200 rounded-2xl">
+  <!-- Top Row: Avatar + Name + Role -->
+  <div>
+    <div class="flex items-start gap-4 mb-4">
+      <div class="avatar shrink-0">
+        <div class="w-12 h-12 rounded-full ring-1 ring-base-300 ring-offset-base-200 ring-offset-2 overflow-hidden bg-base-300">
+          <img
+            src="{{ friend.avatar }}"
+            alt="{{ friend.name }}"
+            loading="lazy"
+            class="w-full h-full object-cover"
+            onerror="this.src='https://ui-avatars.com/api/?name={{ friend.name | urlencode }}&background=18181b&color=38bdf8';"
+          />
+        </div>
+      </div>
+      <div class="min-w-0 flex-1">
+        <h2 class="text-lg font-bold font-headline tracking-tight text-base-content truncate">
+          {{ friend.name }}
+        </h2>
+        <p class="text-xs font-mono text-primary truncate mt-0.5">
+          {{ friend.role }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Bio -->
+    <p class="text-sm text-base-content/70 leading-relaxed mb-5">
+      {{ friend.bio }}
+    </p>
+  </div>
+
+  <!-- Bottom: Tags & Action Link -->
+  <div class="space-y-4 pt-2 border-t border-base-300/60">
+    {% if friend.tags and friend.tags.length > 0 %}
+      <div class="flex flex-wrap gap-1.5">
+        {% for tag in friend.tags %}
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-base-300/60 text-base-content/70 border border-base-300/40">
+            {{ tag }}
+          </span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <a
+      href="{{ friend.url }}"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-between w-full px-3.5 py-2 rounded-xl bg-base-300/50 hover:bg-base-300 border border-base-300/60 hover:border-white/10 text-xs font-mono text-base-content/90 transition-all group"
+    >
+      <span class="inline-flex items-center gap-2 truncate">
+        <i class="ph ph-globe text-primary text-sm group-hover:rotate-12 transition-transform"></i>
+        <span class="truncate">{{ friend.url | replace("https://", "") | replace("http://", "") | replace("www.", "") }}</span>
+      </span>
+      <i class="ph ph-arrow-up-right text-base-content/50 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-sm shrink-0"></i>
+    </a>
+  </div>
+</article>
+

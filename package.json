@@ -1,8 +1,8 @@
 {
   "name": "deepkoley",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Personal portfolio & digital garden of Deep Koley",
+  "author": "Deep Koley",
   "scripts": {
     "dev": "eleventy --serve",
     "build": "eleventy",
@@ -18,16 +18,12 @@
     "@phosphor-icons/web": "^2.1.2",
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",
-    "@tailwindcss/vite": "^4.3.3",
     "daisyui": "^5.7.50",
-    "feather-icons": "^4.29.2",
-    "glightbox": "^3.3.1",
     "simplelightbox": "^2.14.3",
     "tailwindcss": "^4.3.3",
     "typed.js": "^3.0.0"
   },
   "devDependencies": {
-    "concurrently": "^10.0.6",
     "postcss": "^8.5.31"
   }
 }

@@ -1,0 +1,83 @@
+<article class="card bg-base-200 card-border overflow-hidden flex flex-col justify-between hover:border-white/10 transition-colors duration-200 rounded-2xl group">
+  <div>
+    {% if project.data.image %}
+      <a
+        href="{{ project.url }}"
+        class="block overflow-hidden aspect-video bg-base-300 relative"
+      >
+        <img
+          src="{{ project.data.image }}"
+          alt="{{ project.data.title }}"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          loading="lazy"
+        />
+        {% if project.data.status %}
+          <span
+            class="absolute top-3 right-3 badge badge-sm font-mono bg-base-100/80 backdrop-blur-md border border-white/10 text-emerald-400 shadow-sm"
+          >
+            {{ project.data.status }}
+          </span>
+        {% endif %}
+      </a>
+    {% endif %}
+
+    <div class="card-body p-6">
+      <div class="flex items-center gap-2 mb-1.5">
+        <span
+          class="text-xs font-mono text-secondary font-semibold uppercase tracking-wider"
+        >
+          {{ project.data.category | default('Full-Stack') }}
+        </span>
+        {% if project.data.year %}
+          <span class="text-xs text-base-content/40 font-mono">• {{ project.data.year }}</span>
+        {% endif %}
+      </div>
+
+      <h3 class="card-title text-xl font-headline text-base-content group-hover:text-primary transition-colors">
+        <a href="{{ project.url }}">{{ project.data.title }}</a>
+      </h3>
+
+      <p class="text-base-content/70 text-sm leading-relaxed mt-2 mb-4 line-clamp-2">
+        {{ project.data.description }}
+      </p>
+
+      {% if project.data.tags and project.data.tags.length > 0 %}
+        <div class="flex flex-wrap gap-1.5">
+          {% for tag in project.data.tags %}
+            {% if tag != "projects" %}
+              <span class="badge badge-neutral badge-xs font-mono border border-base-300/60">{{ tag }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="px-6 pb-6 pt-0 border-t border-base-300/40 mt-3 flex items-center justify-between gap-3">
+    <a
+      href="{{ project.url }}"
+      class="flex items-center justify-between flex-1 px-4 py-2.5 rounded-xl bg-base-300/40 hover:bg-base-300 border border-base-300 hover:border-white/15 text-xs font-mono text-base-content/80 hover:text-base-content transition-colors duration-200 group/btn"
+    >
+      <span class="flex items-center gap-2 font-medium">
+        <i class="ph ph-arrow-circle-right text-sm text-base-content/50 group-hover/btn:text-base-content transition-colors"></i>
+        <span>Explore Case Study</span>
+      </span>
+      <span class="w-6 h-6 rounded-lg bg-base-200 flex items-center justify-center text-base-content/50 group-hover/btn:text-base-content transition-colors">
+        <i class="ph ph-arrow-right text-xs"></i>
+      </span>
+    </a>
+
+    {% if project.data.demoUrl %}
+      <a
+        href="{{ project.data.demoUrl }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-10 h-10 rounded-xl bg-base-300/40 hover:bg-base-300 border border-base-300 hover:border-white/15 flex items-center justify-center text-base-content/60 hover:text-primary transition-colors shrink-0"
+        title="Open Live Demo"
+      >
+        <i class="ph ph-arrow-square-out text-base"></i>
+      </a>
+    {% endif %}
+  </div>
+</article>
+

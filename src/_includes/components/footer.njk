@@ -1,0 +1,30 @@
+<footer class="relative z-60 bg-base-200 text-base-content border-t border-base-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 flex flex-col items-center gap-6">
+    <nav class="flex flex-wrap justify-center gap-6 text-sm" aria-label="Footer Navigation">
+      <a href="/" class="link link-hover">Home</a>
+      <a href="/about/" class="link link-hover">About</a>
+      <a href="/projects/" class="link link-hover">Projects</a>
+      <a href="/blog/" class="link link-hover">Blog</a>
+      <a href="/gallery/" class="link link-hover">Gallery</a>
+      <a href="/friends/" class="link link-hover">Friends</a>
+      <a href="/resume/" class="link link-hover">Resume</a>
+    </nav>
+    <nav aria-label="Social Links">
+      {% include "components/social-links.njk" %}
+    </nav>
+    <aside class="text-center">
+      <p class="text-xs text-base-content/60 font-mono">
+        &copy; {{ site.name }}. Built with Eleventy &amp; daisyUI.
+      </p>
+    </aside>
+  </div>
+</footer>
+
+<!-- Global Custom Alert / Toast Notification Container -->
+<div
+  id="global-toast-container"
+  class="toast toast-bottom toast-end z-999 pointer-events-none p-4 flex flex-col gap-2"
+  aria-live="polite"
+>
+</div>
+

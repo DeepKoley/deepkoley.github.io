@@ -14,7 +14,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
 
   <!-- Hero Content (Flex-1 vertically centered) -->
   <section
-    id="about"
+    id="hero"
     class="portfolio-section portfolio-section-1 flex-1 flex items-center py-8 sm:py-12 relative z-10"
   >
     <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:gap-16">
@@ -389,66 +389,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for project in collections.projects | limit(3) %}
-        <article class="card bg-base-200 card-border overflow-hidden flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
-          <div>
-            <a
-              href="{{ project.url }}"
-              class="block overflow-hidden aspect-video bg-base-300 relative"
-            >
-              <img
-                src="{{ project.data.image }}"
-                alt="{{ project.data.title }}"
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-              {% if project.data.status %}
-                <span
-                  class="absolute top-3 right-3 badge badge-sm font-mono bg-base-100/80 backdrop-blur-md border border-white/10 text-emerald-400 shadow-sm"
-                >
-                  {{ project.data.status }}
-                </span>
-              {% endif %}
-            </a>
-            <div class="card-body p-6">
-              <div class="flex items-center gap-2 mb-1.5">
-                <span
-                  class="text-xs font-mono text-secondary font-semibold uppercase tracking-wider"
-                >
-                  {{ project.data.category | default('Full-Stack') }}
-                </span>
-              </div>
-              <h3 class="card-title text-xl font-headline text-base-content">
-                <a href="{{ project.url }}">{{ project.data.title }}</a>
-              </h3>
-              <p class="text-base-content/70 text-sm leading-relaxed mt-2 mb-4 line-clamp-2">
-                {{ project.data.description }}
-              </p>
-              <div class="flex flex-wrap gap-1.5">
-                {% for tag in project.data.tags %}
-                  {% if tag != "projects" %}
-                    <span class="badge badge-neutral badge-xs font-mono border border-base-300/60">{{
-                      tag
-                    }}</span>
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-          <div class="px-6 pb-6 pt-0 border-t border-base-300/40 mt-3">
-            <a
-              href="{{ project.url }}"
-              class="flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-base-300/40 hover:bg-base-300 border border-base-300 hover:border-white/15 text-xs font-mono text-base-content/80 hover:text-base-content transition-colors duration-200 group/btn"
-            >
-              <span class="flex items-center gap-2 font-medium">
-                <i class="ph ph-arrow-circle-right text-sm text-base-content/50 group-hover/btn:text-base-content transition-colors"></i>
-                <span>Explore Case Study</span>
-              </span>
-              <span class="w-6 h-6 rounded-lg bg-base-200 flex items-center justify-center text-base-content/50 group-hover/btn:text-base-content transition-colors">
-                <i class="ph ph-arrow-right text-xs"></i>
-              </span>
-            </a>
-          </div>
-        </article>
+        {% include "components/project-card.njk" %}
       {% else %}
         <div class="col-span-full card bg-base-200 card-border p-12 text-center border-dashed border-base-300/80">
           <div class="w-14 h-14 rounded-2xl bg-base-300/60 border border-base-300 flex items-center justify-center mx-auto mb-4 text-secondary">
@@ -528,51 +469,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for post in collections.posts | limit(3) %}
-        <article class="card bg-base-200 card-border overflow-hidden flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
-          <div>
-            <a
-              href="{{ post.url }}"
-              class="block overflow-hidden aspect-video bg-base-300 relative"
-            >
-              <img
-                src="{{ post.data.image }}"
-                alt="{{ post.data.title }}"
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </a>
-            <div class="card-body p-6">
-              <div class="flex items-center gap-2 mb-2 text-xs font-mono text-base-content/60">
-                <time datetime="{{ post.date }}">{{
-                  post.date | readableDate
-                }}</time>
-                {% if post.data.readTime %}
-                  <span>• {{ post.data.readTime }}</span>
-                {% endif %}
-              </div>
-              <h3 class="card-title text-xl font-headline text-base-content leading-snug">
-                <a href="{{ post.url }}">{{ post.data.title }}</a>
-              </h3>
-              <p class="text-base-content/70 text-sm leading-relaxed mt-2 mb-4 line-clamp-2">
-                {{ post.data.description }}
-              </p>
-            </div>
-          </div>
-          <div class="px-6 pb-6 pt-0 border-t border-base-300/40 mt-3">
-            <a
-              href="{{ post.url }}"
-              class="flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-base-300/40 hover:bg-base-300 border border-base-300 hover:border-white/15 text-xs font-mono text-base-content/80 hover:text-base-content transition-colors duration-200 group/btn"
-            >
-              <span class="flex items-center gap-2 font-medium">
-                <i class="ph ph-book-open-text text-sm text-base-content/50 group-hover/btn:text-base-content transition-colors"></i>
-                <span>Read Full Article</span>
-              </span>
-              <span class="w-6 h-6 rounded-lg bg-base-200 flex items-center justify-center text-base-content/50 group-hover/btn:text-base-content transition-colors">
-                <i class="ph ph-arrow-right text-xs"></i>
-              </span>
-            </a>
-          </div>
-        </article>
+        {% include "components/post-card.njk" %}
       {% else %}
         <div class="col-span-full card bg-base-200 card-border p-12 text-center border-dashed border-base-300/80">
           <div class="w-14 h-14 rounded-2xl bg-base-300/60 border border-base-300 flex items-center justify-center mx-auto mb-4 text-primary">

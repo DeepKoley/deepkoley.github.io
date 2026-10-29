@@ -37,6 +37,9 @@ content:
       - name: image
         label: Cover Image
         type: image
+      - name: imageCaption
+        label: Image Caption / Credit
+        type: string
       - name: tags
         label: Tags
         type: string
@@ -88,6 +91,9 @@ content:
       - name: image
         label: Preview Image
         type: image
+      - name: imageCaption
+        label: Image Caption / Credit
+        type: string
       - name: tags
         label: Technologies / Tags
         type: string
@@ -352,7 +358,7 @@ content:
             label: Category Name
             type: string
           - name: icon
-            label: Feather Icon Name
+            label: Phosphor Icon Name (e.g. layout, server, database, cloud)
             type: string
           - name: badgeColor
             label: Badge Color (primary, secondary, accent)
@@ -462,10 +468,6 @@ content:
       - name: pageDescription
         label: Description
         type: text
-      - name: categories
-        label: Filter Categories
-        type: string
-        list: true
       - name: photos
         label: Photos Collection
         type: object
@@ -485,9 +487,6 @@ content:
           - name: caption
             label: Caption / Description
             type: text
-          - name: category
-            label: Category (e.g. Street, Architecture, Urban, Nature)
-            type: string
           - name: location
             label: Location (e.g. Tokyo, Japan)
             type: string
@@ -497,14 +496,6 @@ content:
           - name: camera
             label: Camera & Lens (e.g. Sony A7IV • 35mm f/1.8)
             type: string
-          - name: aspect
-            label: Aspect Ratio
-            type: select
-            options:
-              - { label: Portrait (3:4), value: portrait }
-              - { label: Landscape (4:3), value: landscape }
-              - { label: Square (1:1), value: square }
-              - { label: Wide (16:9), value: wide }
 
   # ─────────────────────────────────────────────────────────────────
   # Friends & Blogroll Settings

@@ -1,0 +1,60 @@
+<article class="card bg-base-200 card-border overflow-hidden flex flex-col justify-between hover:border-white/10 transition-colors duration-200 rounded-2xl group">
+  <div>
+    {% if post.data.image %}
+      <a
+        href="{{ post.url }}"
+        class="block overflow-hidden aspect-video bg-base-300 relative"
+      >
+        <img
+          src="{{ post.data.image }}"
+          alt="{{ post.data.title }}"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          loading="lazy"
+        />
+      </a>
+    {% endif %}
+
+    <div class="card-body p-6">
+      <div class="flex items-center gap-2 mb-2 text-xs font-mono text-base-content/60">
+        <time datetime="{{ post.date }}">{{ post.date | readableDate }}</time>
+        {% if post.data.readTime %}
+          <span>• {{ post.data.readTime }}</span>
+        {% endif %}
+      </div>
+
+      <h3 class="card-title text-xl font-headline text-base-content leading-snug group-hover:text-primary transition-colors">
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+      </h3>
+
+      <p class="text-base-content/70 text-sm leading-relaxed mt-2 mb-4 line-clamp-2">
+        {{ post.data.description }}
+      </p>
+
+      {% if post.data.tags and post.data.tags.length > 0 %}
+        <div class="flex flex-wrap gap-1.5 mt-auto">
+          {% for tag in post.data.tags %}
+            {% if tag != "posts" %}
+              <span class="badge badge-neutral badge-xs font-mono border border-base-300/60">{{ tag }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="px-6 pb-6 pt-0 border-t border-base-300/40 mt-3">
+    <a
+      href="{{ post.url }}"
+      class="flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-base-300/40 hover:bg-base-300 border border-base-300 hover:border-white/15 text-xs font-mono text-base-content/80 hover:text-base-content transition-colors duration-200 group/btn"
+    >
+      <span class="flex items-center gap-2 font-medium">
+        <i class="ph ph-book-open-text text-sm text-base-content/50 group-hover/btn:text-base-content transition-colors"></i>
+        <span>Read Full Article</span>
+      </span>
+      <span class="w-6 h-6 rounded-lg bg-base-200 flex items-center justify-center text-base-content/50 group-hover/btn:text-base-content transition-colors">
+        <i class="ph ph-arrow-right text-xs"></i>
+      </span>
+    </a>
+  </div>
+</article>
+

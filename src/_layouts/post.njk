@@ -5,13 +5,10 @@ layout: base.njk
 
 <article class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-12">
   <!-- Breadcrumb -->
-  <div class="breadcrumbs text-sm mb-6 text-base-content/60">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/blog/">Blog</a></li>
-      <li class="text-base-content">{{ title }}</li>
-    </ul>
-  </div>
+  {% set parentPage = "Blog" %}
+  {% set parentUrl = "/blog/" %}
+  {% set currentPage = title %}
+  {% include "components/breadcrumbs.njk" %}
 
   <!-- Post Header -->
   <header class="mb-10">
@@ -45,8 +42,8 @@ layout: base.njk
         <div class="avatar">
           <div class="w-11 rounded-full ring-1 ring-primary/40">
             <img
-              src="https://picsum.photos/seed/deepkoley/200/200"
-              alt="Deep Koley"
+              src="{{ home.heroAvatar | default('https://picsum.photos/seed/deepkoley/200/200') }}"
+              alt="{{ site.name }}"
             />
           </div>
         </div>
@@ -103,8 +100,8 @@ layout: base.njk
       <div class="avatar">
         <div class="w-20 rounded-full ring-2 ring-primary ring-offset-2 ring-offset-base-200 shadow-md">
           <img
-            src="https://picsum.photos/seed/deepkoley/300/300"
-            alt="Deep Koley"
+            src="{{ home.heroAvatar | default('https://picsum.photos/seed/deepkoley/300/300') }}"
+            alt="{{ site.name }}"
           />
         </div>
       </div>

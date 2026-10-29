@@ -1,8 +1,3 @@
-// Initialize Feather Icons
-if (typeof feather !== 'undefined') {
-  feather.replace();
-}
-
 // Active navigation link highlighting based on current path
 const currentPath = window.location.pathname;
 const navLinks = document.querySelectorAll('.navbar .menu a');
@@ -16,43 +11,11 @@ navLinks.forEach((link) => {
   }
 });
 
-// Smooth scroll observer for homepage sections with hash
-const sections = document.querySelectorAll('section[id]');
-const hashLinks = document.querySelectorAll('.navbar a[href^="/#"], .navbar a[href^="#"]');
-
-if (sections.length > 0 && hashLinks.length > 0) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && currentPath === '/') {
-          hashLinks.forEach((link) => {
-            const href = link.getAttribute('href').replace('/', '');
-            link.classList.toggle(
-              'text-primary',
-              href === `#${entry.target.id}`
-            );
-          });
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  sections.forEach((section) => observer.observe(section));
-}
-
 // Exclusively Dark Theme
 document.documentElement.setAttribute('data-theme', 'dark');
 
 // ── Typed.js Animations ────────────────────────────────────────────────
 if (typeof Typed !== 'undefined') {
-  // Helper to safely instantiate if element exists
-  const initTyped = (selector, options) => {
-    if (document.querySelector(selector)) {
-      return new Typed(selector, options);
-    }
-  };
-
   // Helper to type section headers once when scrolled into view (strictly no backspace, no deletion)
   const initSectionHeaderTyped = (selector, text, speed = 45) => {
     const el = document.querySelector(selector);
@@ -122,22 +85,22 @@ window.showCustomAlert = function (message, type = 'success', duration = 3500) {
   alertItem.setAttribute('role', 'alert');
 
   let alertStyle = 'alert-success border-success/30';
-  let iconName = 'check-circle';
+  let iconClass = 'ph ph-check-circle text-success';
 
   if (type === 'error') {
     alertStyle = 'alert-error border-error/30';
-    iconName = 'alert-circle';
+    iconClass = 'ph ph-warning-circle text-error';
   } else if (type === 'warning') {
     alertStyle = 'alert-warning border-warning/30';
-    iconName = 'alert-triangle';
+    iconClass = 'ph ph-warning text-warning';
   } else if (type === 'info') {
     alertStyle = 'alert-info border-info/30';
-    iconName = 'info';
+    iconClass = 'ph ph-info text-info';
   }
 
   alertItem.className = `alert alert-soft ${alertStyle} shadow-2xl border font-mono text-xs sm:text-sm flex items-center gap-3 transition-all duration-300 transform translate-y-3 opacity-0 pointer-events-auto max-w-md bg-base-200/95 backdrop-blur-md`;
   alertItem.innerHTML = `
-    <i data-feather="${iconName}" class="w-4 h-4 shrink-0"></i>
+    <i class="${iconClass} text-lg shrink-0"></i>
     <span class="flex-1">${message}</span>
     <button type="button" class="btn btn-ghost btn-xs btn-circle shrink-0" aria-label="Dismiss alert">✕</button>
   `;
@@ -151,10 +114,6 @@ window.showCustomAlert = function (message, type = 'success', duration = 3500) {
 
   dismissBtn.addEventListener('click', dismiss);
   container.appendChild(alertItem);
-
-  if (typeof feather !== 'undefined') {
-    feather.replace();
-  }
 
   requestAnimationFrame(() => {
     alertItem.classList.remove('translate-y-3', 'opacity-0');
