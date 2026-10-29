@@ -2,95 +2,272 @@
 layout: base.njk
 title: "Deep Koley — Full-Stack Developer & Designer"
 description: "Personal portfolio of Deep Koley, a full-stack developer specializing in modern web technologies."
-
 ---
-<!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
-<section
-  id="about"
-  class="portfolio-section portfolio-section-1 relative overflow-hidden bg-linear-to-b from-[#11131a] via-[#0a0b10] to-[#0a0b10] py-16 sm:py-24"
->
+
+<!-- ═══════════════════════════════════════ HERO + INFINITE SCROLL (100VH VIEWPORT) ═══════════════════════════════════════ -->
+<div class="min-h-[calc(100vh-65px)] min-h-[calc(100dvh-65px)] flex flex-col justify-between relative overflow-hidden bg-linear-to-b from-[#11131a] via-[#0a0b10] to-[#0a0b10]">
   <!-- Decorative subtle ambient glows -->
   <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none">
   </div>
   <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none">
   </div>
 
-  <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 flex flex-col lg:flex-row-reverse items-center justify-between gap-10 lg:gap-16">
-    <!-- Avatar -->
-    <div class="avatar shrink-0">
-      <div class="w-56 lg:w-64 rounded-full ring-2 ring-primary/40 ring-offset-base-100 ring-offset-4 shadow-2xl">
-        <img
-          src="{{ home.heroAvatar | default('https://picsum.photos/seed/deepkoley/400/400') }}"
-          alt="{{ site.name }}"
-        />
+  <!-- Hero Content (Flex-1 vertically centered) -->
+  <section
+    id="about"
+    class="portfolio-section portfolio-section-1 flex-1 flex items-center py-8 sm:py-12 relative z-10"
+  >
+    <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:gap-16">
+      <!-- Avatar -->
+      <div class="avatar shrink-0">
+        <div class="w-48 sm:w-56 lg:w-64 rounded-full ring-2 ring-primary/40 ring-offset-base-100 ring-offset-4 shadow-2xl">
+          <img
+            src="{{ home.heroAvatar | default('https://picsum.photos/seed/deepkoley/400/400') }}"
+            alt="{{ site.name }}"
+          />
+        </div>
+      </div>
+      <!-- Text -->
+      <div class="flex-1 w-full text-center lg:text-left">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl leading-tight">
+          {{ home.heroGreeting | default("Hi, I'm") }} <span class="text-primary">{{ site.name }}</span>
+        </h1>
+        <p class="py-4 text-base sm:text-lg text-base-content/70 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+          {{ home.heroTagline }}
+        </p>
+        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+          <a href="/projects/" class="btn btn-primary">
+            Explore Projects
+            <i class="ph ph-arrow-right text-base"></i>
+          </a>
+          <a href="/blog/" class="btn btn-outline">Read Articles</a>
+        </div>
       </div>
     </div>
-    <!-- Text -->
-    <div class="flex-1 w-full">
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl leading-tight">
-        {{ home.heroGreeting | default("Hi, I'm") }} <span class="text-primary">{{ site.name }}</span>
-      </h1>
-      <p class="py-4 text-base sm:text-lg text-base-content/70 leading-relaxed">
-        {{ home.heroTagline }}
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <a href="/projects/" class="btn btn-primary">
-          Explore Projects
-          <i class="ph ph-arrow-right text-base"></i>
-        </a>
-        <a href="/blog/" class="btn btn-outline">Read Articles</a>
+  </section>
+
+  <!-- Infinite Tech Marquee (Docked at the bottom of the 100vh viewport) -->
+  <div class="w-full bg-base-200/40 backdrop-blur-md border-t border-base-300/60 py-4 sm:py-5 overflow-hidden relative shrink-0 z-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="mb-2.5 text-center">
+        <span
+          class="text-xs uppercase tracking-widest text-base-content/60 font-mono font-medium"
+        >
+          {{ home.marqueeTitle | default('Core Programming & Frameworks') }}
+        </span>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════ INFINITE TECH MARQUEE ═══════════════════════════════════════ -->
-<div class="w-full bg-base-200/40 backdrop-blur-md border-y border-base-300/60 py-6 overflow-hidden relative">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="mb-3 text-center">
-      <span
-        class="text-xs uppercase tracking-widest text-base-content/60 font-mono font-medium"
-      >
-        {{ home.marqueeTitle | default('Core Programming & Frameworks') }}
-      </span>
-    </div>
+      <!-- Marquee Wrapper Constrained to Max Width with Edge Blurs -->
+      <div class="relative overflow-hidden py-1">
+        <!-- Left Optical Blur Curtain -->
+        <div class="marquee-blur-edge marquee-blur-left" aria-hidden="true"></div>
 
-    <!-- Marquee Wrapper Constrained to Max Width with Edge Blurs -->
-    <div class="relative overflow-hidden py-1">
-      <!-- Left Optical Blur Curtain -->
-      <div class="marquee-blur-edge marquee-blur-left" aria-hidden="true"></div>
+        <!-- Right Optical Blur Curtain -->
+        <div class="marquee-blur-edge marquee-blur-right" aria-hidden="true"></div>
 
-      <!-- Right Optical Blur Curtain -->
-      <div class="marquee-blur-edge marquee-blur-right" aria-hidden="true"></div>
+        <div class="marquee-container">
+          <div class="marquee-track flex items-center py-1">
+            <!-- Group 1 -->
+            <div class="flex items-center gap-3 shrink-0">
+              {% for item in home.marquee %}
+                <span
+                  class="px-4 py-2 rounded-xl bg-base-200/90 border border-base-300 font-mono text-xs sm:text-sm text-base-content/90 shadow-xs hover:border-white/20 transition-colors"
+                >
+                  {{ item }}
+                </span>
+              {% endfor %}
+            </div>
 
-      <div class="marquee-container">
-        <div class="marquee-track flex items-center py-1">
-          <!-- Group 1 -->
-          <div class="flex items-center gap-3 shrink-0">
-            {% for item in home.marquee %}
-              <span
-                class="px-4 py-2 rounded-xl bg-base-200/90 border border-base-300 font-mono text-xs sm:text-sm text-base-content/90 shadow-xs hover:border-white/20 transition-colors"
-              >
-                {{ item }}
-              </span>
-            {% endfor %}
-          </div>
-
-          <!-- Group 2 (Duplicate for continuous loop) -->
-          <div class="flex items-center gap-3 shrink-0" aria-hidden="true">
-            {% for item in home.marquee %}
-              <span
-                class="px-4 py-2 rounded-xl bg-base-200/90 border border-base-300 font-mono text-xs sm:text-sm text-base-content/90 shadow-xs hover:border-white/20 transition-colors"
-              >
-                {{ item }}
-              </span>
-            {% endfor %}
+            <!-- Group 2 (Duplicate for continuous loop) -->
+            <div class="flex items-center gap-3 shrink-0" aria-hidden="true">
+              {% for item in home.marquee %}
+                <span
+                  class="px-4 py-2 rounded-xl bg-base-200/90 border border-base-300 font-mono text-xs sm:text-sm text-base-content/90 shadow-xs hover:border-white/20 transition-colors"
+                >
+                  {{ item }}
+                </span>
+              {% endfor %}
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════ BENTO GRID / ARCHITECTURAL HIGHLIGHTS ═══════════════════════════════════════ -->
+<section id="bento" class="portfolio-section py-16 sm:py-24 border-b border-base-300/40 relative">
+  <div class="max-w-6xl mx-auto w-full px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-300/40 border border-base-300 font-mono text-xs mb-3 shadow-xs">
+        <i class="ph ph-squares-four text-sm text-primary"></i>
+        <span>{{ home.bentoSectionBadge | default('Engineering Highlights') }}</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-headline tracking-tight">{{ home.bentoSectionTitle | default('Crafted for Scale, Speed & Precision') }}</h2>
+    </div>
+
+    <!-- Asymmetric 12-Column Bento Box Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+      <!-- Bento Tile 1: Large Featured Impact Card (Spans 7 cols on md+) -->
+      <div class="md:col-span-7 card bg-base-200 card-border p-7 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
+              <i class="ph ph-lightning text-base"></i>
+              Architecture &amp; Scale
+            </span>
+            <span class="badge badge-sm font-mono bg-base-300 border border-base-300/80 text-base-content/80">
+              {{ home.bentoFeatureYears | default('5+') }} Years Experience
+            </span>
+          </div>
+
+          <h3 class="text-2xl sm:text-3xl font-headline text-base-content mb-3">
+            {{ home.bentoFeatureTitle | default('Building Resilient Web Systems from Inception to Scale') }}
+          </h3>
+          <p class="text-sm text-base-content/70 leading-relaxed max-w-xl">
+            {{ home.bentoFeatureDescription }}
+          </p>
+        </div>
+
+        <!-- Metric strip inside the primary bento card -->
+        <div class="grid grid-cols-3 gap-3 pt-6 mt-6 border-t border-base-300/60">
+          <div class="bg-base-300/40 p-3 rounded-xl border border-base-300/60 text-center">
+            <div class="text-2xl sm:text-3xl font-headline text-primary">{{ home.bentoFeatureYears | default('5+') }}</div>
+            <div class="text-[10px] font-mono text-base-content/60 uppercase tracking-wider mt-0.5">Years Active</div>
+          </div>
+          <div class="bg-base-300/40 p-3 rounded-xl border border-base-300/60 text-center">
+            <div class="text-2xl sm:text-3xl font-headline text-secondary">{{ home.bentoFeatureApps | default('24+') }}</div>
+            <div class="text-[10px] font-mono text-base-content/60 uppercase tracking-wider mt-0.5">Apps Shipped</div>
+          </div>
+          <div class="bg-base-300/40 p-3 rounded-xl border border-base-300/60 text-center">
+            <div class="text-2xl sm:text-3xl font-headline text-emerald-400">{{ home.bentoFeatureUptime | default('99.9%') }}</div>
+            <div class="text-[10px] font-mono text-base-content/60 uppercase tracking-wider mt-0.5">Uptime SLA</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento Tile 2: Base of Operations / Collaboration & Availability (Spans 5 cols on md+) -->
+      <div class="md:col-span-5 card bg-base-200 card-border p-7 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-secondary">
+              <i class="ph ph-globe text-base"></i>
+              Collaboration
+            </span>
+            <span class="badge badge-sm font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              Available
+            </span>
+          </div>
+
+          <h3 class="text-2xl font-headline text-base-content mb-1">
+            {{ home.bentoLocationTitle | default('Kolkata, India') }}
+          </h3>
+          <p class="text-xs font-mono text-base-content/50 mb-3">
+            {{ home.bentoLocationNote | default('Available for international contracts & remote teams') }}
+          </p>
+          <p class="text-sm text-base-content/70 leading-relaxed">
+            {{ home.bentoLocationDesc }}
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5 pt-6 mt-6 border-t border-base-300/60">
+          <span class="badge badge-neutral badge-xs font-mono border border-base-300">Remote Friendly</span>
+          <span class="badge badge-neutral badge-xs font-mono border border-base-300">Contracts &amp; Consulting</span>
+          <span class="badge badge-neutral badge-xs font-mono border border-base-300">Global Overlap</span>
+        </div>
+      </div>
+
+      <!-- Bento Tile 3: Core Web Vitals & Performance (Spans 4 cols on md+) -->
+      <div class="md:col-span-4 card bg-base-200 card-border p-6 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-amber-400">
+              <i class="ph ph-gauge text-base"></i>
+              Web Performance
+            </span>
+            <span class="text-xs font-mono font-bold text-amber-400">100 / 100</span>
+          </div>
+
+          <h3 class="text-xl font-headline text-base-content mb-2">
+            Speed by Default
+          </h3>
+          <p class="text-xs text-base-content/70 leading-relaxed mb-4">
+            Sub-second First Contentful Paint, zero layout shifts, and ruthless asset optimization across all viewports.
+          </p>
+        </div>
+
+        <div class="space-y-2 pt-3 border-t border-base-300/60 font-mono text-[11px]">
+          <div class="flex justify-between items-center text-base-content/70">
+            <span>Largest Contentful Paint</span>
+            <span class="text-emerald-400 font-bold">&lt; 1.1s</span>
+          </div>
+          <div class="flex justify-between items-center text-base-content/70">
+            <span>Cumulative Layout Shift</span>
+            <span class="text-emerald-400 font-bold">0.00</span>
+          </div>
+          <div class="flex justify-between items-center text-base-content/70">
+            <span>Interaction to Next Paint</span>
+            <span class="text-emerald-400 font-bold">&lt; 50ms</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento Tile 4: Code Quality & Standards (Spans 4 cols on md+) -->
+      <div class="md:col-span-4 card bg-base-200 card-border p-6 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
+              <i class="ph ph-shield-check text-base"></i>
+              Standards &amp; Quality
+            </span>
+            <span class="badge badge-neutral badge-xs font-mono">Strict</span>
+          </div>
+
+          <h3 class="text-xl font-headline text-base-content mb-2">
+            Type-Safe &amp; Accessible
+          </h3>
+          <p class="text-xs text-base-content/70 leading-relaxed mb-4">
+            Zero compromises on reliability. Strict TypeScript definitions, semantic DOM trees, and WCAG 2.1 AA conformance out of the box.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-base-300/60">
+          <span class="badge badge-neutral badge-xs font-mono border border-base-300">Strict TypeScript</span>
+          <span class="badge badge-neutral badge-xs font-mono border border-base-300">WCAG 2.1 AA</span>
+          <span class="badge badge-neutral badge-xs font-mono border border-base-300">Automated CI/CD</span>
+          <span class="badge badge-neutral badge-xs font-mono border border-base-300">Zero Regressions</span>
+        </div>
+      </div>
+
+      <!-- Bento Tile 5: Cloud Architecture & Edge Infra (Spans 4 cols on md+) -->
+      <div class="md:col-span-4 card bg-base-200 card-border p-6 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-indigo-400">
+              <i class="ph ph-cloud text-base"></i>
+              Cloud &amp; DevOps
+            </span>
+            <span class="badge badge-neutral badge-xs font-mono">Edge Ready</span>
+          </div>
+
+          <h3 class="text-xl font-headline text-base-content mb-2">
+            Scalable Infrastructure
+          </h3>
+          <p class="text-xs text-base-content/70 leading-relaxed mb-4">
+            Containerized deployments, automated delivery pipelines, and global edge computing with serverless resilience.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-base-300/60">
+          <span class="badge badge-neutral badge-xs font-mono border border-base-300">Docker</span>
+          <span class="badge badge-neutral badge-xs font-mono border border-base-300">AWS ECS / Lambda</span>
+          <span class="badge badge-neutral badge-xs font-mono border border-base-300">PostgreSQL</span>
+          <span class="badge badge-neutral badge-xs font-mono border border-base-300">Redis Cache</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════ SKILLS ═══════════════════════════════════════ -->
 <section
@@ -103,18 +280,15 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
         <i class="ph ph-cpu text-sm text-primary"></i>
         <span id="typed-skills-header">{{ home.skillsSectionBadge | default('Specialized Tech Stack') }}</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl">{{ home.skillsSectionTitle | default('Skills & Technologies') }}</h2>
-      <p class="mt-2 text-base-content/60 max-w-2xl mx-auto text-sm sm:text-base">
-        {{ home.skillsSectionDescription }}
-      </p>
+      <h2 class="text-3xl sm:text-4xl font-headline">{{ home.skillsSectionTitle | default('Skills & Technologies') }}</h2>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for cat in home.skillCategories %}
-        <div class="card bg-base-200 card-border p-6 flex flex-col justify-between group">
+        <div class="card bg-base-200 card-border p-6 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
           <div class="card-body p-0">
-            <div class="w-12 h-12 rounded-xl bg-base-300/60 border border-base-300/80 text-{{ cat.badgeColor | default('primary') }} flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-              <i class="ph ph-cpu text-2xl"></i>
+            <div class="w-12 h-12 rounded-xl bg-base-300/60 border border-base-300/80 text-{{ cat.badgeColor | default('primary') }} flex items-center justify-center mb-4">
+              <i class="ph ph-{{ cat.icon | default('cpu') }} text-2xl"></i>
             </div>
             <h3 class="card-title text-xl font-headline mb-1 text-base-content">{{ cat.title }}</h3>
             <p class="text-base-content/60 text-sm mb-5 leading-relaxed">
@@ -132,10 +306,68 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ "NOW" / CURRENTLY BUILDING & EXPLORING ═══════════════════════════════════════ -->
+<section id="now" class="portfolio-section py-16 sm:py-24 border-t border-base-300/40 relative bg-base-200/20">
+  <div class="max-w-6xl mx-auto w-full px-4 sm:px-6">
+    <div class="mb-8">
+      <h2 class="text-3xl sm:text-4xl font-headline">{{ home.nowSectionTitle | default("What I'm Doing Now") }}</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for item in home.nowItems %}
+        <div class="card bg-base-200 card-border p-6 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-base-300/70 border border-base-300 flex items-center justify-center text-primary">
+                  <i class="ph ph-{{ item.icon | default('sparkle') }} text-lg"></i>
+                </div>
+                <span class="text-xs font-mono uppercase tracking-wider text-base-content/70 font-semibold">
+                  {{ item.category }}
+                </span>
+              </div>
+              {% if item.badge %}
+                <span class="badge badge-sm font-mono bg-base-300/80 border border-base-300 text-base-content/80">
+                  {{ item.badge }}
+                </span>
+              {% endif %}
+            </div>
+
+            <h3 class="card-title text-xl font-headline text-base-content mb-2">
+              {{ item.title }}
+            </h3>
+            <p class="text-sm text-base-content/70 leading-relaxed">
+              {{ item.description }}
+            </p>
+          </div>
+
+          {% if item.link %}
+            <div class="pt-5 mt-5 border-t border-base-300/60">
+              <a
+                href="{{ item.link }}"
+                class="flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-base-300/40 hover:bg-base-300 border border-base-300 hover:border-white/15 text-xs font-mono text-base-content/80 hover:text-base-content transition-colors duration-200 group/btn"
+                {% if item.link.startsWith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}
+              >
+                <span class="flex items-center gap-2 font-medium">
+                  <i class="ph ph-arrow-circle-right text-sm text-base-content/50 group-hover/btn:text-base-content transition-colors"></i>
+                  <span>{{ item.linkText | default('Learn More') }}</span>
+                </span>
+                <span class="w-6 h-6 rounded-lg bg-base-200 flex items-center justify-center text-base-content/50 group-hover/btn:text-base-content transition-colors">
+                  <i class="ph ph-arrow-up-right text-xs"></i>
+                </span>
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════ PROJECTS ════════════════════════════════════ -->
 <section
   id="projects"
-  class="portfolio-section portfolio-section-3 py-16 sm:py-24"
+  class="portfolio-section portfolio-section-3 py-16 sm:py-24 border-t border-base-300/40"
 >
   <div class="max-w-6xl mx-auto w-full px-4 sm:px-6">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
@@ -145,10 +377,6 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
           <span id="typed-projects-header"></span>
         </div>
         <h2 class="text-3xl sm:text-4xl font-headline">Featured Projects</h2>
-        <p class="mt-1 text-base-content/60 max-w-2xl text-sm sm:text-base">
-          Case studies highlighting architectural choices, performance wins, and
-          interfaces.
-        </p>
       </div>
       <a
         href="/projects/"
@@ -161,7 +389,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for project in collections.projects | limit(3) %}
-        <article class="card bg-base-200 card-border overflow-hidden flex flex-col justify-between group">
+        <article class="card bg-base-200 card-border overflow-hidden flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
           <div>
             <a
               href="{{ project.url }}"
@@ -189,7 +417,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
                   {{ project.data.category | default('Full-Stack') }}
                 </span>
               </div>
-              <h3 class="card-title text-xl font-headline group-hover:text-primary transition-colors">
+              <h3 class="card-title text-xl font-headline text-base-content">
                 <a href="{{ project.url }}">{{ project.data.title }}</a>
               </h3>
               <p class="text-base-content/70 text-sm leading-relaxed mt-2 mb-4 line-clamp-2">
@@ -206,13 +434,18 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
               </div>
             </div>
           </div>
-          <div class="px-6 pb-6 pt-0 border-t border-base-300/40 mt-2 flex items-center justify-between">
+          <div class="px-6 pb-6 pt-0 border-t border-base-300/40 mt-3">
             <a
               href="{{ project.url }}"
-              class="link link-primary text-sm font-mono inline-flex items-center gap-1.5 pt-3"
+              class="flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-base-300/40 hover:bg-base-300 border border-base-300 hover:border-white/15 text-xs font-mono text-base-content/80 hover:text-base-content transition-colors duration-200 group/btn"
             >
-              Case Study
-              <i class="ph ph-arrow-right text-xs"></i>
+              <span class="flex items-center gap-2 font-medium">
+                <i class="ph ph-arrow-circle-right text-sm text-base-content/50 group-hover/btn:text-base-content transition-colors"></i>
+                <span>Explore Case Study</span>
+              </span>
+              <span class="w-6 h-6 rounded-lg bg-base-200 flex items-center justify-center text-base-content/50 group-hover/btn:text-base-content transition-colors">
+                <i class="ph ph-arrow-right text-xs"></i>
+              </span>
             </a>
           </div>
         </article>
@@ -231,8 +464,48 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ TESTIMONIALS / WHAT PEOPLE SAY ═══════════════════════════════════════ -->
+<section id="testimonials" class="portfolio-section py-16 sm:py-24 border-t border-base-300/40 relative">
+  <div class="max-w-6xl mx-auto w-full px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-300/40 border border-base-300 font-mono text-xs mb-3 shadow-xs">
+        <i class="ph ph-chat-circle-dots text-sm text-secondary"></i>
+        <span>{{ home.testimonialsBadge | default('Endorsements') }}</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-headline tracking-tight">{{ home.testimonialsTitle | default('What Collaborators Say') }}</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {% for item in home.testimonials %}
+        <div class="card bg-base-200 card-border p-6 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-base-300/50 border border-base-300/80 flex items-center justify-center text-base-content/40 mb-4">
+              <i class="ph ph-quotes text-xl"></i>
+            </div>
+            <p class="text-sm text-base-content/80 leading-relaxed italic mb-6">
+              "{{ item.quote }}"
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3 pt-4 border-t border-base-300/50">
+            <div class="avatar shrink-0">
+              <div class="w-10 h-10 rounded-full ring-1 ring-base-300 ring-offset-base-100 ring-offset-2 overflow-hidden bg-base-300">
+                <img src="{{ item.avatar }}" alt="{{ item.author }}" loading="lazy" />
+              </div>
+            </div>
+            <div class="min-w-0">
+              <div class="font-headline text-base text-base-content tracking-tight truncate">{{ item.author }}</div>
+              <div class="text-xs font-mono text-base-content/60 truncate">{{ item.role }} • <span class="text-base-content/80">{{ item.company }}</span></div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════ BLOG ═══════════════════════════════════════ -->
-<section id="blog" class="portfolio-section portfolio-section-4 py-16 sm:py-24">
+<section id="blog" class="portfolio-section portfolio-section-4 py-16 sm:py-24 border-t border-base-300/40">
   <div class="max-w-6xl mx-auto w-full px-4 sm:px-6">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
       <div>
@@ -243,10 +516,6 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
         <h2 class="text-3xl sm:text-4xl font-headline">
           Latest Articles &amp; Insights
         </h2>
-        <p class="mt-1 text-base-content/60 max-w-2xl text-sm sm:text-base">
-          Deep dives into software architecture, frontend performance, and UI
-          design.
-        </p>
       </div>
       <a
         href="/blog/"
@@ -259,7 +528,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for post in collections.posts | limit(3) %}
-        <article class="card bg-base-200 card-border overflow-hidden flex flex-col justify-between group">
+        <article class="card bg-base-200 card-border overflow-hidden flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
           <div>
             <a
               href="{{ post.url }}"
@@ -281,7 +550,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
                   <span>• {{ post.data.readTime }}</span>
                 {% endif %}
               </div>
-              <h3 class="card-title text-xl font-headline group-hover:text-primary transition-colors leading-snug">
+              <h3 class="card-title text-xl font-headline text-base-content leading-snug">
                 <a href="{{ post.url }}">{{ post.data.title }}</a>
               </h3>
               <p class="text-base-content/70 text-sm leading-relaxed mt-2 mb-4 line-clamp-2">
@@ -289,13 +558,18 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
               </p>
             </div>
           </div>
-          <div class="px-6 pb-6 pt-0 border-t border-base-300/40 mt-2 flex items-center justify-between">
+          <div class="px-6 pb-6 pt-0 border-t border-base-300/40 mt-3">
             <a
               href="{{ post.url }}"
-              class="link link-primary text-sm font-mono inline-flex items-center gap-1.5 pt-3"
+              class="flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-base-300/40 hover:bg-base-300 border border-base-300 hover:border-white/15 text-xs font-mono text-base-content/80 hover:text-base-content transition-colors duration-200 group/btn"
             >
-              Read Article
-              <i class="ph ph-arrow-right text-xs"></i>
+              <span class="flex items-center gap-2 font-medium">
+                <i class="ph ph-book-open-text text-sm text-base-content/50 group-hover/btn:text-base-content transition-colors"></i>
+                <span>Read Full Article</span>
+              </span>
+              <span class="w-6 h-6 rounded-lg bg-base-200 flex items-center justify-center text-base-content/50 group-hover/btn:text-base-content transition-colors">
+                <i class="ph ph-arrow-right text-xs"></i>
+              </span>
             </a>
           </div>
         </article>

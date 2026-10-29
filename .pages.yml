@@ -171,15 +171,49 @@ content:
         description: Add, edit, remove, or reorder technologies that scroll in the infinite marquee.
         type: string
         list: true
+      - name: bentoSectionBadge
+        label: Bento Grid Section Badge
+        type: string
+        default: Engineering Highlights
+      - name: bentoSectionTitle
+        label: Bento Grid Section Title
+        type: string
+        default: Crafted for Scale, Speed & Precision
+      - name: bentoFeatureYears
+        label: Feature Card Years (e.g. 5+)
+        type: string
+        default: 5+
+      - name: bentoFeatureTitle
+        label: Feature Card Headline
+        type: string
+      - name: bentoFeatureDescription
+        label: Feature Card Description
+        type: text
+      - name: bentoFeatureApps
+        label: Feature Metric - Apps Shipped (e.g. 24+)
+        type: string
+        default: 24+
+      - name: bentoFeatureUptime
+        label: Feature Metric - Uptime (e.g. 99.9%)
+        type: string
+        default: 99.9%
+      - name: bentoLocationTitle
+        label: Location Title (e.g. Kolkata, India)
+        type: string
+        default: Kolkata, India
+      - name: bentoLocationNote
+        label: Location Timezone / Note
+        type: string
+        default: IST (UTC +5:30) • Seamless overlap with EU & US East
+      - name: bentoLocationDesc
+        label: Location Availability Text
+        type: text
       - name: skillsSectionBadge
         label: Skills Section Badge
         type: string
       - name: skillsSectionTitle
         label: Skills Section Title
         type: string
-      - name: skillsSectionDescription
-        label: Skills Section Description
-        type: text
       - name: skillCategories
         label: Skill Categories
         type: object
@@ -189,7 +223,7 @@ content:
             label: Category Title
             type: string
           - name: icon
-            label: Feather Icon Name (e.g. layout, server, database)
+            label: Phosphor Icon Name (e.g. layout, server, database)
             type: string
           - name: badgeColor
             label: Badge Color (primary, secondary, accent)
@@ -201,6 +235,64 @@ content:
             label: Skill Badges
             type: string
             list: true
+      - name: nowSectionTitle
+        label: Now Section Title
+        type: string
+        default: What I'm Doing Now
+      - name: nowItems
+        label: Now Items (Active Focus)
+        type: object
+        list: true
+        fields:
+          - name: category
+            label: Category (e.g. Active Project, Exploring, Learning, Reading)
+            type: string
+          - name: badge
+            label: Status Badge
+            type: string
+          - name: icon
+            label: Phosphor Icon Name (e.g. git-branch, sparkle, book-bookmark, eyeglasses)
+            type: string
+          - name: title
+            label: Item Title
+            type: string
+          - name: description
+            label: Description
+            type: text
+          - name: link
+            label: Destination Link URL
+            type: string
+          - name: linkText
+            label: Link Text (e.g. Explore Architecture, Read Notes)
+            type: string
+      - name: testimonialsBadge
+        label: Testimonials Section Badge
+        type: string
+        default: Endorsements
+      - name: testimonialsTitle
+        label: Testimonials Section Title
+        type: string
+        default: What Collaborators Say
+      - name: testimonials
+        label: Testimonials List
+        type: object
+        list: true
+        fields:
+          - name: quote
+            label: Testimonial Quote
+            type: text
+          - name: author
+            label: Author Name
+            type: string
+          - name: role
+            label: Author Role
+            type: string
+          - name: company
+            label: Company / Organization
+            type: string
+          - name: avatar
+            label: Avatar Image URL
+            type: string
 
   # ─────────────────────────────────────────────────────────────────
   # About Page Content
@@ -413,6 +505,59 @@ content:
               - { label: Landscape (4:3), value: landscape }
               - { label: Square (1:1), value: square }
               - { label: Wide (16:9), value: wide }
+
+  # ─────────────────────────────────────────────────────────────────
+  # Friends & Blogroll Settings
+  # ─────────────────────────────────────────────────────────────────
+  - name: friends-settings
+    label: Friends & Blogroll
+    type: file
+    path: src/_data/friends.json
+    fields:
+      - name: pageBadge
+        label: Page Badge
+        type: string
+        default: Community & Webring
+      - name: pageTitle
+        label: Page Title
+        type: string
+        default: Friends & Blogroll
+      - name: pageDescription
+        label: Page Description
+        type: text
+      - name: connectTitle
+        label: Connect Callout Title
+        type: string
+        default: Want to connect or exchange links?
+      - name: connectDescription
+        label: Connect Callout Description
+        type: text
+      - name: friends
+        label: Friends Directory
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Full Name
+            type: string
+            required: true
+          - name: role
+            label: Role / Tagline
+            type: string
+          - name: bio
+            label: Bio / Description
+            type: text
+          - name: url
+            label: Website / Blog URL
+            type: string
+            required: true
+          - name: avatar
+            label: Avatar Image (URL)
+            type: string
+          - name: tags
+            label: Focus / Tags
+            type: string
+            list: true
 
 # Actions accessible from Pages CMS UI
 actions:

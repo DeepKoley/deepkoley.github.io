@@ -21,9 +21,18 @@
     "AWS",
     "JavaScript ES6+"
   ],
+  "bentoSectionBadge": "Engineering Highlights",
+  "bentoSectionTitle": "Crafted for Scale, Speed & Precision",
+  "bentoFeatureYears": "5+",
+  "bentoFeatureTitle": "Building Resilient Web Systems from Inception to Scale",
+  "bentoFeatureDescription": "Specializing in high-throughput cloud architectures, microfrontends, and latency-critical web applications. Shipped 24+ production systems with 99.9% uptime guarantees.",
+  "bentoFeatureApps": "24+",
+  "bentoFeatureUptime": "99.9%",
+  "bentoLocationTitle": "Kolkata, India",
+  "bentoLocationNote": "Available for international contracts & remote teams",
+  "bentoLocationDesc": "Open for high-impact contracts, full-stack architectural consulting, and senior engineering roles globally.",
   "skillsSectionBadge": "Specialized Tech Stack",
   "skillsSectionTitle": "Skills & Technologies",
-  "skillsSectionDescription": "A curated set of tools I use to build modern, scalable applications.",
   "skillCategories": [
     {
       "title": "Frontend",
@@ -34,7 +43,7 @@
     },
     {
       "title": "Backend",
-      "icon": "server",
+      "icon": "hard-drives",
       "badgeColor": "secondary",
       "description": "Designing reliable APIs and server-side logic.",
       "skills": ["Node.js", "Python", "Express", "FastAPI", "REST APIs", "GraphQL", "WebSockets"]
@@ -45,6 +54,70 @@
       "badgeColor": "accent",
       "description": "Managing data and deploying at scale.",
       "skills": ["PostgreSQL", "MongoDB", "Redis", "Firebase", "Docker", "AWS", "GitHub Actions"]
+    }
+  ],
+  "nowSectionTitle": "What I'm Doing Now",
+  "nowItems": [
+    {
+      "category": "Active Project",
+      "badge": "Shipping v1.2",
+      "icon": "git-branch",
+      "title": "High-Performance Edge CMS",
+      "description": "Building an ultra-fast, Git-backed content platform running on Cloudflare Workers and Eleventy.",
+      "link": "/projects/",
+      "linkText": "Explore Architecture"
+    },
+    {
+      "category": "Exploring",
+      "badge": "Research",
+      "icon": "sparkle",
+      "title": "Local LLM Agents & Tool Use",
+      "description": "Experimenting with small language models and autonomous agent workflows for automated refactoring.",
+      "link": "/blog/",
+      "linkText": "Read Experiments"
+    },
+    {
+      "category": "Learning",
+      "badge": "Ongoing",
+      "icon": "book-bookmark",
+      "title": "Rust Systems Programming",
+      "description": "Diving deep into memory safety, async runtimes with Tokio, and compiling native modules for WebAssembly.",
+      "link": "https://github.com",
+      "linkText": "View Repositories"
+    },
+    {
+      "category": "Reading",
+      "badge": "Book",
+      "icon": "eyeglasses",
+      "title": "Designing Data-Intensive Applications",
+      "description": "Re-reading Martin Kleppmann's masterwork on replication, partitioning, and distributed consensus.",
+      "link": "/blog/",
+      "linkText": "Read Notes"
+    }
+  ],
+  "testimonialsBadge": "Endorsements",
+  "testimonialsTitle": "What Collaborators Say",
+  "testimonials": [
+    {
+      "quote": "Deep is one of those rare engineers who effortlessly bridges the gap between complex backend architectures and pixel-perfect UI execution. His attention to performance is extraordinary.",
+      "author": "Sarah Jenkins",
+      "role": "VP of Engineering",
+      "company": "CloudScale Systems",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      "quote": "Working with Deep on our real-time analytics dashboard was a masterclass in clean architecture. He delivered ahead of schedule with flawless test coverage and zero regressions.",
+      "author": "Marcus Vance",
+      "role": "Product Lead",
+      "company": "Apex Data Labs",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      "quote": "Deep has an exceptional knack for developer experience and modern web standards. He modernized our entire design system and cut our bundle size by more than 40%.",
+      "author": "Elena Rostova",
+      "role": "Principal Frontend Architect",
+      "company": "Nexus Digital",
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80"
     }
   ]
 }

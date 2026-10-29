@@ -1,0 +1,58 @@
+{
+  "pageBadge": "Community & Webring",
+  "pageTitle": "Friends & Blogroll",
+  "pageDescription": "A curated directory celebrating friends, collaborators, and independent creators across the open web.",
+  "connectTitle": "Want to connect or exchange links?",
+  "connectDescription": "If we've worked together or you run an independent corner of the web, shoot me an email and let's exchange links.",
+  "friends": [
+    {
+      "name": "Sarah Jenkins",
+      "role": "VP of Engineering & Systems Architect",
+      "bio": "Writing about distributed systems resilience, team topology, and cloud economics.",
+      "url": "https://example.com/sarah",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80",
+      "tags": ["Cloud", "Go", "Architecture"]
+    },
+    {
+      "name": "Marcus Vance",
+      "role": "Product Lead & Interaction Designer",
+      "bio": "Exploring tactile digital interfaces, local-first computing, and generative design tools.",
+      "url": "https://example.com/marcus",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80",
+      "tags": ["Design Systems", "Local-First", "UI/UX"]
+    },
+    {
+      "name": "Elena Rostova",
+      "role": "Principal Frontend Engineer",
+      "bio": "Deep-diving into browser rendering engines, WebAssembly runtimes, and accessible web standards.",
+      "url": "https://example.com/elena",
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&auto=format&fit=crop&q=80",
+      "tags": ["TypeScript", "WebAssembly", "Performance"]
+    },
+    {
+      "name": "David Chen",
+      "role": "Security Researcher & Kernel Hacker",
+      "bio": "Auditing Linux kernel primitives, virtualization security, and eBPF tracing infrastructure.",
+      "url": "https://example.com/david",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80",
+      "tags": ["Linux", "eBPF", "Rust"]
+    },
+    {
+      "name": "Maya Patel",
+      "role": "Creative Developer & 3D Artist",
+      "bio": "Crafting procedural shaders, WebGL interactive installations, and generative typography.",
+      "url": "https://example.com/maya",
+      "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=80",
+      "tags": ["Three.js", "Shaders", "Creative Tech"]
+    },
+    {
+      "name": "Liam Thorne",
+      "role": "Open Source Maintainer",
+      "bio": "Maintaining developer tooling, CLI frameworks, and minimalist static site generators.",
+      "url": "https://example.com/liam",
+      "avatar": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=200&auto=format&fit=crop&q=80",
+      "tags": ["CLI", "Open Source", "DevTools"]
+    }
+  ]
+}
+
