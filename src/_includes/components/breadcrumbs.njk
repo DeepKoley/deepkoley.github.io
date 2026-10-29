@@ -1,11 +1,11 @@
 <nav
-  class="breadcrumbs text-sm mb-6 text-base-content/60"
+  class="breadcrumbs font-mono text-xs mb-6 text-base-content/60"
   aria-label="Breadcrumb"
 >
   <ul>
-    <li><a href="/">Home</a></li>
+    <li><a href="/" class="hover:text-primary transition-colors">Home</a></li>
     {% if parentPage and parentUrl %}
-      <li><a href="{{ parentUrl }}">{{ parentPage }}</a></li>
+      <li><a href="{{ parentUrl }}" class="hover:text-primary transition-colors">{{ parentPage }}</a></li>
     {% endif %}
     <li class="text-base-content">{{ currentPage }}</li>
   </ul>

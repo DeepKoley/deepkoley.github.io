@@ -36,7 +36,7 @@
       <div class="flex flex-wrap gap-1.5">
         {% for tag in friend.tags %}
           <span
-            class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-base-300/60 text-base-content/70 border border-base-300/40"
+            class="badge badge-neutral badge-xs font-mono border border-base-300/60"
           >
             {{ tag }}
           </span>
@@ -48,19 +48,21 @@
       href="{{ friend.url }}"
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex items-center justify-between w-full px-3.5 py-2 rounded-xl bg-base-300/50 hover:bg-base-300 border border-base-300/60 hover:border-white/10 text-xs font-mono text-base-content/90 transition-all group"
+      class="flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-base-300/40 hover:bg-base-300 border border-base-300 hover:border-white/15 text-xs font-mono text-base-content/80 hover:text-base-content transition-colors duration-200 group/btn"
     >
-      <span class="inline-flex items-center gap-2 truncate">
+      <span class="flex items-center gap-2 font-medium truncate">
         <i
-          class="ph ph-globe text-primary text-sm group-hover:rotate-12 transition-transform"
+          class="ph ph-globe text-primary text-sm group-hover/btn:rotate-12 transition-transform"
         ></i>
         <span class="truncate">{{
           friend.url | replace("https://", "") | replace("http://", "") | replace("www.", "")
         }}</span>
       </span>
-      <i
-        class="ph ph-arrow-up-right text-base-content/50 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-sm shrink-0"
-      ></i>
+      <span
+        class="w-6 h-6 rounded-lg bg-base-200 flex items-center justify-center text-base-content/50 group-hover/btn:text-base-content transition-colors shrink-0"
+      >
+        <i class="ph ph-arrow-up-right text-xs"></i>
+      </span>
     </a>
   </div>
 </article>

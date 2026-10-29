@@ -99,7 +99,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
 <section id="bento" class="portfolio-section py-16 sm:py-24 border-b border-base-300/40 relative">
   <div class="max-w-6xl mx-auto w-full px-4 sm:px-6">
     <div class="text-center mb-10">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-300/40 border border-base-300 font-mono text-xs mb-3 shadow-xs">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-200 border border-base-300 font-mono text-xs mb-3 shadow-xs">
         <i class="ph ph-squares-four text-sm text-primary"></i>
         <span>{{ home.bentoSectionBadge | default('Engineering Highlights') }}</span>
       </div>
@@ -109,7 +109,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
     <!-- Asymmetric 12-Column Bento Box Grid -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
       <!-- Bento Tile 1: Large Featured Impact Card (Spans 7 cols on md+) -->
-      <div class="md:col-span-7 card bg-base-200 card-border p-7 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
+      <div class="md:col-span-7 card bg-base-200 card-border rounded-2xl p-7 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
         <div>
           <div class="flex items-center justify-between mb-4">
             <span class="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
@@ -147,7 +147,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
       </div>
 
       <!-- Bento Tile 2: Base of Operations / Collaboration & Availability (Spans 5 cols on md+) -->
-      <div class="md:col-span-5 card bg-base-200 card-border p-7 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
+      <div class="md:col-span-5 card bg-base-200 card-border rounded-2xl p-7 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
         <div>
           <div class="flex items-center justify-between mb-4">
             <span class="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-secondary">
@@ -187,16 +187,16 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
 >
   <div class="max-w-6xl mx-auto w-full px-4 sm:px-6">
     <div class="text-center mb-10">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-300/40 border border-base-300 font-mono text-xs mb-3 shadow-xs">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-200 border border-base-300 font-mono text-xs mb-3 shadow-xs">
         <i class="ph ph-cpu text-sm text-primary"></i>
         <span id="typed-skills-header">{{ home.skillsSectionBadge | default('Specialized Tech Stack') }}</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-headline">{{ home.skillsSectionTitle | default('Skills & Technologies') }}</h2>
+      <h2 class="text-3xl sm:text-4xl font-headline tracking-tight">{{ home.skillsSectionTitle | default('Skills & Technologies') }}</h2>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for cat in home.skillCategories %}
-        <div class="card bg-base-200 card-border p-6 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
+        <div class="card bg-base-200 card-border rounded-2xl p-6 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
           <div class="card-body p-0">
             <div class="w-12 h-12 rounded-xl bg-base-300/60 border border-base-300/80 text-{{ cat.badgeColor | default('primary') }} flex items-center justify-center mb-4">
               <i class="ph ph-{{ cat.icon | default('cpu') }} text-2xl"></i>
@@ -221,12 +221,12 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
 <section id="now" class="portfolio-section py-16 sm:py-24 border-t border-base-300/40 relative bg-base-200/20">
   <div class="max-w-6xl mx-auto w-full px-4 sm:px-6">
     <div class="mb-8">
-      <h2 class="text-3xl sm:text-4xl font-headline">{{ home.nowSectionTitle | default("What I'm Doing Now") }}</h2>
+      <h2 class="text-3xl sm:text-4xl font-headline tracking-tight">{{ home.nowSectionTitle | default("What I'm Doing Now") }}</h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {% for item in home.nowItems %}
-        <div class="card bg-base-200 card-border p-6 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
+        <div class="card bg-base-200 card-border rounded-2xl p-6 flex flex-col justify-between hover:border-white/10 transition-colors duration-200">
           <div>
             <div class="flex items-center justify-between gap-3 mb-4">
               <div class="flex items-center gap-2.5">
@@ -283,11 +283,11 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
   <div class="max-w-6xl mx-auto w-full px-4 sm:px-6">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
       <div>
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-300/40 border border-base-300 font-mono text-xs mb-2 shadow-xs">
-          <i class="ph ph-stack text-sm text-secondary"></i>
-          <span id="typed-projects-header"></span>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-200 border border-base-300 font-mono text-xs mb-2 shadow-xs">
+          <i class="ph ph-stack text-sm text-primary"></i>
+          <span id="typed-projects-header">Selected Case Studies</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-headline">Featured Projects</h2>
+        <h2 class="text-3xl sm:text-4xl font-headline tracking-tight">Featured Projects</h2>
       </div>
       <a
         href="/projects/"
@@ -302,8 +302,8 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
       {% for project in collections.projects | limit(3) %}
         {% include "components/project-card.njk" %}
       {% else %}
-        <div class="col-span-full card bg-base-200 card-border p-12 text-center border-dashed border-base-300/80">
-          <div class="w-14 h-14 rounded-2xl bg-base-300/60 border border-base-300 flex items-center justify-center mx-auto mb-4 text-secondary">
+        <div class="col-span-full card bg-base-200 card-border p-12 text-center border-dashed border-base-300/80 rounded-2xl">
+          <div class="w-14 h-14 rounded-2xl bg-base-300/60 border border-base-300 flex items-center justify-center mx-auto mb-4 text-primary">
             <i class="ph ph-stack text-3xl"></i>
           </div>
           <h3 class="font-headline text-2xl mb-1.5 text-base-content">Projects Coming Soon</h3>
@@ -320,8 +320,8 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
 <section id="testimonials" class="portfolio-section py-16 sm:py-24 border-t border-base-300/40 relative">
   <div class="max-w-6xl mx-auto w-full px-4 sm:px-6">
     <div class="text-center mb-10">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-300/40 border border-base-300 font-mono text-xs mb-3 shadow-xs">
-        <i class="ph ph-chat-circle-dots text-sm text-secondary"></i>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-200 border border-base-300 font-mono text-xs mb-3 shadow-xs">
+        <i class="ph ph-chat-circle-dots text-sm text-primary"></i>
         <span>{{ home.testimonialsBadge | default('Endorsements') }}</span>
       </div>
       <h2 class="text-3xl sm:text-4xl font-headline tracking-tight">{{ home.testimonialsTitle | default('What Collaborators Say') }}</h2>
@@ -336,11 +336,11 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
   <div class="max-w-6xl mx-auto w-full px-4 sm:px-6">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
       <div>
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-300/40 border border-base-300 font-mono text-xs mb-2 shadow-xs">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-200 border border-base-300 font-mono text-xs mb-2 shadow-xs">
           <i class="ph ph-book-open text-sm text-primary"></i>
-          <span id="typed-blog-header"></span>
+          <span id="typed-blog-header">Engineering Logs &amp; Technical Notes</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-headline">
+        <h2 class="text-3xl sm:text-4xl font-headline tracking-tight">
           Latest Articles &amp; Insights
         </h2>
       </div>
@@ -357,7 +357,7 @@ description: "Personal portfolio of Deep Koley, a full-stack developer specializ
       {% for post in collections.posts | limit(3) %}
         {% include "components/post-card.njk" %}
       {% else %}
-        <div class="col-span-full card bg-base-200 card-border p-12 text-center border-dashed border-base-300/80">
+        <div class="col-span-full card bg-base-200 card-border p-12 text-center border-dashed border-base-300/80 rounded-2xl">
           <div class="w-14 h-14 rounded-2xl bg-base-300/60 border border-base-300 flex items-center justify-center mx-auto mb-4 text-primary">
             <i class="ph ph-book-open text-3xl"></i>
           </div>
