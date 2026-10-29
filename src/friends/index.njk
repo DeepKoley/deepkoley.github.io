@@ -31,7 +31,7 @@ eleventyExcludeFromCollections: true
 
   <!-- Friends Directory Grid -->
   {% if friends.friends and friends.friends.length > 0 %}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for friend in friends.friends %}
         <article class="card bg-base-200 card-border p-6 flex flex-col justify-between hover:border-white/10 transition-colors duration-200 rounded-2xl">
           <!-- Top Row: Avatar + Name + Role -->
@@ -93,55 +93,15 @@ eleventyExcludeFromCollections: true
       {% endfor %}
     </div>
   {% else %}
-    <div class="card bg-base-200 card-border p-12 text-center rounded-2xl mb-16">
+    <div class="card bg-base-200 card-border p-12 text-center rounded-2xl">
       <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-base-300 text-primary mx-auto mb-4">
         <i class="ph ph-users text-2xl"></i>
       </div>
       <h3 class="text-lg font-headline font-bold mb-2">No friends listed yet</h3>
       <p class="text-sm text-base-content/60 max-w-md mx-auto">
-        Check back soon or get in touch to be added to this webring.
+        Check back soon to explore creators in this directory.
       </p>
     </div>
   {% endif %}
-
-  <!-- Connect / Webring Exchange Callout -->
-  <div class="card bg-base-200 card-border p-8 rounded-2xl relative overflow-hidden">
-    <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-      <div class="max-w-2xl">
-        <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20 font-mono text-xs text-primary mb-3">
-          <i class="ph ph-paper-plane-tilt"></i>
-          <span>Open Web & IndieWeb</span>
-        </div>
-        <h3 class="text-2xl font-headline tracking-tight mb-2">
-          {{ friends.connectTitle | default('Want to connect or exchange links?') }}
-        </h3>
-        <p class="text-sm text-base-content/70 leading-relaxed">
-          {{ friends.connectDescription | default("If we've worked together or you run an independent corner of the web, shoot me an email and let's exchange links.") }}
-        </p>
-      </div>
-      <div class="flex flex-wrap items-center gap-3 shrink-0">
-        {% if site.email %}
-          <a
-            href="mailto:{{ site.email }}?subject=Link%20Exchange%20/%20Friends%20Directory"
-            class="btn btn-primary btn-sm gap-2 font-mono text-xs rounded-xl shadow-xs"
-          >
-            <i class="ph ph-envelope-simple text-sm"></i>
-            <span>Say Hello</span>
-          </a>
-        {% endif %}
-        {% if site.github %}
-          <a
-            href="{{ site.github }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-ghost btn-sm gap-2 font-mono text-xs rounded-xl border border-base-300 hover:border-white/10"
-          >
-            <i class="ph ph-github-logo text-sm"></i>
-            <span>GitHub</span>
-          </a>
-        {% endif %}
-      </div>
-    </div>
-  </div>
 </div>
 

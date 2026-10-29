@@ -525,13 +525,6 @@ content:
       - name: pageDescription
         label: Page Description
         type: text
-      - name: connectTitle
-        label: Connect Callout Title
-        type: string
-        default: Want to connect or exchange links?
-      - name: connectDescription
-        label: Connect Callout Description
-        type: text
       - name: friends
         label: Friends Directory
         type: object
