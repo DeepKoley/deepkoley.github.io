@@ -8,7 +8,21 @@
   "email": "hello@deepkoley.dev",
   "location": "Kolkata, India",
   "status": "Available for freelance & contracts",
-  "github": "https://github.com/deepkoley",
-  "linkedin": "https://linkedin.com/in/deepkoley",
-  "twitter": "https://twitter.com/deepkoley"
+  "socialLinks": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/deepkoley",
+      "icon": "github-logo"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/in/deepkoley",
+      "icon": "linkedin-logo"
+    },
+    {
+      "name": "Twitter / X",
+      "url": "https://twitter.com/deepkoley",
+      "icon": "x-logo"
+    }
+  ]
 }

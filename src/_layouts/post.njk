@@ -110,24 +110,18 @@ layout: base.njk
         <p class="text-sm text-base-content/70 leading-relaxed mb-4">
           {{ site.description }}
         </p>
-        <div class="flex justify-center sm:justify-start gap-3">
-          <a
-            href="{{ site.github }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-xs btn-outline font-mono"
-          >
-            <i class="ph ph-github-logo text-xs"></i> GitHub
-          </a>
-          <a
-            href="{{ site.twitter }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-xs btn-outline font-mono"
-          >
-            <i class="ph ph-x-logo text-xs"></i> Twitter
-          </a>
-          <a href="/about/" class="btn btn-xs btn-primary font-mono">
+        <div class="flex flex-wrap justify-center sm:justify-start gap-2.5">
+          {% for social in site.socialLinks %}
+            <a
+              href="{{ social.url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-xs btn-outline font-mono gap-1.5"
+            >
+              <i class="ph {{ social | socialIcon }} text-xs"></i> {{ social.name }}
+            </a>
+          {% endfor %}
+          <a href="/about/" class="btn btn-xs btn-primary font-mono gap-1.5">
             <i class="ph ph-user text-xs"></i> About
           </a>
         </div>

@@ -53,6 +53,53 @@ export default function (eleventyConfig) {
     });
   });
 
+  // Filter to determine Phosphor icon class for social links
+  eleventyConfig.addFilter('socialIcon', (social) => {
+    if (!social) return 'ph-link';
+    if (typeof social === 'string') {
+      const s = social.trim().toLowerCase();
+      if (s.startsWith('ph-')) return s;
+      return `ph-${s}`;
+    }
+    if (social.icon && String(social.icon).trim().length > 0) {
+      let icon = String(social.icon).trim().toLowerCase();
+      if (icon.startsWith('ph ')) icon = icon.replace(/^ph\s+/, '');
+      if (!icon.startsWith('ph-')) icon = `ph-${icon}`;
+      return icon;
+    }
+    const str = `${social.name || ''} ${social.url || ''}`.toLowerCase();
+    if (str.includes('github')) return 'ph-github-logo';
+    if (str.includes('linkedin')) return 'ph-linkedin-logo';
+    if (str.includes('twitter') || str.includes('x.com')) return 'ph-x-logo';
+    if (str.includes('youtube') || str.includes('youtu.be')) return 'ph-youtube-logo';
+    if (str.includes('discord')) return 'ph-discord-logo';
+    if (str.includes('mastodon')) return 'ph-mastodon-logo';
+    if (str.includes('bluesky') || str.includes('bsky.app')) return 'ph-butterfly';
+    if (str.includes('instagram')) return 'ph-instagram-logo';
+    if (str.includes('threads')) return 'ph-threads-logo';
+    if (str.includes('twitch')) return 'ph-twitch-logo';
+    if (str.includes('reddit')) return 'ph-reddit-logo';
+    if (str.includes('medium')) return 'ph-medium-logo';
+    if (str.includes('dev.to') || str.includes('dev-to')) return 'ph-dev-to-logo';
+    if (str.includes('codepen')) return 'ph-codepen-logo';
+    if (str.includes('codesandbox')) return 'ph-codesandbox-logo';
+    if (str.includes('dribbble')) return 'ph-dribbble-logo';
+    if (str.includes('behance')) return 'ph-behance-logo';
+    if (str.includes('gitlab')) return 'ph-gitlab-logo';
+    if (str.includes('telegram') || str.includes('t.me')) return 'ph-telegram-logo';
+    if (str.includes('slack')) return 'ph-slack-logo';
+    if (str.includes('spotify')) return 'ph-spotify-logo';
+    if (str.includes('facebook')) return 'ph-facebook-logo';
+    if (str.includes('tiktok')) return 'ph-tiktok-logo';
+    if (str.includes('patreon')) return 'ph-patreon-logo';
+    if (str.includes('notion')) return 'ph-notion-logo';
+    if (str.includes('stack-overflow') || str.includes('stackoverflow')) return 'ph-stack-overflow-logo';
+    if (str.includes('figma')) return 'ph-figma-logo';
+    if (str.includes('mailto:') || str.includes('@')) return 'ph-envelope';
+    if (str.includes('rss') || str.includes('feed') || str.includes('atom')) return 'ph-rss';
+    return 'ph-globe';
+  });
+
   // Group gallery photos by Year and Month for timeline navigation & month-wise grouping
   eleventyConfig.addFilter('galleryByYear', (photos) => {
     if (!Array.isArray(photos)) return [];

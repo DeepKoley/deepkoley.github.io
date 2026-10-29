@@ -64,43 +64,38 @@ eleventyExcludeFromCollections: true
           </p>
         </div>
         <div class="flex flex-wrap gap-2 text-xs font-mono">
-          <span
-            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 text-base-content/80"
-          >
-            <i class="ph ph-map-pin text-sm text-base-content/60"></i>
-            {{ site.location }}
-          </span>
-          <a
-            href="mailto:{{ site.email }}"
-            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
-          >
-            <i
-              class="ph ph-envelope text-sm text-base-content/60 group-hover:text-primary transition-colors"
-            ></i>
-            {{ site.email }}
-          </a>
-          <a
-            href="{{ site.github }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
-          >
-            <i
-              class="ph ph-github-logo text-sm text-base-content/60 group-hover:text-primary transition-colors"
-            ></i>
-            github.com
-          </a>
-          <a
-            href="{{ site.linkedin }}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
-          >
-            <i
-              class="ph ph-linkedin-logo text-sm text-base-content/60 group-hover:text-primary transition-colors"
-            ></i>
-            linkedin.com
-          </a>
+          {% if site.location %}
+            <span
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 text-base-content/80"
+            >
+              <i class="ph ph-map-pin text-sm text-base-content/60"></i>
+              {{ site.location }}
+            </span>
+          {% endif %}
+          {% if site.email %}
+            <a
+              href="mailto:{{ site.email }}"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
+            >
+              <i
+                class="ph ph-envelope text-sm text-base-content/60 group-hover:text-primary transition-colors"
+              ></i>
+              {{ site.email }}
+            </a>
+          {% endif %}
+          {% for social in site.socialLinks %}
+            <a
+              href="{{ social.url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 link link-hover text-base-content hover:text-primary group"
+            >
+              <i
+                class="ph {{ social | socialIcon }} text-sm text-base-content/60 group-hover:text-primary transition-colors"
+              ></i>
+              {{ social.name }}
+            </a>
+          {% endfor %}
         </div>
       </div>
 

@@ -141,15 +141,22 @@ content:
       - name: status
         label: Availability Status
         type: string
-      - name: github
-        label: GitHub URL
-        type: string
-      - name: linkedin
-        label: LinkedIn URL
-        type: string
-      - name: twitter
-        label: Twitter / X URL
-        type: string
+      - name: socialLinks
+        label: Social Links & Profiles
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Platform Name (e.g. GitHub, LinkedIn, Twitter, YouTube, Discord, Bluesky)
+            type: string
+            required: true
+          - name: url
+            label: Profile URL
+            type: string
+            required: true
+          - name: icon
+            label: Icon Name (optional, e.g. github-logo, linkedin-logo, x-logo, youtube-logo, discord-logo, mastodon-logo, globe)
+            type: string
 
   # ─────────────────────────────────────────────────────────────────
   # Homepage Settings

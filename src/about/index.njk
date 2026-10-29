@@ -80,6 +80,23 @@ eleventyExcludeFromCollections: true
           </div>
         </div>
 
+        {% if site.socialLinks and site.socialLinks.length > 0 %}
+          <div class="px-6 pb-4 pt-1 flex flex-wrap items-center justify-center gap-2">
+            {% for social in site.socialLinks %}
+              <a
+                href="{{ social.url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-8 h-8 rounded-lg bg-base-300/40 hover:bg-base-300 border border-base-300 hover:border-white/15 flex items-center justify-center text-base-content/70 hover:text-primary transition-all shadow-xs"
+                title="{{ social.name }}"
+                aria-label="{{ social.name }}"
+              >
+                <i class="ph {{ social | socialIcon }} text-sm"></i>
+              </a>
+            {% endfor %}
+          </div>
+        {% endif %}
+
         <div class="p-6 pt-0">
           <a href="/resume/" class="btn btn-primary btn-sm w-full font-mono">
             <i class="ph ph-file-text text-sm"></i>
