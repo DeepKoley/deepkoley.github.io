@@ -1,18 +1,18 @@
 {
   "pageBadge": "Community & Webring",
-  "pageTitle": "Friends & Blogroll",
+  "pageTitle": "Friends & Collegues",
   "pageDescription": "A curated directory celebrating friends, collaborators, and independent creators across the open web.",
   "friends": [
     {
-      "name": "Sarah Jenkins",
-      "role": "VP of Engineering & Systems Architect",
+      "name": "Amitendu Bikash Dhusiya",
+      "role": "Software Developer - Student",
       "bio": "Writing about distributed systems resilience, team topology, and cloud economics.",
-      "url": "https://example.com/sarah",
+      "url": "https://amitendu.me/",
       "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80",
       "tags": [
         "Cloud",
-        "Go",
-        "Architecture"
+        "Systems",
+        "Web"
       ]
     },
     {
